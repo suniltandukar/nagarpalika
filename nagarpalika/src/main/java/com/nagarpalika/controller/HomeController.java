@@ -36,8 +36,8 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model, @ModelAttribute(value="msg") String msg) {
 		
-		String[] key={"Id Type","Description","Inputter","Authorizer","date and Time","Current Number"};
-		String[] value={"id_type","description","inputter","authorizer","date_time","curr_number"};
+		String[] key={"Owner Id","Land and House ID","Family Id","Ownership Type","House Number","Land Unit","Land Size","Plot Num","Sheet Num","District","Municipality/ Village council","Ward Number","Moth Number","Kitta Number","Land Legacy Address","Land Current District","Land Current Municipality/ Village Council","Ward No","Tole","House Construction Type","Used Status","House Floor Count","Rentnted Floor Count","House Area Unit","House Area","Map Application Date","Map Approved Date","Construction Start Date","Construction Completion Date","Construction Completion Municipality/ Village Council","Completion Approved By","House Map Municipality/ Village Council","Inputter","Authorizer","Date And Time","Current Number"};
+		String[] value={"house_owener_id","land_house_id","family_id","ownership_type","house_number","land_unit","land_size","plot_num","sheet_num","district_uni","mun_vc_uni","ward_no_uni","moth_num_uni","kitta_num_uni","land_legacy_address","land_current_district","land_current_mun_vc","ward_no","tole","house_construction_type","used_status","house_floor_count","rented_floor_count","house_area_unit","house_area","map_application_date","map_approved_date","construction_start_date","construction_completion_date","construction_completion_approval_date","completion_approved_by","house_map_prepared_by","inputter","authorizer","date_time","curr_number"};
 		
 		int j=0;
 		for(int i=0;i<key.length;i++){
