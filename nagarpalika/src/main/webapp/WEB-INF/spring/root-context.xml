@@ -18,6 +18,9 @@
 	<bean id="operationDao" class="com.nagarpalika.dao.daoimpl.OperationDaoImpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
+	<bean id="educationDetailDao" class="com.nagarpalika.dao.daoimpl.EducationDetailDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
