@@ -2,6 +2,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <html lang="en">
 <head>
@@ -30,8 +31,7 @@
 			<div class="col-md-3 left_col">
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="" class="site_title"><i class="fa fa-desktop"
-							aria-hidden="true"></i> <span>Muncipality</span></a>
+						<a href="" class="site_title"> <img src="<%=request.getContextPath()%>/resources/img/nagarpalika.png" class="img-rounded" style="width:20%"> <span>MMIS</span></a>
 					</div>
 
 					<div class="clearfix"></div>
@@ -135,10 +135,8 @@
 
 												<li><a href="nav/educationDetail" target="iframe_a">
 														Education Detail </a></li>
-												<li><a href="nav/idType" target="iframe_a"> Id
-														Type</a></li>
-												<li><a href="nav/occupationList" target="iframe_a">
-														Occupation List </a></li>
+												<li><a href="nav/idType" target="iframe_a"> Document Type
+														</a></li>
 												<li><a href="nav/occupationType" target="iframe_a">
 														Occupation Type </a></li>
 											</ul></li>
@@ -159,8 +157,9 @@
 							aria-hidden="true"></i>
 						</a> <a data-toggle="tooltip" data-placement="top" title="Lock"> <i
 							class="fa fa-eye-slash" aria-hidden="true"></i>
+							
 						</a> <a data-toggle="tooltip" data-placement="top" title="Logout"
-							href="nav/logout"> <i class="fa fa-sign-out"
+							href="<spring:url value="/logout"/>"> <i class="fa fa-sign-out"
 							aria-hidden="true"></i>
 						</a>
 					</div>
@@ -188,7 +187,7 @@
 									<li><a href="nav/javascript:;"> <span>Settings</span>
 									</a></li>
 									<li><a href="nav/javascript:;">Help</a></li>
-									<li><a href="nav/logout"><i
+									<li><a href="<spring:url value="/logout"/>"><i
 											class="fa fa-sign-out pull-right"></i> Log Out</a></li>
 								</ul></li>
 						</ul>
@@ -200,7 +199,7 @@
 			<!-- page content -->
 			<div class="right_col" role="main">
 				<iframe height="2000px" width="100%"
-					src="<%=request.getContextPath()%>/nav/dashboard" id="Iframe"
+					src="" id="Iframe"
 					name="iframe_a" style="border: none;"> </iframe>
 			</div>
 			<!-- /page content -->

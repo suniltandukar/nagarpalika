@@ -32,7 +32,7 @@
 			<div class="animate form login_form">
 				<section class="login_content">
 					<form method="post" action="login">
-						<h1>Login Form</h1>
+						 <img src="<%=request.getContextPath()%>/resources/img/nagarpalika.png" class="img-rounded" style="width:40%"> 
 						<c:if test="${msg!='' }">
 						<div class="alert alert-danger">
 							${msg }
@@ -54,15 +54,14 @@
 
 						<div>
 							<button class="btn btn-default submit">Log in</button>
-							<a class="reset_pass" href="#">Lost your password?</a>
+							<a class="reset_pass" href="#"></a>
 						</div>
 					</form>
 					<div class="clearfix"></div>
 
 					<div class="separator">
 						<p class="change_link">
-							New to site? <a href="#signup" class="to_register"> Create
-								Account </a>
+							Municipality Management Information System 
 						</p>
 
 						<div class="clearfix"></div>
@@ -74,25 +73,6 @@
 						</div>
 					</div>
 
-				</section>
-			</div>
-
-			<div id="register" class="animate form registration_form">
-				<section class="login_content">
-					<form>
-						<h1>Create Account</h1>
-
-						<p>Contact us for the new account.</p>
-
-						<div class="clearfix"></div>
-
-						<div class="separator">
-							<p class="change_link">
-								Already a member ? <a href="#signin" class="to_register">
-									Log in </a>
-							</p>
-						</div>
-					</form>
 				</section>
 			</div>
 		</div>

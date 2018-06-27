@@ -1,7 +1,7 @@
 package com.nagarpalika.model;
 
-public class OccupationListModel {
-	private String occupation_id,
+public class OccupationModel {
+	private String occu_id,
 	occupation_type,
 	record_status,
 	inputter,
@@ -9,12 +9,14 @@ public class OccupationListModel {
 	date_time,
 	curr_number;
 
-	public String getOccupation_id() {
-		return occupation_id;
+	
+
+	public String getOccu_id() {
+		return occu_id;
 	}
 
-	public void setOccupation_id(String occupation_id) {
-		this.occupation_id = occupation_id;
+	public void setOccu_id(String occu_id) {
+		this.occu_id = occu_id;
 	}
 
 	public String getOccupation_type() {

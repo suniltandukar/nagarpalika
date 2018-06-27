@@ -17,7 +17,7 @@ h5 {
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="col-md-8 col-xs-12">
 			<div class="x_panel">
-				<spring:url value="/documentType/save" var="formUrl" />
+				<spring:url value="/documentType/update/${dt.id_type }" var="formUrl" />
 				<form:form class="form-horizontal form-label-left input_mask"
 					method="post" action="${formUrl }">
 
@@ -31,6 +31,7 @@ h5 {
 							<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
 								<button class="btn btn-info" type="button" id="validate">Validate</button>
 								<button class="btn btn-primary" type="reset">Reset</button>
+								<a class="btn btn-danger confirm" href="<spring:url value="/documentType/delete/${dt.id_type }"/>">Delete</a>
 								<input type="submit" class="btn btn-success" value="Submit">
 							</div>
 						</div>
@@ -40,26 +41,26 @@ h5 {
 								<tr>
 									<td><h6>
 											<strong>Id Type</strong>
-										</h6> <input type='text' class='form-control' name='id_type'></td>
+										</h6> <input type='text' class='form-control' name='id_type' value="${dt.id_type }"></td>
 									<td><h6>
 											<strong>Description</strong>
-										</h6> <input type='text' class='form-control' name='description'></td>
+										</h6> <input type='text' class='form-control' name='description' value="${dt.description }"></td>
 								</tr>
 								<tr>
 									<td><h6>
 											<strong>Inputter</strong>
-										</h6> <input type='text' class='form-control' name='inputter'></td>
+										</h6> <input type='text' class='form-control' name='inputter' value="${dt.inputter }"></td>
 									<td><h6>
 											<strong>Authorizer</strong>
-										</h6> <input type='text' class='form-control' name='authorizer'></td>
+										</h6> <input type='text' class='form-control' name='authorizer' value="${dt.authorizer }"></td>
 									<td><h6>
 											<strong>date and Time</strong>
-										</h6> <input type='text' class='form-control' name='date_time'></td>
+										</h6> <input type='text' class='form-control' name='date_time' value="${dt.date_time }"></td>
 								</tr>
 								<tr>
 									<td><h6>
 											<strong>Current Number</strong>
-										</h6> <input type='text' class='form-control' name='curr_number'></td>
+										</h6> <input type='text' class='form-control' name='curr_number' value="${dt.curr_number }"></td>
 								</tr>
 							</tbody>
 						</table>
@@ -68,39 +69,6 @@ h5 {
 			</div>
 		</div>
 	</div>
-	<div class="col-md-12 col-sm-12 col-xs-12">
-		<div class="col-md-8 col-xs-12">
-			<div class="x_panel">
-					<div class="x_title">
-						<h2>AVAILABLE DOCUMENT TYPE</h2>
-						<div class="col-md-4 col-sm-4 col-xs-12 pull-right"></div>
-						<div class="clearfix"></div>
-					</div>
-					<div class="x_content">
-						<table class="table jambo_table table-striped table-bordered dt-responsive nowrap display dataTable dtr-inline" style="font-size: 95%; width: 100%;">
-							<thead>
-								<tr>
-								<th>Document Type</th>
-								<th>Description</th>
-								<th>Action</th>
-								</tr>
-							</thead>
-							<tbody>
-							<c:forEach items="${documentType }" var="d">
-								<tr>
-									<td>${d.id_type }</td>
-									<td>${d.description }</td>
-									
-									<td><a href="<spring:url value="/documentType/edit/${d.id_type }"/>">Edit</a></td>
-								</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-					</div>
-			</div>
-		</div>
-	</div>
-
 	<script>
 		$(".confirm").click(function() {
 			return confirm("Confirm?");

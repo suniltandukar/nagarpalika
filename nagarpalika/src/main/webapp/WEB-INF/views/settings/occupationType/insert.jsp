@@ -17,6 +17,7 @@ h5 {
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="col-md-8 col-xs-12">
 			<div class="x_panel">
+			<spring:url value="/occupation/save" var="formUrl"/>
 				<form:form class="form-horizontal form-label-left input_mask"
 					method="post" action="${formUrl }">
 
@@ -26,21 +27,31 @@ h5 {
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
+					<div class="form-group">
+						<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+							<button class="btn btn-info" type="button" id="validate">Validate</button>
+							<button class="btn btn-primary" type="reset">Reset</button>
+							<input type="submit" class="btn btn-success" value="Submit">
+						</div>
+					</div>
 						<br />
 						<table class="table">
 								<tbody>
 									<tr>
 										<td><h6>
-												<strong>Id Type</strong>
-											</h6> <input type='text' class='form-control' name='id_type'></td>
+												<strong>Occupation Id</strong>
+											</h6> <input type='text' class='form-control' name='occu_id'></td>
 										<td><h6>
-												<strong>Description</strong>
-											</h6> <input type='text' class='form-control' name='description'></td>
+												<strong>Occupation Type</strong>
+											</h6> <input type='text' class='form-control' name='occupation_type'></td>
 										<td><h6>
-												<strong>Inputter</strong>
-											</h6> <input type='text' class='form-control' name='inputter'></td>
+												<strong>Record Status</strong>
+											</h6> <input type='text' class='form-control' name='record_status'></td>
 									</tr>
 									<tr>
+									<td><h6>
+												<strong>Inputter</strong>
+											</h6> <input type='text' class='form-control' name='inputter'></td>
 										<td><h6>
 												<strong>Authorizer</strong>
 											</h6> <input type='text' class='form-control' name='authorizer'></td>
@@ -59,6 +70,41 @@ h5 {
 			</div>
 		</div>
 	</div>
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="col-md-8 col-xs-12">
+			<div class="x_panel">
+					<div class="x_title">
+						<h2>AVAILABLE OCCUPATION TYPE</h2>
+						<div class="col-md-4 col-sm-4 col-xs-12 pull-right"></div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="x_content">
+					<table class="table jambo_table table-striped table-bordered dt-responsive nowrap display dataTable dtr-inline" style="font-size: 95%; width: 100%;">
+					<thead>
+						<tr>
+							<th>Occupation Id</th>
+							<th>Occupation Type</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+					<c:forEach items="${occupation }" var="o">
+					<tr>
+							<td>${o.occu_id }</td>
+							<td>${o.occupation_type }</td>
+							<td><a href="<spring:url value="/occupation/edit/${o.occu_id }"/>">Edit</a></td>
+						</tr>
+					</c:forEach>
+						
+					
+					</tbody>
+					
+					</table>
+					</div>
+					</div>
+					</div>
+					</div>
+					
 	<script>
 	$(".confirm").click(function(){
 		return confirm("Confirm?");

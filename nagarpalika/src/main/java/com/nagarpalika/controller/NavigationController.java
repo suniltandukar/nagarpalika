@@ -1,11 +1,25 @@
 package com.nagarpalika.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.nagarpalika.dao.DocumentTypeDao;
+import com.nagarpalika.dao.EducationDetailDao;
+import com.nagarpalika.dao.OccupationDao;
 
 @Controller
 @RequestMapping("/nav")
 public class NavigationController {
+	@Autowired
+	EducationDetailDao educationDetailDao;
+	
+	@Autowired
+	DocumentTypeDao documentTypeDao;	
+	
+	@Autowired
+	OccupationDao occupationDao;
 	
 	@RequestMapping(value = "/houseOwnerDetail")
 	public String houseOwnerDetail(){
@@ -41,22 +55,21 @@ public class NavigationController {
 	//settings
 	
 	@RequestMapping(value = "/educationDetail")
-	public String educationDetail(){
+	public String educationDetail(Model model){
+		System.out.println(educationDetailDao.getEducationDetail());
+		model.addAttribute("educationDetail",educationDetailDao.getEducationDetail());
 		return "settings/educationDetail/insert";
 	}
 
 	@RequestMapping(value = "/idType")
-	public String idType(){
+	public String idType(Model model){
+		model.addAttribute("documentType",documentTypeDao.getDocumentType());
 		return "settings/idType/insert";
 	}
 	
-	@RequestMapping(value = "/occupationList")
-	public String occupationList(){
-		return "settings/occupationList/insert";
-	}
-	
 	@RequestMapping(value = "/occupationType")
-	public String occupationType(){
+	public String occupationType(Model model){
+		model.addAttribute("occupation", occupationDao.getOccupation());
 		return "settings/occupationType/insert";
 	}
 }

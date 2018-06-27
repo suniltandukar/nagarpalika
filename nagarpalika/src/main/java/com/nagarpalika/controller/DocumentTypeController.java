@@ -9,36 +9,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.nagarpalika.dao.EducationDetailDao;
-import com.nagarpalika.model.EducationDetailModel;
+import com.nagarpalika.dao.DocumentTypeDao;
+import com.nagarpalika.model.DocumentTypeDetailModel;
 
 @Controller
-@RequestMapping("/educationDetail")
-public class EducationDetailController {
-	
+@RequestMapping("/documentType")
+public class DocumentTypeController {
 	@Autowired
-	EducationDetailDao educationDetailDao;
+	DocumentTypeDao documentTypeDao;
 	
-	@RequestMapping(value="/save", method = RequestMethod.POST)
+	@RequestMapping(value="/save", method=RequestMethod.POST)
 	@ResponseBody
-	public String save(@ModelAttribute EducationDetailModel e){
-		educationDetailDao.save(e);
-		System.out.println(e);
+	public String save(@ModelAttribute DocumentTypeDetailModel d){
+		try{
+		documentTypeDao.save(d);
+		}
+		catch(Exception e){
+			System.out.println(e);
+			return "Save Failed!";
+		}
+		
 		return "Save Successful!";
+		
 	}
 	
 	@RequestMapping(value="/edit/{id}", method=RequestMethod.GET)
 	public String edit(@PathVariable String id, Model model){
-	model.addAttribute("ed",educationDetailDao.getEducationSpecificDetail(id));
-		
-		return "settings/educationDetail/edit";
+		model.addAttribute("dt",documentTypeDao.getSpecificDocumentType(id));
+		return "settings/idType/edit";
 	}
 	
-	@RequestMapping(value="/update/{id}", method = RequestMethod.POST)
+	@RequestMapping(value="/update/{id}", method=RequestMethod.POST)
 	@ResponseBody
-	public String update(@PathVariable String id,@ModelAttribute EducationDetailModel e){
-		educationDetailDao.update(e,id);
-		System.out.println(e);
+	public String update(@PathVariable String id, @ModelAttribute DocumentTypeDetailModel d){
+		documentTypeDao.update(d,id);
 		return "Save Successful!";
 	}
 	
@@ -47,14 +51,12 @@ public class EducationDetailController {
 	public String delete(@PathVariable String id)
 	{
 		try {
-			educationDetailDao.delete(id);
+			documentTypeDao.delete(id);
 		} catch (Exception e) {
 			return "Delete Failed!";
 		}
 	 
 		return "Delete Successful!";
 	}
-	
-	
 
 }

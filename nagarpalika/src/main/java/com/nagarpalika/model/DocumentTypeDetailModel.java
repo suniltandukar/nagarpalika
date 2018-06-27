@@ -1,6 +1,6 @@
 package com.nagarpalika.model;
 
-public class IdTypeDetailModel {
+public class DocumentTypeDetailModel {
 	private String id_type,
 	description,
 	inputter,
