@@ -18,13 +18,22 @@
 	<bean id="operationDao" class="com.nagarpalika.dao.daoimpl.OperationDaoImpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
+	<bean id="educationDetailDao" class="com.nagarpalika.dao.daoimpl.EducationDetailDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	<bean id="documentDetailDao" class="com.nagarpalika.dao.daoimpl.DocumentTypeDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	<bean id="occupationDao" class="com.nagarpalika.dao.daoimpl.OccupationDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/mmis_01" />
 		<property name="username" value="root" />
-		<property name="password" value="" />
+		<property name="password" value="centos" />
 	</bean>
 		
 </beans>

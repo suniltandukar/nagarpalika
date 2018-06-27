@@ -36,8 +36,8 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model, @ModelAttribute(value="msg") String msg) {
 		
-		String[] key={"Id Type","Description","Inputter","Authorizer","date and Time","Current Number"};
-		String[] value={"id_type","description","inputter","authorizer","date_time","curr_number"};
+		/*String[] key={"Id Type","Description","Record Status","Inputter","Authorizer","date and Time","Current Number"};
+		String[] value={"id_type","description","record_status","inputter","authorizer","date_time","curr_number"};
 		
 		int j=0;
 		for(int i=0;i<key.length;i++){
@@ -51,7 +51,7 @@ public class HomeController {
 			System.out.println("</tr>");
 			i=i+2;
 			
-		}
+		}*/
 		
 		model.addAttribute("msg",msg);
 		return "index";
