@@ -44,7 +44,9 @@ public class UserController {
 		model.addAttribute("userList",userDao.getUsers());
 		model.addAttribute("branchlist",branchDao.getBranches());
 		model.addAttribute("rolelist",roleDao.getRoles());
-		model.addAttribute("functionAllowed",userDao.getSpecificUserDetails(id).getAdditionalFunctions());
+		UserModel specificDetails=userDao.getSpecificUserDetails(id);
+		if(specificDetails!=null)
+		model.addAttribute("functionAllowed",specificDetails.getAdditionalFunctions());
 		return "usersettings/edituser";
 	}
 	

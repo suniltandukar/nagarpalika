@@ -1,0 +1,18 @@
+package com.nagarpalika.dao;
+
+import java.util.List;
+
+import com.nagarpalika.model.FamilyDetailModel;
+
+public interface FamilyDetailDao {
+	public void save(FamilyDetailModel f);
+
+	public List<FamilyDetailModel> getFamilyDetail();
+
+	public FamilyDetailModel getSpecificFamilyDetail(String id);
+
+	public void update(FamilyDetailModel f, String id);
+
+	public void delete(String id);
+
+}

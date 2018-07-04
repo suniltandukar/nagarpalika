@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nagarpalika.dao.DocumentTypeDao;
 import com.nagarpalika.dao.EducationDetailDao;
+import com.nagarpalika.dao.FamilyDetailDao;
 import com.nagarpalika.dao.OccupationDao;
+import com.nagarpalika.service.FormDetailService;
 
 @Controller
 @RequestMapping("/nav")
@@ -21,13 +23,27 @@ public class NavigationController {
 	@Autowired
 	OccupationDao occupationDao;
 	
+	@Autowired
+	FamilyDetailDao familyDetailDao;
+	
+	@Autowired
+	FormDetailService formDetailService;
+	
 	@RequestMapping(value = "/houseOwnerDetail")
 	public String houseOwnerDetail(){
 		return "form/houseOwnerDetail";
 	}
 	@RequestMapping(value = "/familyDetail")
-	public String familyDetail(){
+	public String familyDetail(Model model){
+		
+		model.addAttribute("disablity",formDetailService.getDisableType());
 		return "familyDetail/insert";
+	}
+	
+	@RequestMapping(value = "/viewFamilyDetail")
+	public String viewFamilyDetail(Model model){
+		model.addAttribute("familyDetail", familyDetailDao.getFamilyDetail());
+		return "familyDetail/view";
 	}
 	
 	@RequestMapping(value = "/houseFacilityDetail")

@@ -1,8 +1,8 @@
 package com.nagarpalika.model;
 
 public class FamilyDetailModel {
-	private String house_owener_id,
-	family_id,
+	private String house_owner_id,
+	house_owner_fname,
 	relation,
 	name,
 	marital_status,
@@ -15,20 +15,22 @@ public class FamilyDetailModel {
 	date_time,
 	curr_number;
 
-	public String getHouse_owener_id() {
-		return house_owener_id;
+	
+	
+	public String getHouse_owner_id() {
+		return house_owner_id;
 	}
 
-	public void setHouse_owener_id(String house_owener_id) {
-		this.house_owener_id = house_owener_id;
+	public void setHouse_owner_id(String house_owner_id) {
+		this.house_owner_id = house_owner_id;
 	}
 
-	public String getFamily_id() {
-		return family_id;
+	public String getHouse_owner_fname() {
+		return house_owner_fname;
 	}
 
-	public void setFamily_id(String family_id) {
-		this.family_id = family_id;
+	public void setHouse_owner_fname(String house_owner_fname) {
+		this.house_owner_fname = house_owner_fname;
 	}
 
 	public String getRelation() {

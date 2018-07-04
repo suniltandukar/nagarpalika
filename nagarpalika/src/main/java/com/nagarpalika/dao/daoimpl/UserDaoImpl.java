@@ -17,7 +17,7 @@ import com.nagarpalika.model.BranchModel;
 import com.nagarpalika.model.UserModel;
 
 
-@Repository
+
 public class UserDaoImpl implements UserDao {
 
 	private JdbcTemplate jdbcTemplate;

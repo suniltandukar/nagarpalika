@@ -22,7 +22,7 @@ h5 {
 					method="post" action="${formUrl }">
 
 					<div class="x_title">
-						<h2>HOUSE AND LAND DETAIL</h2>
+						<h2> Update HOUSE AND LAND DETAIL</h2>
 						<div class="col-md-4 col-sm-4 col-xs-12 pull-right"></div>
 						<div class="clearfix"></div>
 					</div>
