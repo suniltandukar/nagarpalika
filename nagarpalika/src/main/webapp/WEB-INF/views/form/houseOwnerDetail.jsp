@@ -5,20 +5,15 @@
 
 <html>
 <head>
+
 </head>
 <body class="background">
-	<div class="breadcrumb-line">
-		<nav aria-label="breadcrumb" role="navigation">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><i class="fa fa-home"
-					aria-hidden="true"></i>&nbsp;<a href="#">Home</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Student</li>
-				<li class="breadcrumb-item active" aria-current="page">Student
-					Admission</li>
-			</ol>
-		</nav>
-	</div>
-	<div class="col-md-12 col-sm-12 col-xs-12">
+	<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    ...
+  </div>
+</nav>
+	<div class="col-md-12 col-sm-12 col-xs-12 container-fluid">
 
 		<div class="x_panel">
 			<div class="x_title">
