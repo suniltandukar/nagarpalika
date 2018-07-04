@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nagarpalika.dao.DocumentTypeDao;
 import com.nagarpalika.model.DocumentTypeDetailModel;
+import com.nagarpalika.service.DocumentTypeService;
 
 @Controller
 @RequestMapping("/documentType")
@@ -18,11 +19,15 @@ public class DocumentTypeController {
 	@Autowired
 	DocumentTypeDao documentTypeDao;
 	
+	@Autowired
+	DocumentTypeService ds;
+	
 	@RequestMapping(value="/save", method=RequestMethod.POST)
 	@ResponseBody
 	public String save(@ModelAttribute DocumentTypeDetailModel d){
 		try{
-		documentTypeDao.save(d);
+		//documentTypeDao.save(d);
+			ds.save(d);
 		}
 		catch(Exception e){
 			System.out.println(e);
@@ -35,14 +40,14 @@ public class DocumentTypeController {
 	
 	@RequestMapping(value="/edit/{id}", method=RequestMethod.GET)
 	public String edit(@PathVariable String id, Model model){
-		model.addAttribute("dt",documentTypeDao.getSpecificDocumentType(id));
+		model.addAttribute("dt",ds.getSpecificDocumentType(id));
 		return "settings/idType/edit";
 	}
 	
 	@RequestMapping(value="/update/{id}", method=RequestMethod.POST)
 	@ResponseBody
 	public String update(@PathVariable String id, @ModelAttribute DocumentTypeDetailModel d){
-		documentTypeDao.update(d,id);
+		ds.update(d, id);
 		return "Save Successful!";
 	}
 	
@@ -51,7 +56,7 @@ public class DocumentTypeController {
 	public String delete(@PathVariable String id)
 	{
 		try {
-			documentTypeDao.delete(id);
+			ds.delete(id);
 		} catch (Exception e) {
 			return "Delete Failed!";
 		}

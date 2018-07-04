@@ -9,37 +9,46 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.nagarpalika.model.EducationDetailModel;
-import com.nagarpalika.service.EducationDetailService;
+import com.nagarpalika.dao.HouseLandDetailDao;
+import com.nagarpalika.model.FamilyDetailModel;
+import com.nagarpalika.model.HouseLandDetailModel;
 
 @Controller
-@RequestMapping("/educationDetail")
-public class EducationDetailController {
+@RequestMapping("/houseLand")
+public class HouseLandDetailController {
 	
 	@Autowired
-	EducationDetailService es;
+	HouseLandDetailDao houseLandDetailDao;
 	
-	@RequestMapping(value="/save", method = RequestMethod.POST)
+	@RequestMapping(value="/save")
 	@ResponseBody
-	public String save(@ModelAttribute EducationDetailModel e){
-		es.save(e);
-		System.out.println(e);
+	public String save(@ModelAttribute HouseLandDetailModel h){
+		try{
+			houseLandDetailDao.save(h);
 		return "Save Successful!";
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+			return "Save Failed!";
+		}
 	}
 	
 	@RequestMapping(value="/edit/{id}", method=RequestMethod.GET)
 	public String edit(@PathVariable String id, Model model){
-	model.addAttribute("ed",es.getEducationSpecificDetail(id));
-		
-		return "settings/educationDetail/edit";
+		model.addAttribute("hd",houseLandDetailDao.getSpecificHouseLand(id));
+		return "houseLandDetail/edit";
 	}
 	
 	@RequestMapping(value="/update/{id}", method = RequestMethod.POST)
 	@ResponseBody
-	public String update(@PathVariable String id,@ModelAttribute EducationDetailModel e){
-		es.update(e,id);
-		System.out.println(e);
+	public String update(@PathVariable String id, @ModelAttribute HouseLandDetailModel h){
+		try{
 		return "Save Successful!";
+		}
+		catch(Exception e){
+		return "Save Unsuccessful!";
+		}
 	}
 	
 	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
@@ -47,14 +56,10 @@ public class EducationDetailController {
 	public String delete(@PathVariable String id)
 	{
 		try {
-			es.delete(id);
 		} catch (Exception e) {
 			return "Delete Failed!";
 		}
-	 
 		return "Delete Successful!";
 	}
-	
-	
 
 }

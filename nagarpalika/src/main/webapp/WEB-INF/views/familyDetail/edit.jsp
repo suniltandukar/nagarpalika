@@ -17,12 +17,12 @@ h5 {
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="col-md-8 col-xs-12">
 			<div class="x_panel">
-			<spring:url value="/familyDetail/save" var="formUrl"/>
+			<spring:url value="/familyDetail/update/${fd.house_owner_id }" var="formUrl"/>
 				<form:form class="form-horizontal form-label-left input_mask"
 					method="post" action="${formUrl }">
 
 					<div class="x_title">
-						<h2>FAMILY DETAIL</h2>
+						<h2>UPDATE FAMILY DETAIL</h2>
 						<div class="col-md-4 col-sm-4 col-xs-12 pull-right"></div>
 						<div class="clearfix"></div>
 					</div>
@@ -31,7 +31,9 @@ h5 {
 						<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
 							<button class="btn btn-info" type="button" id="validate">Validate</button>
 							<button class="btn btn-primary" type="reset">Reset</button>
-							<input type="submit" class="btn btn-success" value="Submit">
+							
+							<a class="btn btn-danger" href="<spring:url value="/familyDetail/delete/${fd.house_owner_id }"/>">Delete</a>
+							<input type="submit" class="btn btn-success" value="Update">
 						</div>
 					</div>
 						<br />
@@ -41,45 +43,42 @@ h5 {
 										<td><h6>
 												<strong>Owner ID</strong>
 											</h6> <input type='text' class='form-control'
-											name='house_owner_id'></td>
+											name='house_owner_id' value="${fd.house_owner_id }"></td>
 										<td><h6>
 												<strong>Father Name</strong>
-											</h6> <input type='text' class='form-control' name='house_owner_fname'></td>
+											</h6> <input type='text' class='form-control' name='house_owner_fname' value="${fd.house_owner_fname }"></td>
 										<td><h6>
 												<strong>Relation</strong>
 											</h6> <select class='form-control' name='relation'>
-											<option value="1">Select Relation</option>
+											<option value="">Select Relation</option>
 											</select></td>
 									</tr>
 									<tr>
 										<td><h6>
 												<strong>Name</strong>
-											</h6> <input type='text' class='form-control' name='name'></td>
+											</h6> <input type='text' class='form-control' name='name' value="${fd.name }"></td>
 										<td><h6>
 												<strong>Marital Status</strong>
 											</h6> <select class='form-control'
 											name='marital_status'>
-											<option value="">Select Marital Status</option>
-											<option value="Married">Married</option>
-											<option value="Unmarried">Unmarried</option>
+											
+											<option value="Married" <c:if test="${fd.marital_status eq 'Married' }">selected</c:if>>Married</option>
+											<option value="Unmarried" <c:if test="${fd.marital_status eq 'Unmarried' }">selected</c:if>>Unmarried</option>
 											</select></td>
 										<td><h6>
 												<strong>Date of birth (Nepali YYYYMMDD)</strong>
-											</h6> <input type='text' class='form-control' name='dob_nep'></td>
+											</h6> <input type='text' class='form-control' name='dob_nep' value="${fd.dob_nep }"></td>
 									</tr>
 									<tr>
 										<td><h6>
 												<strong>Disability if any</strong>
 											</h6> <select class='form-control' name='disable_type'>
 											<option value="">Select Disability</option>
-											<c:forEach items="${disablity }" var="d">
-											<option value="${d.id }">${d.typehead }</option>
-											</c:forEach>
 											</select></td>
 										<td><h6>
 												<strong>Occupation Id</strong>
 											</h6> <select class='form-control' name='occupation_id'>
-											<option value="1">Select Occupation</option>
+											<option value="">Select Occupation</option>
 											</select></td>
 										<td><h6>
 												<strong>Gender</strong>

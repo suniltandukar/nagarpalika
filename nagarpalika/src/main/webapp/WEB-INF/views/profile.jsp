@@ -71,6 +71,8 @@
 
 										<li><a href="nav/familyDetail" target="iframe_a">
 												New Family Detail </a></li>
+												<li><a href="nav/viewFamilyDetail" target="iframe_a">
+												Ammend Family Detail </a></li>
 
 									</ul></li>
 							</ul>
@@ -139,6 +141,9 @@
 														</a></li>
 												<li><a href="nav/occupationType" target="iframe_a">
 														Occupation Type </a></li>
+												<li><a href="nav/branch" target="iframe_a">
+														Branch Setting </a></li>
+														
 											</ul></li>
 
 									</ul></li>
