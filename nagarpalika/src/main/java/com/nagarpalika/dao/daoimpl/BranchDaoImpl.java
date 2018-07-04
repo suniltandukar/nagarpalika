@@ -43,4 +43,10 @@ private JdbcTemplate jdbcTemplate;
 		
 	}
 
+	@Override
+	public void insertBranch(BranchModel bm) {
+		String query="insert into branchtbl(company_id,name,address,phone,fax,email) values('"+bm.getCompany_id()+"','"+bm.getName()+"','"+bm.getAddress()+"','"+bm.getPhone()+"','"+bm.getFax()+"','"+bm.getEmail()+"')";
+		jdbcTemplate.update(query);
+	}
+
 }

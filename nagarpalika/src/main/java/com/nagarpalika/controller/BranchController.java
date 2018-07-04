@@ -19,8 +19,15 @@ public class BranchController {
 	@RequestMapping("/insert")
 	public String insertBranch(@ModelAttribute BranchModel bmodel)
 	{
+		try{
+		branchDao.insertBranch(bmodel);
 		
-		return "";
+		}
+		catch(Exception e)
+		{
+			System.out.println("branchinsert error");
+		}
+		return "settings/branch/insert";
 	}
 
 }

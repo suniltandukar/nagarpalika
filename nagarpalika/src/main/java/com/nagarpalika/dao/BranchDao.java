@@ -7,4 +7,6 @@ import com.nagarpalika.model.BranchModel;
 
 public interface BranchDao {
 	public List<BranchModel> getBranches();
+
+	public void insertBranch(BranchModel bmodel);
 }
