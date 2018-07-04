@@ -39,7 +39,25 @@ public class HouseLandDetailModel {
 	inputter,
 	authorizer,
 	date_time,
-	curr_number;
+	curr_number,
+	house_construction_type,
+	used_status;
+
+	public String getUsed_status() {
+		return used_status;
+	}
+
+	public void setUsed_status(String used_status) {
+		this.used_status = used_status;
+	}
+
+	public String getHouse_construction_type() {
+		return house_construction_type;
+	}
+
+	public void setHouse_construction_type(String house_construction_type) {
+		this.house_construction_type = house_construction_type;
+	}
 
 	public String getHouse_owener_id() {
 		return house_owener_id;

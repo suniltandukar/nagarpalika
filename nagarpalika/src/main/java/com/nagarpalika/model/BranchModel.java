@@ -1,70 +1,64 @@
 package com.nagarpalika.model;
 
 public class BranchModel {
-	private String companyId, branchId, branchName, branchAddress, branchPhone, branchFax, branchemail;
+	private String company_id, branch_id, name, address, phone, fax, email;
 
-	public String getCompanyId() {
-		return companyId;
+	public String getCompany_id() {
+		return company_id;
 	}
 
-	public void setCompanyId(String companyId) {
-		this.companyId = companyId;
+	public void setCompany_id(String company_id) {
+		this.company_id = company_id;
 	}
 
-	public String getBranchId() {
-		return branchId;
+	public String getBranch_id() {
+		return branch_id;
 	}
 
-	public void setBranchId(String branchId) {
-		this.branchId = branchId;
+	public void setBranch_id(String branch_id) {
+		this.branch_id = branch_id;
 	}
 
-	public String getBranchName() {
-		return branchName;
+	public String getName() {
+		return name;
 	}
 
-	public void setBranchName(String branchName) {
-		this.branchName = branchName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getBranchAddress() {
-		return branchAddress;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setBranchAddress(String branchAddress) {
-		this.branchAddress = branchAddress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public String getBranchPhone() {
-		return branchPhone;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setBranchPhone(String branchPhone) {
-		this.branchPhone = branchPhone;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
-	public String getBranchFax() {
-		return branchFax;
+	public String getFax() {
+		return fax;
 	}
 
-	public void setBranchFax(String branchFax) {
-		this.branchFax = branchFax;
+	public void setFax(String fax) {
+		this.fax = fax;
 	}
 
-	public String getBranchemail() {
-		return branchemail;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setBranchemail(String branchemail) {
-		this.branchemail = branchemail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	@Override
-	public String toString() {
-		return "BranchModel [companyId=" + companyId + ", branchId=" + branchId + ", branchName=" + branchName
-				+ ", branchAddress=" + branchAddress + ", branchPhone=" + branchPhone + ", branchFax=" + branchFax
-				+ ", branchemail=" + branchemail + "]";
-	}
-	
+
 
 }

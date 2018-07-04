@@ -35,8 +35,8 @@ private JdbcTemplate jdbcTemplate;
 		@Override
 		public BranchModel mapRow(ResultSet rs, int rowNum) throws SQLException {
 			BranchModel b = new BranchModel();
-			b.setBranchId(rs.getString("branchId"));
-			b.setBranchName(rs.getString("branchName"));
+			b.setBranch_id(rs.getString("branchId"));
+			b.setName(rs.getString("branchName"));
 			
 			return b;
 		}

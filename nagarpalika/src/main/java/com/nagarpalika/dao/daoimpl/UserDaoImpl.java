@@ -66,7 +66,7 @@ public class UserDaoImpl implements UserDao {
 		String query = "insert into usertbl(username,password,givenrole,fullName,post,staffCode,startDate,endDate,branchCode,functionAllowed,functionRestriction,branchAllowed,additionalFunctions) values('"
 				+ u.getUsername() + "','" + u.getUsername() + "','" + u.getGivenrole() + "','" + u.getFullName() + "','"
 				+ u.getPost() + "','" + u.getStaffCode() + "','" + u.getStartDate() + "','" + u.getEndDate() + "','"
-				+ u.getBranch().getBranchId() + "','" + u.getFunctionAllowed() + "','" + u.getFunctionRestriction()
+				+ u.getBranch().getBranch_id() + "','" + u.getFunctionAllowed() + "','" + u.getFunctionRestriction()
 				+ "','" + u.getBranchAllowed() + "','" + u.getAdditionalFunctions() + "')";
 		int status = jdbcTemplate.update(query);
 		if (status > 0) {
@@ -77,7 +77,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public int updateUser(UserModel u){
-		String sql = "update usertbl set username='"+u.getUsername()+"', givenrole='"+u.getGivenrole()+"',fullName='"+u.getFullName()+"',post='"+u.getPost()+"',staffCode='"+u.getStaffCode()+"',startDate='"+u.getStartDate()+"',endDate='"+u.getEndDate()+"',branchCode='"+u.getBranch().getBranchId()+"',functionAllowed='"+u.getFunctionAllowed()+"',branchAllowed='"+u.getBranchAllowed()+"',additionalFunctions='"+u.getAdditionalFunctions()+"' where userid='"+u.getUserid()+"'";
+		String sql = "update usertbl set username='"+u.getUsername()+"', givenrole='"+u.getGivenrole()+"',fullName='"+u.getFullName()+"',post='"+u.getPost()+"',staffCode='"+u.getStaffCode()+"',startDate='"+u.getStartDate()+"',endDate='"+u.getEndDate()+"',branchCode='"+u.getBranch().getBranch_id()+"',functionAllowed='"+u.getFunctionAllowed()+"',branchAllowed='"+u.getBranchAllowed()+"',additionalFunctions='"+u.getAdditionalFunctions()+"' where userid='"+u.getUserid()+"'";
 		System.out.println(sql);
 		return jdbcTemplate.update(sql);
 	}
@@ -104,8 +104,8 @@ public class UserDaoImpl implements UserDao {
 			user.setAdditionalFunctions(rs.getString("additionalFunctions"));
 			user.setBranchAllowedFunctions(rs.getString("branchAllowedFunctions"));
 
-			branch.setBranchId(rs.getString("branchId"));
-			branch.setCompanyId(rs.getString("companyId"));
+			branch.setBranch_id(rs.getString("branchId"));
+			branch.setCompany_id(rs.getString("companyId"));
 			user.setBranch(branch);
 
 			return user;

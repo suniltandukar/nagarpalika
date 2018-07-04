@@ -1,7 +1,16 @@
 package com.nagarpalika.model;
 
+import javax.annotation.Generated;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class HouseFacilityDetailModel {
-	private String house_owener_id,
+	
+	@Id
+	private int house_owner_id_hibernate;
+	
+	private String house_owner_id,
 	land_house_id,
 	drinking_water_type,
 	drinking_water_sufficiency,
@@ -21,12 +30,12 @@ public class HouseFacilityDetailModel {
 	date_time,
 	curr_number;
 
-	public String getHouse_owener_id() {
-		return house_owener_id;
+	public String getHouse_owner_id() {
+		return house_owner_id;
 	}
 
-	public void setHouse_owener_id(String house_owener_id) {
-		this.house_owener_id = house_owener_id;
+	public void setHouse_owener_id(String house_owner_id) {
+		this.house_owner_id = house_owner_id;
 	}
 
 	public String getLand_house_id() {
