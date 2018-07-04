@@ -49,7 +49,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public UserModel getUserDetails(UserModel user) {
-		String sql = "SELECT * FROM usertbl join branchtbl using(branchId) WHERE usertbl.username='" + user.getUsername() + "' AND usertbl.password='"
+		String sql = "SELECT * FROM usertbl join branchtbl using(branch_id) WHERE usertbl.username='" + user.getUsername() + "' AND usertbl.password='"
 				+ user.getPassword() + "' and usertbl.staffCode='" + user.getStaffCode() + "'";
 		return jdbcTemplate.queryForObject(sql, new UserMapper());
 	}
@@ -104,8 +104,8 @@ public class UserDaoImpl implements UserDao {
 			user.setAdditionalFunctions(rs.getString("additionalFunctions"));
 			user.setBranchAllowedFunctions(rs.getString("branchAllowedFunctions"));
 
-			branch.setBranch_id(rs.getString("branchId"));
-			branch.setCompany_id(rs.getString("companyId"));
+			branch.setBranch_id(rs.getString("branch_id"));
+			branch.setCompany_id(rs.getString("company_id"));
 			user.setBranch(branch);
 
 			return user;
@@ -114,7 +114,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public List<UserModel> getUsers() {
-		String sql = "SELECT * FROM usertbl join branchtbl using(branchId)";
+		String sql = "SELECT * FROM usertbl join branchtbl using(branch_id)";
 		return jdbcTemplate.query(sql, new UserMapper());
 	}
 
