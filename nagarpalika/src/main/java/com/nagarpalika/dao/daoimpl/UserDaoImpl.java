@@ -4,11 +4,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import com.nagarpalika.dao.UserDao;
@@ -17,29 +18,47 @@ import com.nagarpalika.model.BranchModel;
 import com.nagarpalika.model.UserModel;
 
 
-
+@Repository
 public class UserDaoImpl implements UserDao {
+	 @Autowired
+	    private NamedParameterJdbcTemplate template;
+	 
+	    public NamedParameterJdbcTemplate getNamedParameterJdbcTemplate() {
+	        return template;
+	    }
 
-	private JdbcTemplate jdbcTemplate;
 
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
-	}
-
-	@Autowired
-	private void setDataSource(DataSource dataSource) {
-		this.jdbcTemplate = new JdbcTemplate(dataSource);
-
+	private SqlParameterSource getSqlParameterByModel(UserModel user) {
+		MapSqlParameterSource paramSource = new MapSqlParameterSource();
+		paramSource.addValue("additionalFunctions", user.getAdditionalFunctions());
+		paramSource.addValue("branchAllowed", user.getBranchAllowed());
+		paramSource.addValue("branchAllowedFunctions", user.getBranchAllowedFunctions());
+		paramSource.addValue("endDate", user.getEndDate());
+		paramSource.addValue("fullName", user.getFullName());
+		paramSource.addValue("functionAllowed", user.getFunctionAllowed());
+		paramSource.addValue("functionRestriction", user.getFunctionRestriction());
+		paramSource.addValue("givenrole", user.getGivenrole());
+		paramSource.addValue("password", user.getPassword());
+		paramSource.addValue("post", user.getPost());
+		paramSource.addValue("roleName", user.getRoleName());
+		paramSource.addValue("settingsDescription", user.getSettingsdescription());
+		paramSource.addValue("settingsid", user.getSettingsid());
+		paramSource.addValue("settingstype", user.getSettingstype());
+		paramSource.addValue("staffCode", user.getStaffCode());
+		paramSource.addValue("startDate", user.getStartDate());
+		paramSource.addValue("status", user.getStatus());
+		paramSource.addValue("userid", user.getUserid());
+		paramSource.addValue("username", user.getUsername());
+		return paramSource;
 	}
 
 	public boolean verifyUser(UserModel user) {
 
 		boolean userexists = false;
 
-		String sql = "SELECT COUNT(*) FROM usertbl WHERE username='" + user.getUsername() + "' AND password='"
-				+ user.getPassword() + "' and staffCode='" + user.getStaffCode() + "'";
+		String sql = "SELECT COUNT(*) FROM usertbl WHERE username= :username AND password= :password and staffCode= :staffCode";
 		System.out.println(sql);
-		int rowcount = jdbcTemplate.queryForObject(sql, Integer.class);
+		int rowcount = template.queryForObject(sql, getSqlParameterByModel(user),Integer.class);
 		System.out.println(rowcount);
 		if (rowcount == 1) {
 			userexists = true;
@@ -49,26 +68,21 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public UserModel getUserDetails(UserModel user) {
-		String sql = "SELECT * FROM usertbl join branchtbl using(branch_id) WHERE usertbl.username='" + user.getUsername() + "' AND usertbl.password='"
-				+ user.getPassword() + "' and usertbl.staffCode='" + user.getStaffCode() + "'";
-		return jdbcTemplate.queryForObject(sql, new UserMapper());
+		String sql = "SELECT * FROM usertbl join branchtbl using(branch_id) WHERE usertbl.username= :username AND usertbl.password= :password and usertbl.staffCode= staffCode";
+		return template.queryForObject(sql,getSqlParameterByModel(user),new UserMapper());
 	}
 
 	public UserModel getSpecificUserDetails(String userid) {
 		String sql = "SELECT * FROM usertbl WHERE userid = '" + userid + "'";
-		return jdbcTemplate.queryForObject(sql, new UserMapper());
+		return template.queryForObject(sql, getSqlParameterByModel(null),new UserMapper());
 	}
 
 	public boolean insertUser(UserModel u) {
 		Generator g = new Generator();
 		String functionAllowed = g.addHash(u.getFunctionAllowed());
 		u.setFunctionAllowed(functionAllowed);
-		String query = "insert into usertbl(username,password,givenrole,fullName,post,staffCode,startDate,endDate,branchCode,functionAllowed,functionRestriction,branchAllowed,additionalFunctions) values('"
-				+ u.getUsername() + "','" + u.getUsername() + "','" + u.getGivenrole() + "','" + u.getFullName() + "','"
-				+ u.getPost() + "','" + u.getStaffCode() + "','" + u.getStartDate() + "','" + u.getEndDate() + "','"
-				+ u.getBranch().getBranch_id() + "','" + u.getFunctionAllowed() + "','" + u.getFunctionRestriction()
-				+ "','" + u.getBranchAllowed() + "','" + u.getAdditionalFunctions() + "')";
-		int status = jdbcTemplate.update(query);
+		String query = "insert into usertbl(username,password,givenrole,fullName,post,staffCode,startDate,endDate,branchCode,functionAllowed,functionRestriction,branchAllowed,additionalFunctions) values( :username, :password, :givenrole, :fullName, :post, :staffCode, :startDate, :endDate,branchCode, :functionAllowed, :functionRestriction, :branchAllowed, :additionalFunctions)";
+		int status = template.update(query, getSqlParameterByModel(u));
 		if (status > 0) {
 			return true;
 		} else {
@@ -77,9 +91,9 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public int updateUser(UserModel u){
-		String sql = "update usertbl set username='"+u.getUsername()+"', givenrole='"+u.getGivenrole()+"',fullName='"+u.getFullName()+"',post='"+u.getPost()+"',staffCode='"+u.getStaffCode()+"',startDate='"+u.getStartDate()+"',endDate='"+u.getEndDate()+"',branchCode='"+u.getBranch().getBranch_id()+"',functionAllowed='"+u.getFunctionAllowed()+"',branchAllowed='"+u.getBranchAllowed()+"',additionalFunctions='"+u.getAdditionalFunctions()+"' where userid='"+u.getUserid()+"'";
+		String sql = "update usertbl set username= :username, givenrole= :givenrole,fullName= :fullName,post= :post,staffCode= :staffCode,startDate= :startDate,endDate= :endDate,branchCode= :branchCode,functionAllowed= :functionAllowed,branchAllowed= :branchAllowed,additionalFunctions= :additionalFunctions where userid= :userid";
 		System.out.println(sql);
-		return jdbcTemplate.update(sql);
+		return template.update(sql, getSqlParameterByModel(u));
 	}
 	public static final class UserMapper implements RowMapper<UserModel> {
 
@@ -115,7 +129,7 @@ public class UserDaoImpl implements UserDao {
 
 	public List<UserModel> getUsers() {
 		String sql = "SELECT * FROM usertbl join branchtbl using(branch_id)";
-		return jdbcTemplate.query(sql, new UserMapper());
+		return template.query(sql, new UserMapper());
 	}
 
 }

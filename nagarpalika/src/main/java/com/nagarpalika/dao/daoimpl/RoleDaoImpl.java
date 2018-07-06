@@ -4,33 +4,40 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.stereotype.Repository;
 
 import com.nagarpalika.dao.RoleDao;
 import com.nagarpalika.model.RoleModel;
 
 
-
+@Repository
 public class RoleDaoImpl implements RoleDao {
-	private JdbcTemplate jdbcTemplate;
+	 @Autowired
+	    private NamedParameterJdbcTemplate template;
+	 
+	    public NamedParameterJdbcTemplate getNamedParameterJdbcTemplate() {
+	        return template;
+	    }
 
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
+	
+
+	private SqlParameterSource getSqlParameterByModel(RoleModel role) {
+		MapSqlParameterSource paramSource = new MapSqlParameterSource();
+		paramSource.addValue("name", role.getName());
+		paramSource.addValue("roles", role.getRoles());
+		return paramSource;
 	}
 
-	@Autowired
-	private void setDataSource(DataSource dataSource) {
-		this.jdbcTemplate = new JdbcTemplate(dataSource);
-
-	}
 	
 	public List<RoleModel> getRoles() {
 		String sql = "select * from roleindex";
-		return jdbcTemplate.query(sql, new RoleMapper());
+		return template.query(sql, new RoleMapper());
 	}
 	
 	public static final class RoleMapper implements RowMapper<RoleModel>{

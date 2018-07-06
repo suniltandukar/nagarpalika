@@ -42,7 +42,7 @@ public class UserController {
 	public String edit(@PathVariable String id, Model model){
 		model.addAttribute("useredit",userDao.getSpecificUserDetails(id));
 		model.addAttribute("userList",userDao.getUsers());
-		model.addAttribute("branchlist",branchDao.getBranches());
+		model.addAttribute("branchlist",branchDao.findAll());
 		model.addAttribute("rolelist",roleDao.getRoles());
 		UserModel specificDetails=userDao.getSpecificUserDetails(id);
 		if(specificDetails!=null)

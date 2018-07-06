@@ -9,7 +9,7 @@ import com.nagarpalika.dao.FormDetailDao;
 import com.nagarpalika.model.DisableTypeModel;
 import com.nagarpalika.service.FormDetailService;
 
-@Service
+@Service("formDetailService")
 public class FromDetailServiceImpl implements FormDetailService {
 
 	@Autowired

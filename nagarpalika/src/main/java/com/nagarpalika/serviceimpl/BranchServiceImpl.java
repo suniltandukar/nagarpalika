@@ -14,7 +14,7 @@ public class BranchServiceImpl implements BranchService{
 
 	public List<BranchModel> getBranches() {
 		
-		return branchDao.getBranches();
+		return branchDao.findAll();
 	}
 
 }

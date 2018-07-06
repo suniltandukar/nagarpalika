@@ -4,44 +4,46 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.stereotype.Repository;
 
 import com.nagarpalika.dao.OccupationDao;
-import com.nagarpalika.model.EducationDetailModel;
 import com.nagarpalika.model.OccupationModel;
 
+@Repository
 public class OccupationDaoImpl implements OccupationDao {
-	private JdbcTemplate jdbcTemplate;
-
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
-	}
-
-	@Autowired
-	private void setDataSource(DataSource dataSource) {
-		this.jdbcTemplate = new JdbcTemplate(dataSource);
-
+	 @Autowired
+	    private NamedParameterJdbcTemplate template;
+	 
+	    public NamedParameterJdbcTemplate getNamedParameterJdbcTemplate() {
+	        return template;
+	    }
+	private SqlParameterSource getSqlParameterByModel(OccupationModel o) {
+		MapSqlParameterSource paramSource = new MapSqlParameterSource();
+		paramSource.addValue("authorizer", o.getAuthorizer());
+		return paramSource;
 	}
 
 	public void save(OccupationModel o) {
-		String query="insert into occupation_type (occu_id, occupation_type, record_status, inputter, authorizer, date_time, curr_number) values ('"+o.getOccu_id()+"','"+o.getOccupation_type()+"','"+o.getRecord_status()+"','"+o.getInputter()+"','"+o.getAuthorizer()+"','"+o.getDate_time()+"','"+o.getCurr_number()+"')";
-		jdbcTemplate.update(query);
+		String query = "insert into occupation_type (occu_id, occupation_type, record_status, inputter, authorizer, date_time, curr_number) values ( :occu_id, :occupation_type, :record_status, :inputter, :authorizer, :date_time, :curr_number)";
+		template.update(query, getSqlParameterByModel(o));
 	}
 
-	public List<OccupationModel> getOccupation() {
-		String query="select * from occupation_type";
-		return jdbcTemplate.query(query, new OccupationMapper());
+	public List<OccupationModel> findAll() {
+		String query = "select * from occupation_type";
+		return template.query(query, new OccupationMapper());
 	}
-	
-	public static final class OccupationMapper implements RowMapper<OccupationModel>{
+
+	public static final class OccupationMapper implements RowMapper<OccupationModel> {
 
 		@Override
 		public OccupationModel mapRow(ResultSet rs, int rowNum) throws SQLException {
-			OccupationModel o=new OccupationModel();
+			OccupationModel o = new OccupationModel();
 			o.setAuthorizer(rs.getString("authorizer"));
 			o.setCurr_number(rs.getString("curr_number"));
 			o.setDate_time(rs.getString("date_time"));
@@ -51,24 +53,24 @@ public class OccupationDaoImpl implements OccupationDao {
 			o.setRecord_status(rs.getString("record_status"));
 			return o;
 		}
-		}
+	}
 
-	public OccupationModel getSpecificOccupationType(String id) {
-		String query="select * from occupation_type where occu_id='"+id+"'";
-		return jdbcTemplate.queryForObject(query, new OccupationMapper());
+	public OccupationModel findById(String id) {
+		String query = "select * from occupation_type where occu_id='" + id + "'";
+		return template.queryForObject(query, getSqlParameterByModel(null), new OccupationMapper());
 	}
 
 	public void update(OccupationModel o, String id) {
-		String query="update occupation_type set occu_id='"+o.getOccu_id()+"', occupation_type='"+o.getOccupation_type()+"', record_status='"+o.getRecord_status()+"', inputter='"+o.getInputter()+"', authorizer='"+o.getAuthorizer()+"', date_time='"+o.getDate_time()+"', curr_number='"+o.getCurr_number()+"' where occu_id='"+id+"'";
-		jdbcTemplate.update(query);
-		
+		String query = "update occupation_type set occu_id= :occu_id, occupation_type= :occupation_type, record_status= :record_status, inputter= :inputter, authorizer= :authorizer, date_time= :date_time, curr_number= :curr_number where occu_id='"
+				+ id + "'";
+		template.update(query, getSqlParameterByModel(o));
+
 	}
 
 	@Override
 	public void delete(String id) {
-String query="delete from occupation_type where occu_id='"+id+"'";
-jdbcTemplate.update(query);
+		String query = "delete from occupation_type where occu_id='" + id + "'";
+		template.update(query, getSqlParameterByModel(null));
 	}
-
 
 }

@@ -3,6 +3,8 @@ package com.nagarpalika.model;
 public class FamilyDetailModel {
 	private String house_owner_id,
 	house_owner_fname,
+	house_owner_mname,
+	house_owner_lname,
 	relation,
 	name,
 	marital_status,
@@ -27,6 +29,24 @@ public class FamilyDetailModel {
 
 	public String getHouse_owner_fname() {
 		return house_owner_fname;
+	}
+	
+	
+
+	public String getHouse_owner_mname() {
+		return house_owner_mname;
+	}
+
+	public void setHouse_owner_mname(String house_owner_mname) {
+		this.house_owner_mname = house_owner_mname;
+	}
+
+	public String getHouse_owner_lname() {
+		return house_owner_lname;
+	}
+
+	public void setHouse_owner_lname(String house_owner_lname) {
+		this.house_owner_lname = house_owner_lname;
 	}
 
 	public void setHouse_owner_fname(String house_owner_fname) {
