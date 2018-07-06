@@ -3,12 +3,15 @@ package com.nagarpalika.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.nagarpalika.dao.BranchDao;
 import com.nagarpalika.dao.DocumentTypeDao;
 import com.nagarpalika.dao.EducationDetailDao;
 import com.nagarpalika.dao.FamilyDetailDao;
 import com.nagarpalika.dao.OccupationDao;
+import com.nagarpalika.model.BranchModel;
 import com.nagarpalika.service.FormDetailService;
 
 @Controller
@@ -28,6 +31,9 @@ public class NavigationController {
 	
 	@Autowired
 	FormDetailService formDetailService;
+	
+	@Autowired
+	BranchDao branchDao;
 	
 	@RequestMapping(value = "/houseOwnerDetail")
 	public String houseOwnerDetail(){
@@ -88,4 +94,20 @@ public class NavigationController {
 		model.addAttribute("occupation", occupationDao.getOccupation());
 		return "settings/occupationType/insert";
 	}
+	
+	@RequestMapping(value="/branch")
+	public String viewBranch(Model model,@ModelAttribute("bmedit") BranchModel bm)
+	{
+		model.addAttribute("bm",branchDao.getBranches());
+		model.addAttribute("bmedit",bm);
+		return "settings/branch/insert";
+	}
+	
+	
+	/*@RequestMapping(value="/")
+	public String (Model model)
+	{
+		
+		return "";
+	}*/
 }

@@ -35,8 +35,14 @@ private JdbcTemplate jdbcTemplate;
 		@Override
 		public BranchModel mapRow(ResultSet rs, int rowNum) throws SQLException {
 			BranchModel b = new BranchModel();
-			b.setBranch_id(rs.getString("branchId"));
-			b.setName(rs.getString("branchName"));
+			b.setBranch_id(rs.getString("branch_id"));
+			b.setName(rs.getString("name"));
+			b.setAddress(rs.getString("address"));
+			b.setEmail(rs.getString("email"));
+			b.setFax(rs.getString("fax"));
+			b.setCompany_id(rs.getString("company_id"));
+			b.setPhone(rs.getString("phone"));
+			
 			
 			return b;
 		}
@@ -47,6 +53,20 @@ private JdbcTemplate jdbcTemplate;
 	public void insertBranch(BranchModel bm) {
 		String query="insert into branchtbl(company_id,name,address,phone,fax,email) values('"+bm.getCompany_id()+"','"+bm.getName()+"','"+bm.getAddress()+"','"+bm.getPhone()+"','"+bm.getFax()+"','"+bm.getEmail()+"')";
 		jdbcTemplate.update(query);
+	}
+
+	@Override
+	public BranchModel editBranch(String branch_id) {
+
+		String query="select * from branchtbl where branch_id='"+branch_id+"'";
+		return jdbcTemplate.queryForObject(query, new BranchMapper());
+	}
+
+	@Override
+	public void updateBranch(String branch_id, BranchModel bm) {
+		String sql="update branchtbl set company_id='"+bm.getCompany_id()+"', name='"+bm.getName()+"', address='"+bm.getAddress()+"',phone='"+bm.getPhone()+"', fax='"+bm.getFax()+"', email='"+bm.getEmail()+"'";
+		jdbcTemplate.update(sql);
+		
 	}
 
 }
