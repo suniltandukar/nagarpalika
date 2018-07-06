@@ -3,10 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	
 	<bean id="template" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
-		<property name="dataSource" ref="dataSource"></property>
-	</bean>
+        <constructor-arg ref="dataSource" />
+    </bean>
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">

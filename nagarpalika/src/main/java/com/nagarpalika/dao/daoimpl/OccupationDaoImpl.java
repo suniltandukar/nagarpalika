@@ -4,11 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -16,22 +13,16 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import com.nagarpalika.dao.OccupationDao;
-import com.nagarpalika.model.EducationDetailModel;
-import com.nagarpalika.model.HouseLandDetailModel;
 import com.nagarpalika.model.OccupationModel;
 
 @Repository
 public class OccupationDaoImpl implements OccupationDao {
-	@Autowired
-    private DataSource dataSource;
-	private NamedParameterJdbcTemplate template;  
-	  
-	 @PostConstruct
-	    private void postConstruct() {
-	        template = new NamedParameterJdbcTemplate(dataSource);
+	 @Autowired
+	    private NamedParameterJdbcTemplate template;
+	 
+	    public NamedParameterJdbcTemplate getNamedParameterJdbcTemplate() {
+	        return template;
 	    }
-
-	
 	private SqlParameterSource getSqlParameterByModel(OccupationModel o) {
 		MapSqlParameterSource paramSource = new MapSqlParameterSource();
 		paramSource.addValue("authorizer", o.getAuthorizer());

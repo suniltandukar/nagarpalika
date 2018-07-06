@@ -3,13 +3,9 @@ package com.nagarpalika.dao.daoimpl;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.annotation.PostConstruct;
-import javax.persistence.NoResultException;
-import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -17,19 +13,15 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import com.nagarpalika.dao.HouseLandDetailDao;
-import com.nagarpalika.model.DocumentTypeDetailModel;
-import com.nagarpalika.model.FamilyDetailModel;
 import com.nagarpalika.model.HouseLandDetailModel;
 
 @Repository
 public class HouseLandDetailDaoImpl implements HouseLandDetailDao {
-	@Autowired
-    private DataSource dataSource;
-	private NamedParameterJdbcTemplate template;  
-	  
-	 @PostConstruct
-	    private void postConstruct() {
-	        template = new NamedParameterJdbcTemplate(dataSource);
+	 @Autowired
+	    private NamedParameterJdbcTemplate template;
+	 
+	    public NamedParameterJdbcTemplate getNamedParameterJdbcTemplate() {
+	        return template;
 	    }
 
 	

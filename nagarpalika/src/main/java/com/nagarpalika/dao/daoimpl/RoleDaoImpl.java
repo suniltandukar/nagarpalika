@@ -4,11 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -17,18 +14,15 @@ import org.springframework.stereotype.Repository;
 
 import com.nagarpalika.dao.RoleDao;
 import com.nagarpalika.model.RoleModel;
-import com.nagarpalika.model.UserModel;
 
 
 @Repository
 public class RoleDaoImpl implements RoleDao {
-	@Autowired
-    private DataSource dataSource;
-	private NamedParameterJdbcTemplate template;  
-	  
-	 @PostConstruct
-	    private void postConstruct() {
-	        template = new NamedParameterJdbcTemplate(dataSource);
+	 @Autowired
+	    private NamedParameterJdbcTemplate template;
+	 
+	    public NamedParameterJdbcTemplate getNamedParameterJdbcTemplate() {
+	        return template;
 	    }
 
 	
