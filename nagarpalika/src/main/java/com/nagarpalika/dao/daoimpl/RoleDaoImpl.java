@@ -9,16 +9,13 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
-import org.springframework.stereotype.Repository;
 
 import com.nagarpalika.dao.RoleDao;
 import com.nagarpalika.model.RoleModel;
 
 
-@Repository
+
 public class RoleDaoImpl implements RoleDao {
 	private JdbcTemplate jdbcTemplate;
 	private NamedParameterJdbcTemplate template;
@@ -32,13 +29,6 @@ public class RoleDaoImpl implements RoleDao {
 			this.jdbcTemplate=new JdbcTemplate(dataSource);
 			this.template = new NamedParameterJdbcTemplate(dataSource);
 		}
-
-	private SqlParameterSource getSqlParameterByModel(RoleModel role) {
-		MapSqlParameterSource paramSource = new MapSqlParameterSource();
-		paramSource.addValue("name", role.getName());
-		paramSource.addValue("roles", role.getRoles());
-		return paramSource;
-	}
 
 	
 	public List<RoleModel> getRoles() {

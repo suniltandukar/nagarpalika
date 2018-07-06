@@ -10,7 +10,7 @@ public interface OccupationDao {
 
 	public List<OccupationModel> findAll();
 
-	public OccupationModel findById(String id);
+	public OccupationModel getSpecificOccupationType(String id);
 
 	public void update(OccupationModel o, String id);
 

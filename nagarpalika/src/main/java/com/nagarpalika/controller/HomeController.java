@@ -62,7 +62,6 @@ public class HomeController {
 	public String login(@ModelAttribute UserModel user, ModelMap model, BindingResult result, RedirectAttributes attributes) {
 
 		boolean status = dao.verifyUser(user);
-		System.out.println(status+"fdsafasdfsdf");
 		if (status) {
 			UserModel userDetail = getUser(user);
 			List<UserModel> systemdetail = operationDao.getSystemDetails();

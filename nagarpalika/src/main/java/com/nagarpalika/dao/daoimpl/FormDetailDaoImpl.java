@@ -30,8 +30,6 @@ public class FormDetailDaoImpl implements FormDetailDao {
 			this.template = new NamedParameterJdbcTemplate(dataSource);
 		}
 
-	
-	
 	public List<DisableTypeModel> getDisableType() {
 		String query="select * from disabledtype";
 		return jdbcTemplate.query(query, new DisableTypeMapper());

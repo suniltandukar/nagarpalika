@@ -21,7 +21,7 @@ import com.nagarpalika.model.BranchModel;
 import com.nagarpalika.model.UserModel;
 
 
-@Repository
+
 public class UserDaoImpl implements UserDao {
 	private JdbcTemplate jdbcTemplate;
 	private NamedParameterJdbcTemplate template;
@@ -64,7 +64,8 @@ public class UserDaoImpl implements UserDao {
 
 		boolean userexists = false;
 
-		String sql = "SELECT COUNT(*) FROM usertbl WHERE username= :username AND password= :password and staffCode= :staffCode";
+		String sql = "SELECT COUNT(*) FROM usertbl WHERE username='" + user.getUsername() + "' AND password='"
+				+ user.getPassword() + "' and staffCode='" + user.getStaffCode() + "'";
 		System.out.println(sql);
 		int rowcount = template.queryForObject(sql, new BeanPropertySqlParameterSource(user),Integer.class);
 		System.out.println(rowcount);
@@ -99,7 +100,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public int updateUser(UserModel u){
-		String sql = "update usertbl set username= :username, givenrole= :givenrole,fullName= :fullName,post= :post,staffCode= :staffCode,startDate= :startDate,endDate= :endDate,branchCode= :branchCode,functionAllowed= :functionAllowed,branchAllowed= :branchAllowed,additionalFunctions= :additionalFunctions where userid= :userid";
+		String sql = "update usertbl set username='"+u.getUsername()+"', givenrole='"+u.getGivenrole()+"',fullName='"+u.getFullName()+"',post='"+u.getPost()+"',staffCode='"+u.getStaffCode()+"',startDate='"+u.getStartDate()+"',endDate='"+u.getEndDate()+"',branchCode='"+u.getBranch().getBranch_id()+"',functionAllowed='"+u.getFunctionAllowed()+"',branchAllowed='"+u.getBranchAllowed()+"',additionalFunctions='"+u.getAdditionalFunctions()+"' where userid='"+u.getUserid()+"'";
 		System.out.println(sql);
 		return template.update(sql, new BeanPropertySqlParameterSource(u));
 	}
