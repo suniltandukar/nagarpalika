@@ -4,8 +4,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -17,12 +19,18 @@ import com.nagarpalika.model.OccupationModel;
 
 @Repository
 public class OccupationDaoImpl implements OccupationDao {
-	 @Autowired
-	    private NamedParameterJdbcTemplate template;
-	 
-	    public NamedParameterJdbcTemplate getNamedParameterJdbcTemplate() {
-	        return template;
-	    }
+	private JdbcTemplate jdbcTemplate;
+	private NamedParameterJdbcTemplate template;
+		
+		public void setJdbcTemplate(JdbcTemplate jdbcTemplate){
+			this.jdbcTemplate=jdbcTemplate;
+		}
+		
+		@Autowired
+		public void setDataSource(DataSource dataSource){
+			this.jdbcTemplate=new JdbcTemplate(dataSource);
+			this.template = new NamedParameterJdbcTemplate(dataSource);
+		}
 	private SqlParameterSource getSqlParameterByModel(OccupationModel o) {
 		MapSqlParameterSource paramSource = new MapSqlParameterSource();
 		paramSource.addValue("authorizer", o.getAuthorizer());
@@ -36,7 +44,7 @@ public class OccupationDaoImpl implements OccupationDao {
 
 	public List<OccupationModel> findAll() {
 		String query = "select * from occupation_type";
-		return template.query(query, new OccupationMapper());
+		return jdbcTemplate.query(query, new OccupationMapper());
 	}
 
 	public static final class OccupationMapper implements RowMapper<OccupationModel> {

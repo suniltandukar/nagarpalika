@@ -4,8 +4,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -17,13 +19,18 @@ import com.nagarpalika.model.FamilyDetailModel;
 
 @Repository
 public class FamilyDetailDaoImpl implements FamilyDetailDao {
-	 @Autowired
-	    private NamedParameterJdbcTemplate template;
-	 
-	    public NamedParameterJdbcTemplate getNamedParameterJdbcTemplate() {
-	        return template;
-	    }
-
+	private JdbcTemplate jdbcTemplate;
+	private NamedParameterJdbcTemplate template;
+		
+		public void setJdbcTemplate(JdbcTemplate jdbcTemplate){
+			this.jdbcTemplate=jdbcTemplate;
+		}
+		
+		@Autowired
+		public void setDataSource(DataSource dataSource){
+			this.jdbcTemplate=new JdbcTemplate(dataSource);
+			this.template = new NamedParameterJdbcTemplate(dataSource);
+		}
 	
 
 	public void save(FamilyDetailModel f) {
@@ -37,7 +44,7 @@ public class FamilyDetailDaoImpl implements FamilyDetailDao {
 
 	public List<FamilyDetailModel> getFamilyDetail() {
 		String query = "select * from family_detail";
-		return template.query(query, new FamilyDetailMapper());
+		return jdbcTemplate.query(query, new FamilyDetailMapper());
 	}
 
 	public FamilyDetailModel getSpecificFamilyDetail(String id) {

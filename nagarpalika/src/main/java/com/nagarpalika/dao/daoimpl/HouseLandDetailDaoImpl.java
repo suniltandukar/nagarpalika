@@ -3,9 +3,11 @@ package com.nagarpalika.dao.daoimpl;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -17,12 +19,20 @@ import com.nagarpalika.model.HouseLandDetailModel;
 
 @Repository
 public class HouseLandDetailDaoImpl implements HouseLandDetailDao {
-	 @Autowired
-	    private NamedParameterJdbcTemplate template;
-	 
-	    public NamedParameterJdbcTemplate getNamedParameterJdbcTemplate() {
-	        return template;
-	    }
+	
+	private JdbcTemplate jdbcTemplate;
+	
+	private NamedParameterJdbcTemplate template;
+		
+		public void setJdbcTemplate(JdbcTemplate jdbcTemplate){
+			this.jdbcTemplate=jdbcTemplate;
+		}
+		
+		@Autowired
+		public void setDataSource(DataSource dataSource){
+			this.jdbcTemplate=new JdbcTemplate(dataSource);
+			this.template = new NamedParameterJdbcTemplate(dataSource);
+		}
 
 	
 	private SqlParameterSource getSqlParameterByModel(HouseLandDetailModel h) {

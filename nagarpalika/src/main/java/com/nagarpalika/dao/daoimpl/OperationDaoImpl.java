@@ -4,8 +4,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -18,13 +20,18 @@ import com.nagarpalika.model.UserModel;
 
 @Repository
 public class OperationDaoImpl implements OperationDao {
-	 @Autowired
-	    private NamedParameterJdbcTemplate template;
-	 
-	    public NamedParameterJdbcTemplate getNamedParameterJdbcTemplate() {
-	        return template;
-	    }
-
+	private JdbcTemplate jdbcTemplate;
+	private NamedParameterJdbcTemplate template;
+		
+		public void setJdbcTemplate(JdbcTemplate jdbcTemplate){
+			this.jdbcTemplate=jdbcTemplate;
+		}
+		
+		@Autowired
+		public void setDataSource(DataSource dataSource){
+			this.jdbcTemplate=new JdbcTemplate(dataSource);
+			this.template = new NamedParameterJdbcTemplate(dataSource);
+		}
 	
 	private SqlParameterSource getSqlParameterByUser(UserModel user) {
 		MapSqlParameterSource paramSource = new MapSqlParameterSource();
@@ -36,7 +43,7 @@ public class OperationDaoImpl implements OperationDao {
 
 	public List<UserModel> getSystemDetails() {
 		String sql = "select * from generalsettings";
-		return template.query(sql, new SystemDetailMapper());
+		return jdbcTemplate.query(sql, new SystemDetailMapper());
 	}
 	public boolean updateGeneralSetting(UserModel user){
 		boolean status=false;
