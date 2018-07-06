@@ -13,10 +13,12 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.nagarpalika.dao.DocumentTypeDao;
 import com.nagarpalika.model.DocumentTypeDetailModel;
 
+@Repository
 public class DocumentTypeDaoImpl implements DocumentTypeDao {
 	
 	private JdbcTemplate jdbcTemplate;

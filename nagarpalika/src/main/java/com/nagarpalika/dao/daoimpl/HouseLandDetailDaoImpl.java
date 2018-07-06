@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.nagarpalika.dao.HouseLandDetailDao;
 import com.nagarpalika.model.HouseLandDetailModel;
 
+@Repository
 public class HouseLandDetailDaoImpl implements HouseLandDetailDao {
 	
 	private JdbcTemplate jdbcTemplate;

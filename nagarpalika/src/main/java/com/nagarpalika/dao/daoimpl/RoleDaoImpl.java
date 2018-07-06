@@ -10,12 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.nagarpalika.dao.RoleDao;
 import com.nagarpalika.model.RoleModel;
 
 
-
+@Repository
 public class RoleDaoImpl implements RoleDao {
 	private JdbcTemplate jdbcTemplate;
 	private NamedParameterJdbcTemplate template;

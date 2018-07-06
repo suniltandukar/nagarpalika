@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import com.nagarpalika.dao.EducationDetailDao;
 import com.nagarpalika.model.EducationDetailModel;
 
+@Repository
 public class EducationDetailDaoImpl implements EducationDetailDao {
 	
 	private JdbcTemplate jdbcTemplate;
