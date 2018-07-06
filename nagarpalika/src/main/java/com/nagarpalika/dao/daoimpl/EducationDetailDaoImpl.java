@@ -4,33 +4,38 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.stereotype.Repository;
 
 import com.nagarpalika.dao.EducationDetailDao;
+import com.nagarpalika.model.DocumentTypeDetailModel;
 import com.nagarpalika.model.EducationDetailModel;
 
+@Repository
 public class EducationDetailDaoImpl implements EducationDetailDao {
 	
-	private JdbcTemplate jdbcTemplate;
-
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
-	}
-
 	@Autowired
-	private void setDataSource(DataSource dataSource) {
-		this.jdbcTemplate = new JdbcTemplate(dataSource);
+    private DataSource dataSource;
+	private NamedParameterJdbcTemplate template;  
+	  
+	 @PostConstruct
+	    private void postConstruct() {
+	        template = new NamedParameterJdbcTemplate(dataSource);
+	    }
 
-	}
 	
 	public void save(EducationDetailModel e){
-		String query="insert into education_detail(edu_id, education_type, record_status, inputter, authorizer, date_time, curr_number) values ('"+e.getEdu_id()+"','"+e.getEducation_type()+"','"+e.getRecord_status()+"','"+e.getInputter()+"','"+e.getAuthorizer()+"','"+e.getDate_time()+"','"+e.getCurr_number()+"')";
+		String query="insert into education_detail(edu_id, education_type, record_status, inputter, authorizer, date_time, curr_number) values (:edu_id, :education_type, :record_status, :inputter, :authorizer, :date_time, :curr_number)";
 		try{
-		jdbcTemplate.update(query);
+		template.update(query,getSqlParameterByModel(e));
 		}
 		catch(Exception ex){
 			System.out.println(ex);
@@ -40,12 +45,12 @@ public class EducationDetailDaoImpl implements EducationDetailDao {
 
 	public List<EducationDetailModel> getEducationDetail() {
 		String query="select * from education_detail";
-		return jdbcTemplate.query(query, new EducationDetailMapper());
+		return template.query(query, new EducationDetailMapper());
 		
 	}
 	public EducationDetailModel getEducationSpecificDetail(String id) {
 		String query="select * from education_detail where edu_id='"+id+"'";
-		return jdbcTemplate.queryForObject(query, new EducationDetailMapper());
+		return template.queryForObject(query, getSqlParameterByModel(null),new EducationDetailMapper());
 		
 	}
 	public static final class EducationDetailMapper implements RowMapper<EducationDetailModel>{
@@ -64,14 +69,20 @@ public class EducationDetailDaoImpl implements EducationDetailDao {
 		}
 		}
 	public void update(EducationDetailModel e, String id) {
-		String query="update education_detail set education_type='"+e.getEducation_type()+"', record_status='"+e.getRecord_status()+"' where edu_id='"+id+"'";
-		jdbcTemplate.update(query);
+		String query="update education_detail set education_type= :education_type, record_status= :record_status where edu_id='"+id+"'";
+		template.update(query,getSqlParameterByModel(e));
 	}
 
 	public void delete(String id) {
 		String query="delete from education_detail where edu_id='"+id+"'";
-		jdbcTemplate.update(query);
+		template.update(query, getSqlParameterByModel(null));
 		
 	}
+	private SqlParameterSource getSqlParameterByModel(EducationDetailModel e) {
+		MapSqlParameterSource paramSource = new MapSqlParameterSource();
+		paramSource.addValue("authorizer", e.getAuthorizer());
+		return paramSource;
+	}
+	
 
 }

@@ -2,8 +2,10 @@ package com.nagarpalika.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
 
 import com.nagarpalika.model.DocumentTypeDetailModel;
+
 
 public interface DocumentTypeService {
 	public void save(DocumentTypeDetailModel d);

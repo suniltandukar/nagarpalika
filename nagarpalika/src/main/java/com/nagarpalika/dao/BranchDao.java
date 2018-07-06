@@ -6,7 +6,7 @@ import com.nagarpalika.model.BranchModel;
 
 
 public interface BranchDao {
-	public List<BranchModel> getBranches();
+	public List<BranchModel> findAll();
 
 	public void insertBranch(BranchModel bmodel);
 }

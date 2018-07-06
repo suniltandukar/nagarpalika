@@ -37,6 +37,7 @@ public class NavigationController {
 	public String familyDetail(Model model){
 		
 		model.addAttribute("disablity",formDetailService.getDisableType());
+		model.addAttribute("occupation",occupationDao.findAll());
 		return "familyDetail/insert";
 	}
 	
@@ -85,7 +86,7 @@ public class NavigationController {
 	
 	@RequestMapping(value = "/occupationType")
 	public String occupationType(Model model){
-		model.addAttribute("occupation", occupationDao.getOccupation());
+		model.addAttribute("occupation", occupationDao.findAll());
 		return "settings/occupationType/insert";
 	}
 }

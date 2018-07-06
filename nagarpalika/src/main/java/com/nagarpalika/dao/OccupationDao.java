@@ -8,9 +8,9 @@ public interface OccupationDao {
 	
 	public void save(OccupationModel o);
 
-	public List<OccupationModel> getOccupation();
+	public List<OccupationModel> findAll();
 
-	public OccupationModel getSpecificOccupationType(String id);
+	public OccupationModel findById(String id);
 
 	public void update(OccupationModel o, String id);
 
