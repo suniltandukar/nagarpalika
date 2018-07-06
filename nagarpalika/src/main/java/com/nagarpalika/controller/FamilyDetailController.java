@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nagarpalika.dao.FamilyDetailDao;
+import com.nagarpalika.model.EducationDetailModel;
 import com.nagarpalika.model.FamilyDetailModel;
 
 @Controller
@@ -18,7 +19,7 @@ public class FamilyDetailController {
 	@Autowired
 	FamilyDetailDao familyDetailDao;
 	
-	@RequestMapping(value="/save", method = RequestMethod.POST)
+	@RequestMapping(value="/save")
 	@ResponseBody
 	public String save(@ModelAttribute FamilyDetailModel f){
 		try{

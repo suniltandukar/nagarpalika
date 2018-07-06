@@ -4,44 +4,38 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
-import org.springframework.stereotype.Repository;
 
 import com.nagarpalika.dao.OperationDao;
 import com.nagarpalika.model.UserModel;
 
 
-@Repository
-public class OperationDaoImpl implements OperationDao {
-	 @Autowired
-	    private NamedParameterJdbcTemplate template;
-	 
-	    public NamedParameterJdbcTemplate getNamedParameterJdbcTemplate() {
-	        return template;
-	    }
 
-	
-	private SqlParameterSource getSqlParameterByUser(UserModel user) {
-		MapSqlParameterSource paramSource = new MapSqlParameterSource();
-		paramSource.addValue("description", user.getSettingsdescription());
-		paramSource.addValue("type", user.getSettingstype());
-		return paramSource;
+public class OperationDaoImpl implements OperationDao {
+	private JdbcTemplate jdbcTemplate;
+
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
 	}
 
+	@Autowired
+	private void setDataSource(DataSource dataSource) {
+		this.jdbcTemplate = new JdbcTemplate(dataSource);
+
+	}
 
 	public List<UserModel> getSystemDetails() {
 		String sql = "select * from generalsettings";
-		return template.query(sql, new SystemDetailMapper());
+		return jdbcTemplate.query(sql, new SystemDetailMapper());
 	}
 	public boolean updateGeneralSetting(UserModel user){
 		boolean status=false;
-		String sql="update generalsettings set description= :description where type= :type";
-		int i=template.update(sql,getSqlParameterByUser(user));
+		String sql="update generalsettings set description='"+user.getSettingsdescription()+"' where type='"+user.getSettingstype()+"'";
+		int i=jdbcTemplate.update(sql);
 		if(i>0){
 			status=true;
 		}
@@ -51,7 +45,7 @@ public class OperationDaoImpl implements OperationDao {
 		boolean status=false;
 		String sql="INSERT INTO "+tablename+" "+columns+"  VALUES ('"+value+"')";
 		System.out.println(sql);
-		int i=template.update(sql,getSqlParameterByUser(null));
+		int i=jdbcTemplate.update(sql);
 		if(i>0){
 			status=true;
 		}
@@ -70,7 +64,7 @@ public class OperationDaoImpl implements OperationDao {
 	}
 	public boolean checkSubCode(String subjectcode){
 		String sql="select count(subjectCode) from subjectlist where subjectCode='"+subjectcode+"'";
-		int rowcount=template.queryForObject(sql, getSqlParameterByUser(null),Integer.class);
+		int rowcount=jdbcTemplate.queryForObject(sql, Integer.class);
 		if(rowcount==1){
 			return true;
 		}

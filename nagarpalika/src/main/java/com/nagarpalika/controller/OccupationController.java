@@ -34,7 +34,7 @@ public class OccupationController {
 	
 	@RequestMapping(value="/edit/{id}", method=RequestMethod.GET)
 	public String edit(@PathVariable String id, Model model){
-		model.addAttribute("o",occupationDao.findById(id));
+		model.addAttribute("o",occupationDao.getSpecificOccupationType(id));
 		return "settings/occupationType/edit";
 	}
 

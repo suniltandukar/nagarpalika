@@ -16,6 +16,8 @@ import com.nagarpalika.service.DocumentTypeService;
 @Controller
 @RequestMapping("/documentType")
 public class DocumentTypeController {
+	@Autowired
+	DocumentTypeDao documentTypeDao;
 	
 	@Autowired
 	DocumentTypeService ds;

@@ -1,19 +1,16 @@
-
 package com.nagarpalika.serviceimpl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import com.nagarpalika.dao.DocumentTypeDao;
 import com.nagarpalika.model.DocumentTypeDetailModel;
 import com.nagarpalika.service.DocumentTypeService;
 
-@Service
+@Component("documentTypeSericeBean")
 public class DocumentTypeServiceImpl implements DocumentTypeService {
-	
 	@Autowired
 	DocumentTypeDao documentTypeDao;
 
