@@ -13,21 +13,17 @@ h5 {
 </style>
 </head>
 <body class="background">
- <spring:hasBindErrors name="form">
-                <c:forEach var="error" items="${errors.allErrors}">
-                <b><spring:message message="${error}" /></b>
-                <br/>
-                </c:forEach>
-         </spring:hasBindErrors>
+
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="col-md-8 col-xs-12">
 			<div class="x_panel">
 			<spring:url value="/familyDetail/save" var="formUrl"/>
 				<form:form class="form-horizontal form-label-left input_mask" id="form"
-					method="post" action="${formUrl }">
+					method="post" action="${formUrl }" commandName="familyDetailForm">
 
 					<div class="x_title">
 						<h2>FAMILY DETAIL</h2>
+						<p>${msg }</p>
 						<div class="col-md-4 col-sm-4 col-xs-12 pull-right"></div>
 						<div class="clearfix"></div>
 					</div>
@@ -52,9 +48,7 @@ h5 {
 											<option value="${h.house_owner_id }">${h.house_owner_id }/${h.house_owner_fname } ${h.house_owner_mname } ${h.house_owner_lname }</option>
 											</c:forEach>
 											</select></td>
-										<td><h6>
-												<strong>Father Name</strong>
-											</h6> <input type='text' class='form-control' name='house_owner_fname'></td>
+										
 										<td><h6>
 												<strong>Relation</strong>
 											</h6> <select class='form-control' name='relation'>
@@ -63,11 +57,26 @@ h5 {
 											<option value="${r.name }">${r.name }</option>
 											</c:forEach>
 											</select></td>
+											<td><h6>
+												<strong>Gender</strong>
+											</h6> <select class='form-control' name='gender'>
+											<option value="">Select Gender</option>
+											<option value="m">Male</option>
+											<option value="f">Female</option>
+											<option value="o">Other</option>
+											</select></td>
 									</tr>
+									<tr><td><h6>
+												<strong>First Name</strong>
+											</h6> <input type='text' class='form-control' name='house_owner_fname'></td>
+											<td><h6>
+												<strong>Middle Name</strong>
+											</h6> <input type='text' class='form-control' name='house_owner_mname'></td>
+											<td><h6>
+												<strong>Last Name</strong>
+											</h6> <input type='text' class='form-control' name='house_owner_lname'></td></tr>
 									<tr>
-										<td><h6>
-												<strong>Name</strong>
-											</h6> <input type='text' class='form-control' name='name'></td>
+										
 										<td><h6>
 												<strong>Marital Status</strong>
 											</h6> <select class='form-control'
@@ -81,6 +90,14 @@ h5 {
 											</h6> <input type='text' class='form-control' name='dob_nep'></td>
 									</tr>
 									<tr>
+									<td><h6>
+												<strong>Occupation</strong>
+											</h6> <select class='form-control' name='occupation_id'>
+											<option value="1">Select Occupation</option>
+											<c:forEach items="${occupation }" var="o">
+											<option value="${o.occu_id }">${o.occupation_type }</option>
+											</c:forEach>
+											</select></td>
 										<td><h6>
 												<strong>Disability if any</strong>
 											</h6> <select class='form-control' name='disable_type'>
@@ -89,22 +106,8 @@ h5 {
 											<option value="${d.id }">${d.typehead }</option>
 											</c:forEach>
 											</select></td>
-										<td><h6>
-												<strong>Occupation Id</strong>
-											</h6> <select class='form-control' name='occupation_id'>
-											<option value="1">Select Occupation</option>
-											<c:forEach items="${occupation }" var="o">
-											<option value="${o.occu_id }">${o.occupation_type }</option>
-											</c:forEach>
-											</select></td>
-										<td><h6>
-												<strong>Gender</strong>
-											</h6> <select class='form-control' name='gender'>
-											<option value="">Select Gender</option>
-											<option value="m">Male</option>
-											<option value="f">Female</option>
-											<option value="o">Other</option>
-											</select></td>
+										
+										
 									</tr>
 								</tbody>
 							</table>

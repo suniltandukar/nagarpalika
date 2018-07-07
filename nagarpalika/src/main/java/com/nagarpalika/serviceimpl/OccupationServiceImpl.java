@@ -41,5 +41,7 @@ public class OccupationServiceImpl implements OccupationService {
 		occupationDao.delete(id);
 
 	}
+	
+	
 
 }
