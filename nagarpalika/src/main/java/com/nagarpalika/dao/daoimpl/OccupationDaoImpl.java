@@ -59,7 +59,7 @@ public class OccupationDaoImpl implements OccupationDao {
 		}
 	}
 
-	public OccupationModel getSpecificOccupationType(String id) {
+	public OccupationModel findById(String id) {
 		String query = "select * from occupation_type where occu_id='" + id + "'";
 		return jdbcTemplate.queryForObject(query, new OccupationMapper());
 	}

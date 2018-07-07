@@ -9,6 +9,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -31,8 +32,8 @@ public class FamilyDetailDaoImpl implements FamilyDetailDao {
 		}
 	
 	public void save(FamilyDetailModel f){
-		String query="insert into family_detail (house_owner_id, house_owner_fname, relation, name, marital_status, dob_nep ,disable_type, occupation_id, gender, date_time) values ('"+f.getHouse_owner_id()+"', '"+f.getHouse_owner_fname()+"', '"+f.getRelation()+"','"+f.getName()+"','"+f.getMarital_status()+"','"+f.getDob_nep()+"','"+f.getDisable_type()+"','"+f.getOccupation_id()+"','"+f.getGender()+"', NOW())";
-		jdbcTemplate.update(query);
+		String query="insert into family_detail (house_owner_id, house_owner_fname, relation, name, marital_status, dob_nep ,disable_type, occupation_id, gender, date_time) values ( :house_owner_id, :house_owner_fname, :relation, :name, :marital_status, :dob_nep , :disable_type, :occupation_id, :gender, now())";
+		template.update(query, new BeanPropertySqlParameterSource(f));
 	}
 
 	public List<FamilyDetailModel> getFamilyDetail() {
@@ -40,7 +41,7 @@ public class FamilyDetailDaoImpl implements FamilyDetailDao {
 		return jdbcTemplate.query(query, new FamilyDetailMapper());
 	}
 	
-	public FamilyDetailModel getSpecificFamilyDetail(String id){
+	public FamilyDetailModel findById(String id){
 		String query="select * from family_detail where house_owner_id = '"+id+"'";
 		return jdbcTemplate.queryForObject(query, new FamilyDetailMapper());
 	}

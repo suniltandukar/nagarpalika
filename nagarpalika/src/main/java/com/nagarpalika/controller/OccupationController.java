@@ -9,32 +9,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.nagarpalika.dao.OccupationDao;
 import com.nagarpalika.model.OccupationModel;
+import com.nagarpalika.service.OccupationService;
 
 @Controller
 @RequestMapping("/occupation")
 public class OccupationController {
 	
 	@Autowired
-	OccupationDao occupationDao;
+	OccupationService occupationService;
 	
 	@RequestMapping(value="/save")
 	@ResponseBody
 	public String save(OccupationModel o){
-		try{
-			occupationDao.save(o);
-			
-		}catch(Exception e){
-			System.out.println(e);
-			return "Save Failed!";
-		}
+			occupationService.save(o);
 		return "Save Successful!";
 	}
 	
 	@RequestMapping(value="/edit/{id}", method=RequestMethod.GET)
 	public String edit(@PathVariable String id, Model model){
-		model.addAttribute("o",occupationDao.getSpecificOccupationType(id));
+		model.addAttribute("o",occupationService.findById(id));
 		return "settings/occupationType/edit";
 	}
 
@@ -42,7 +36,7 @@ public class OccupationController {
 	@ResponseBody
 	public String update(@PathVariable String id, @ModelAttribute OccupationModel o ){
 		try{
-		occupationDao.update(o, id);
+		occupationService.update(o, id);
 		}
 		catch(Exception e){
 		return "Save Failed!";
@@ -55,7 +49,7 @@ public class OccupationController {
 	public String delete(@PathVariable String id)
 	{
 		try {
-			occupationDao.delete(id);
+			occupationService.delete(id);
 		} catch (Exception e) {
 			return "Delete Failed!";
 		}

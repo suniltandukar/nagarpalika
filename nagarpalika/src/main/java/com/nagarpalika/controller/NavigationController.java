@@ -10,9 +10,11 @@ import com.nagarpalika.dao.BranchDao;
 import com.nagarpalika.dao.DocumentTypeDao;
 import com.nagarpalika.dao.EducationDetailDao;
 import com.nagarpalika.dao.FamilyDetailDao;
-import com.nagarpalika.dao.OccupationDao;
 import com.nagarpalika.model.BranchModel;
 import com.nagarpalika.service.FormDetailService;
+import com.nagarpalika.service.HouseOwnerService;
+import com.nagarpalika.service.OccupationService;
+import com.nagarpalika.service.RelationService;
 
 @Controller
 @RequestMapping("/nav")
@@ -24,7 +26,7 @@ public class NavigationController {
 	DocumentTypeDao documentTypeDao;	
 	
 	@Autowired
-	OccupationDao occupationDao;
+	OccupationService occupationService;
 	
 	@Autowired
 	FamilyDetailDao familyDetailDao;
@@ -35,13 +37,21 @@ public class NavigationController {
 	@Autowired
 	BranchDao branchDao;
 	
+	@Autowired
+	RelationService relationService;
+	
+	@Autowired
+	HouseOwnerService houseOwnerService;
+	
 	@RequestMapping(value = "/houseOwnerDetail")
 	public String houseOwnerDetail(){
 		return "form/houseOwnerDetail";
 	}
 	@RequestMapping(value = "/familyDetail")
 	public String familyDetail(Model model){
-		
+		model.addAttribute("houseOwner",houseOwnerService.findAll());
+		model.addAttribute("occupation",occupationService.findAll());
+		model.addAttribute("relation",relationService.findAll());
 		model.addAttribute("disablity",formDetailService.getDisableType());
 		return "familyDetail/insert";
 	}
@@ -91,7 +101,7 @@ public class NavigationController {
 	
 	@RequestMapping(value = "/occupationType")
 	public String occupationType(Model model){
-		model.addAttribute("occupation", occupationDao.findAll());
+		model.addAttribute("occupation", occupationService.findAll());
 		return "settings/occupationType/insert";
 	}
 	

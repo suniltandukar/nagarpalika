@@ -1,8 +1,11 @@
 package com.nagarpalika.model;
 
+
 public class FamilyDetailModel {
-	private String house_owner_id,
-	house_owner_fname,
+
+	private String house_owner_id;
+	
+	private String house_owner_fname,
 	relation,
 	name,
 	marital_status,
@@ -14,6 +17,7 @@ public class FamilyDetailModel {
 	authorizer,
 	date_time,
 	curr_number;
+	private OccupationModel occupationModel;
 
 	
 	
@@ -119,6 +123,14 @@ public class FamilyDetailModel {
 
 	public void setCurr_number(String curr_number) {
 		this.curr_number = curr_number;
+	}
+
+	public OccupationModel getOccupationModel() {
+		return occupationModel;
+	}
+
+	public void setOccupationModel(OccupationModel occupationModel) {
+		this.occupationModel = occupationModel;
 	}
 	
 	

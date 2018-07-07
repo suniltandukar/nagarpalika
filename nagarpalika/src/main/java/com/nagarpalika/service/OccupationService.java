@@ -1,11 +1,10 @@
-package com.nagarpalika.dao;
+package com.nagarpalika.service;
 
 import java.util.List;
 
 import com.nagarpalika.model.OccupationModel;
 
-public interface OccupationDao {
-	
+public interface OccupationService {
 	public void save(OccupationModel o);
 
 	public List<OccupationModel> findAll();
@@ -15,5 +14,4 @@ public interface OccupationDao {
 	public void update(OccupationModel o, String id);
 
 	public void delete(String id);
-
 }

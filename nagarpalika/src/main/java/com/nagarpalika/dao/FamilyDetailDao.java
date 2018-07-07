@@ -9,7 +9,7 @@ public interface FamilyDetailDao {
 
 	public List<FamilyDetailModel> getFamilyDetail();
 
-	public FamilyDetailModel getSpecificFamilyDetail(String id);
+	public FamilyDetailModel findById(String id);
 
 	public void update(FamilyDetailModel f, String id);
 

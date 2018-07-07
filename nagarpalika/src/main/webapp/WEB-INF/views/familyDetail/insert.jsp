@@ -13,12 +13,17 @@ h5 {
 </style>
 </head>
 <body class="background">
-
+ <spring:hasBindErrors name="form">
+                <c:forEach var="error" items="${errors.allErrors}">
+                <b><spring:message message="${error}" /></b>
+                <br/>
+                </c:forEach>
+         </spring:hasBindErrors>
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="col-md-8 col-xs-12">
 			<div class="x_panel">
 			<spring:url value="/familyDetail/save" var="formUrl"/>
-				<form:form class="form-horizontal form-label-left input_mask"
+				<form:form class="form-horizontal form-label-left input_mask" id="form"
 					method="post" action="${formUrl }">
 
 					<div class="x_title">
@@ -39,16 +44,24 @@ h5 {
 								<tbody>
 									<tr>
 										<td><h6>
-												<strong>Owner ID</strong>
-											</h6> <input type='text' class='form-control'
-											name='house_owner_id'></td>
+												<strong>Owner</strong>
+											</h6> <select class='form-control'
+											name='house_owner_id'>
+											<option value="">Select Owner</option>
+											<c:forEach items="${houseOwner }" var="h">
+											<option value="${h.house_owner_id }">${h.house_owner_id }/${h.house_owner_fname } ${h.house_owner_mname } ${h.house_owner_lname }</option>
+											</c:forEach>
+											</select></td>
 										<td><h6>
 												<strong>Father Name</strong>
 											</h6> <input type='text' class='form-control' name='house_owner_fname'></td>
 										<td><h6>
 												<strong>Relation</strong>
 											</h6> <select class='form-control' name='relation'>
-											<option value="1">Select Relation</option>
+											<option value="">Select Relation</option>
+											<c:forEach items="${relation }" var="r">
+											<option value="${r.name }">${r.name }</option>
+											</c:forEach>
 											</select></td>
 									</tr>
 									<tr>
@@ -80,6 +93,9 @@ h5 {
 												<strong>Occupation Id</strong>
 											</h6> <select class='form-control' name='occupation_id'>
 											<option value="1">Select Occupation</option>
+											<c:forEach items="${occupation }" var="o">
+											<option value="${o.occu_id }">${o.occupation_type }</option>
+											</c:forEach>
 											</select></td>
 										<td><h6>
 												<strong>Gender</strong>

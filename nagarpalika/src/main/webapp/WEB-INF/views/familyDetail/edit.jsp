@@ -41,16 +41,24 @@ h5 {
 								<tbody>
 									<tr>
 										<td><h6>
-												<strong>Owner ID</strong>
-											</h6> <input type='text' class='form-control'
-											name='house_owner_id' value="${fd.house_owner_id }"></td>
+												<strong>Owner</strong>
+											</h6> <select class='form-control'
+											name='house_owner_id'>
+											<option value="">Select Owner</option>
+											<c:forEach items="${houseOwner }" var="h">
+											<option value="${h.house_owner_id }">${h.house_owner_id }/${h.house_owner_fname } ${h.house_owner_mname } ${h.house_owner_lname }</option>
+											</c:forEach>
+											</select></td>
 										<td><h6>
 												<strong>Father Name</strong>
 											</h6> <input type='text' class='form-control' name='house_owner_fname' value="${fd.house_owner_fname }"></td>
 										<td><h6>
 												<strong>Relation</strong>
 											</h6> <select class='form-control' name='relation'>
-											<option value="">Select Relation</option>
+											<option value="${fd.relation }" selected>${fd.relation }</option>
+											<c:forEach items="${relation }" var="r">
+											<option value="${r.name }">${r.name }</option>
+											</c:forEach>
 											</select></td>
 									</tr>
 									<tr>
@@ -74,19 +82,25 @@ h5 {
 												<strong>Disability if any</strong>
 											</h6> <select class='form-control' name='disable_type'>
 											<option value="">Select Disability</option>
+											<c:forEach items="${disablity }" var="d">
+											<option value="${d.id }">${d.typehead }</option>
+											</c:forEach>
 											</select></td>
 										<td><h6>
 												<strong>Occupation Id</strong>
-											</h6> <select class='form-control' name='occupation_id'>
-											<option value="">Select Occupation</option>
+											</h6>  <select class='form-control' name='occupation_id'>
+											<option value="1">Select Occupation</option>
+											<c:forEach items="${occupation }" var="o">
+											<option value="${o.occu_id }">${o.occupation_type }</option>
+											</c:forEach>
 											</select></td>
 										<td><h6>
 												<strong>Gender</strong>
 											</h6> <select class='form-control' name='gender'>
 											<option value="">Select Gender</option>
-											<option value="m">Male</option>
-											<option value="f">Female</option>
-											<option value="o">Other</option>
+											<option value="m" <c:if test="${fd.gender eq 'm' }">selected</c:if>>Male</option>
+											<option value="f" <c:if test="${fd.gender eq 'f' }">selected</c:if>>Female</option>
+											<option value="o" <c:if test="${fd.gender eq 'o' }">selected</c:if>>Other</option>
 											</select></td>
 									</tr>
 								</tbody>
