@@ -63,7 +63,15 @@
 										<li><a href="nav/dashboard" target="iframe_a">Dashboard</a></li>
 									</ul></li>
 							</ul>
-						
+						<ul class="nav side-menu">
+								<li><a><span class="fa fa-chevron-down"></span>House Hold Detail</a>
+									<ul class="nav child_menu">
+
+										<li><a href="nav/houseHoldDetail" target="iframe_a">
+												New Detail </a></li>
+
+									</ul></li>
+							</ul>
 							<ul class="nav side-menu">
 								<li><a><span class="fa fa-chevron-down"></span>Family
 										Detail</a>
@@ -77,24 +85,6 @@
 									</ul></li>
 							</ul>
 							<ul class="nav side-menu">
-								<li><a><span class="fa fa-chevron-down"></span>House Facility Detail</a>
-									<ul class="nav child_menu">
-
-										<li><a href="nav/houseFacilityDetail" target="iframe_a">
-												New</a></li>
-
-									</ul></li>
-							</ul>
-							<ul class="nav side-menu">
-								<li><a><span class="fa fa-chevron-down"></span>House Hold Detail</a>
-									<ul class="nav child_menu">
-
-										<li><a href="nav/houseHoldDetail" target="iframe_a">
-												New Detail </a></li>
-
-									</ul></li>
-							</ul>
-							<ul class="nav side-menu">
 								<li><a><span class="fa fa-chevron-down"></span>House and Land Detail</a>
 									<ul class="nav child_menu">
 
@@ -104,10 +94,39 @@
 									</ul></li>
 							</ul>
 							<ul class="nav side-menu">
+								<li><a><span class="fa fa-chevron-down"></span>House Facility Detail</a>
+									<ul class="nav child_menu">
+
+										<li><a href="nav/houseFacilityDetail" target="iframe_a">
+												New</a></li>
+
+									</ul></li>
+							</ul>
+							
+							
+							<ul class="nav side-menu">
 								<li><a><span class="fa fa-chevron-down"></span>House Rent Detail</a>
 									<ul class="nav child_menu">
 
 										<li><a href="nav/houseRentDetail" target="iframe_a">
+												New Detail </a></li>
+
+									</ul></li>
+							</ul>
+							<ul class="nav side-menu">
+								<li><a><span class="fa fa-chevron-down"></span>Tenant Detail</a>
+									<ul class="nav child_menu">
+
+										<li><a href="#" target="iframe_a">
+												New Detail </a></li>
+
+									</ul></li>
+							</ul>
+								<ul class="nav side-menu">
+								<li><a><span class="fa fa-chevron-down"></span>ID Photo Upload</a>
+									<ul class="nav child_menu">
+
+										<li><a href="#" target="iframe_a">
 												New Detail </a></li>
 
 									</ul></li>
