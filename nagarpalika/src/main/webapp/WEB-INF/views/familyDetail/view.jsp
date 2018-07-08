@@ -10,7 +10,7 @@
 </head>
 <body class="background">
 	<div class="col-md-12 col-sm-12 col-xs-12">
-		<div class="col-md-8 col-xs-12">
+		<div class="col-md-12 col-xs-12">
 			<div class="x_panel">
 				
 					<div class="x_title">
@@ -25,7 +25,6 @@
 							<th>House Owner Id</th>
 							<th>Father Name</th>
 							<th>Relation</th>
-							<th>Name</th>
 							<th>Marital Status</th>
 							<th>DOB (Nep)</th>
 							<th>Action</th>
@@ -37,11 +36,10 @@
 							<td>${f.house_owner_id }</td>
 							<td>${f.house_owner_fname }</td>
 							<td>${f.relation }</td>
-							<td>${f.name }</td>
 							<td>${f.marital_status }</td>
 							<td>${f.dob_nep }</td>
 							
-							<td><a href="<spring:url value="/familyDetail/edit/${f.house_owner_id }"/>">Edit</a></td>
+							<td><a href="<spring:url value="/familyDetail/edit/${f.family_detail_id }"/>">Edit</a></td>
 							
 						</tr>
 						</c:forEach>

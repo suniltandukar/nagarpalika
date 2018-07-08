@@ -47,6 +47,11 @@ public class NavigationController {
 	public String houseOwnerDetail(){
 		return "form/houseOwnerDetail";
 	}
+	
+	@ModelAttribute
+	public void getAttribute(Model model, @ModelAttribute("msg") String msg){
+		model.addAttribute("msg",msg);
+	}
 	@RequestMapping(value = "/familyDetail")
 	public String familyDetail(Model model){
 		model.addAttribute("houseOwner",houseOwnerService.findAll());

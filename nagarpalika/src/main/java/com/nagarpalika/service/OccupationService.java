@@ -14,4 +14,5 @@ public interface OccupationService {
 	public void update(OccupationModel o, String id);
 
 	public void delete(String id);
+	
 }

@@ -10,10 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.nagarpalika.dao.UserDao;
 import com.nagarpalika.extras.Generator;
@@ -141,4 +140,11 @@ public class UserDaoImpl implements UserDao {
 		return jdbcTemplate.query(sql, new UserMapper());
 	}
 
+	/*public String sessionUsername(@SessionAttributes("userDetail") UserModel user){
+		String username = "";
+		if(user!=null){
+			username = user.getUsername();
+		}
+		return username;
+	}*/
 }

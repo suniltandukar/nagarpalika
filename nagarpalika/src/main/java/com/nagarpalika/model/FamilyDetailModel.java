@@ -1,13 +1,14 @@
 package com.nagarpalika.model;
 
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 public class FamilyDetailModel {
-
+	
+private int family_detail_id;
 	private String house_owner_id;
 	
-	private String house_owner_fname,
-	relation,
-	name,
+	private String house_owner_fname, house_owner_mname, house_owner_lname;
+	private String relation,
 	marital_status,
 	dob_nep,
 	disable_type,
@@ -18,9 +19,15 @@ public class FamilyDetailModel {
 	date_time,
 	curr_number;
 	private OccupationModel occupationModel;
+	
+	public int getFamily_detail_id() {
+		return family_detail_id;
+	}
 
-	
-	
+	public void setFamily_detail_id(int family_detail_id) {
+		this.family_detail_id = family_detail_id;
+	}
+
 	public String getHouse_owner_id() {
 		return house_owner_id;
 	}
@@ -37,20 +44,29 @@ public class FamilyDetailModel {
 		this.house_owner_fname = house_owner_fname;
 	}
 
+	
+	public String getHouse_owner_mname() {
+		return house_owner_mname;
+	}
+
+	public void setHouse_owner_mname(String house_owner_mname) {
+		this.house_owner_mname = house_owner_mname;
+	}
+
+	public String getHouse_owner_lname() {
+		return house_owner_lname;
+	}
+
+	public void setHouse_owner_lname(String house_owner_lname) {
+		this.house_owner_lname = house_owner_lname;
+	}
+
 	public String getRelation() {
 		return relation;
 	}
 
 	public void setRelation(String relation) {
 		this.relation = relation;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getMarital_status() {

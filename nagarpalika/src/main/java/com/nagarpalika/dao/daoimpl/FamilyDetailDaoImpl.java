@@ -7,6 +7,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -32,43 +33,35 @@ public class FamilyDetailDaoImpl implements FamilyDetailDao {
 		}
 	
 	public void save(FamilyDetailModel f){
-		String query="insert into family_detail (house_owner_id, house_owner_fname, relation, name, marital_status, dob_nep ,disable_type, occupation_id, gender, date_time) values ( :house_owner_id, :house_owner_fname, :relation, :name, :marital_status, :dob_nep , :disable_type, :occupation_id, :gender, now())";
+		String query="insert into family_detail (house_owner_id, house_owner_fname, house_owner_mname, house_owner_lname, relation, marital_status, dob_nep ,disable_type, occupation_id, gender, date_time) values ( :house_owner_id, :house_owner_fname, :house_owner_mname, :house_owner_lname, :relation, :marital_status, :dob_nep , :disable_type, :occupation_id, :gender, now())";
 		template.update(query, new BeanPropertySqlParameterSource(f));
 	}
 
 	public List<FamilyDetailModel> getFamilyDetail() {
 		String query = "select * from family_detail";
-		return jdbcTemplate.query(query, new FamilyDetailMapper());
+		return jdbcTemplate.query(query, new BeanPropertyRowMapper<FamilyDetailModel>(FamilyDetailModel.class));
 	}
 	
 	public FamilyDetailModel findById(String id){
-		String query="select * from family_detail where house_owner_id = '"+id+"'";
-		return jdbcTemplate.queryForObject(query, new FamilyDetailMapper());
+		String query="select * from family_detail where family_detail_id = ?";
+		FamilyDetailModel familyDetailModel = jdbcTemplate.queryForObject(query, new Object[] {id},new BeanPropertyRowMapper(FamilyDetailModel.class));
+	return familyDetailModel;
+	}
+	
+	public int findMax(){
+		String query="select max(family_detail_id) from family_detail";
+		return template.queryForInt(query, new BeanPropertySqlParameterSource(FamilyDetailModel.class));
 	}
 	
 	public void update(FamilyDetailModel f, String id){
-		String query="update family_detail set house_owner_id='"+f.getHouse_owner_id()+"', house_owner_fname='"+f.getHouse_owner_fname()+"', relation='"+f.getRelation()+"', name='"+f.getName()+"', marital_status='"+f.getMarital_status()+"', dob_nep='"+f.getDob_nep()+"', disable_type = '"+f.getDisable_type()+"', occupation_id='"+f.getOccupation_id()+"', gender='"+f.getGender()+"' where house_owner_id='"+id+"'";
-		jdbcTemplate.update(query);
+		String query="update family_detail set house_owner_id= :house_owner_id, house_owner_fname= :house_owner_fname, house_owner_mname= :house_owner_mname, house_owner_lname = :house_owner_lname, relation= :relation, marital_status= :marital_status, dob_nep= :dob_nep, disable_type = :disable_type, occupation_id= :occupation_id, gender= :gender, date_time=now() where family_detail_id='"+id+"'";
+		template.update(query, new BeanPropertySqlParameterSource(f));
 	}
 	
 	public void delete(String id){
-		String query="delete from family_detail where house_owner_id = '"+id+"'";
-		jdbcTemplate.update(query);
+		String query="delete from family_detail where family_detail_id = ?";
+		jdbcTemplate.update(query, new Object[] {id});
 	}
 	
-	public static final class FamilyDetailMapper implements RowMapper<FamilyDetailModel>{
-
-		@Override
-		public FamilyDetailModel mapRow(ResultSet rs, int rowNum) throws SQLException {
-			FamilyDetailModel f = new FamilyDetailModel();
-			f.setHouse_owner_id(rs.getString("house_owner_id"));
-			f.setHouse_owner_fname(rs.getString("house_owner_fname"));
-			f.setRelation(rs.getString("relation"));
-			f.setName(rs.getString("name"));
-			f.setMarital_status(rs.getString("marital_status"));
-			f.setDob_nep(rs.getString("dob_nep"));
-			return f;
-		}
-	}
-
+	
 }

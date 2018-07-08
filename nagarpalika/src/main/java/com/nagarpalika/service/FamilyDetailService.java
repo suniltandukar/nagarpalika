@@ -1,10 +1,10 @@
-package com.nagarpalika.dao;
+package com.nagarpalika.service;
 
 import java.util.List;
 
 import com.nagarpalika.model.FamilyDetailModel;
 
-public interface FamilyDetailDao {
+public interface FamilyDetailService {
 	public void save(FamilyDetailModel f);
 
 	public List<FamilyDetailModel> getFamilyDetail();

@@ -3,6 +3,8 @@ package com.nagarpalika.dao;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.nagarpalika.model.UserModel;
 
 
@@ -20,4 +22,5 @@ public interface UserDao {
 	
 	public UserModel getSpecificUserDetails(String userid);
 
+	//public String sessionUsername(HttpSession session);
 }
