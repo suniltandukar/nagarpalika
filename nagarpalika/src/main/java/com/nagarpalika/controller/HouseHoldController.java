@@ -13,14 +13,8 @@ import com.nagarpalika.service.HouseHoldService;
 @RequestMapping("/houseHold")
 public class HouseHoldController {
 	
-	@Autowired
-	HouseHoldService hhs;
 	
-	@RequestMapping(value="/insert")
-	public String insertHouseHold(Model model, @ModelAttribute HouseHoldDetailModel hm)
-	{
-		hhs.insertHouseHold(hm);
-		return "";
-	}
+	
+
 
 }

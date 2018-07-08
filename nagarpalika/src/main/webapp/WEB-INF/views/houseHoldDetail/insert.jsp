@@ -8,6 +8,7 @@
 </head>
 <body class="background">
 	<div class="col-md-12 col-sm-12 col-xs-12">
+		<form method="post" action="<spring:url value="/houseOwner/insert"/>" >
 		<div class="x_panel">
 			<div class="x_title">
 				<h2>HOUSE HOLD DETAIL</h2>
@@ -17,10 +18,8 @@
 					</li>
 				</ul>
 
-				<form method="post"
-					action="<spring:url value="/student/studentRegistration"></spring:url>"
-					id="form"></form>
-				<button type="submit" class="btn btn-success " form="form">
+			
+				<button type="submit" class="btn btn-success ">
 					<i class="fa fa-check"></i> SUBMIT
 				</button>
 				<div class="clearfix"></div>
@@ -46,7 +45,7 @@
 										<td><h6>
 												<strong>House Owner ID</strong>
 											</h6> <input type='text' class='form-control'
-											name='house_owener_id'></td>
+											name='house_owner_id'></td>
 										<td><h6>
 												<strong>First Name</strong>
 											</h6> <input type='text' class='form-control'
@@ -91,12 +90,14 @@
 											</h6> <select class='form-control'
 											name='permanent_address_district'>
 											<option value="">Select District</option>
+												<option value="27">Bhaktapur</option>
 											</select></td>
 										<td><h6>
 												<strong>Municipality/ Vilage Council</strong>
 											</h6> <select class='form-control'
 											name='permanent_address_mun_vc'>
 											<option value="">Select Muncipality</option>
+												<option value="32703">Madhyepur Thimi</option>
 											</select></td>
 									</tr>
 									<tr>
@@ -105,6 +106,15 @@
 											</h6> <select class='form-control'
 											name='permanent_address_ward_no'>
 											<option value="">Select Ward No</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
 											</select>
 											</td>
 										<td><h6>
@@ -113,18 +123,21 @@
 											name='temporary_address'></td>
 										<td><h6>
 												<strong>Gender</strong>
-											</h6> <input type='text' class='form-control' name='gender'></td>
+											</h6> <select class='form-control' name='gender'>
+											<option value="m">Male</option>
+												<option value="f">Female</option>
+											</select></td>
 									</tr>
 									<tr>
 										<td><h6>
 												<strong>Date Of Birth (Nepali YYYYMMDD)</strong>
-											</h6> <input type='text' class='form-control' name='DOB_nep'></td>
+											</h6> <input type='text' class='form-control' name='dob_nep'></td>
 										<td><h6>
 												<strong>Phone Number</strong>
-											</h6> <input type='text' class='form-control' name='Phone_number '></td>
+											</h6> <input type='text' class='form-control' name='phone_number '></td>
 										<td><h6>
 												<strong>Mobile Number</strong>
-											</h6> <input type='text' class='form-control' name='Mobile_no'></td>
+											</h6> <input type='text' class='form-control' name='mobile_no'></td>
 									</tr>
 									<tr>
 										<td><h6>
@@ -135,6 +148,9 @@
 											</h6> <select class='form-control'
 											name='education_status'>
 											<option>Select Education Status</option>
+											<c:forEach var="edu" items="${edu}">
+											<option value="${edu.edu_id }">${edu.education_type }</option>
+											</c:forEach>
 											</select></td>
 										<td><h6>
 												<strong>Occupation</strong>
@@ -243,7 +259,9 @@
 				</div>
 
 			</div>
+			
 		</div>
+		</form>
 	</div>
 	<script>
 		function nepaliToEnglish(nepalidate, englishdate) {

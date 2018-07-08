@@ -73,7 +73,8 @@ public class NavigationController {
 	}
 	
 	@RequestMapping(value = "/houseHoldDetail")
-	public String houseHoldDetail(){
+	public String houseHoldDetail(Model model){
+		model.addAttribute("edu",educationDetailDao.getEducationDetail());
 		return "houseHoldDetail/insert";
 	}
 	

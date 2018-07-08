@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 
 import com.nagarpalika.dao.HouseOwnerDao;
 import com.nagarpalika.model.HouseHoldDetailModel;
+import com.nagarpalika.model.HouseOwnerDetailModel;
 
 @Repository
 public class HouseOwnerDaoImpl implements HouseOwnerDao {
@@ -41,6 +42,14 @@ public class HouseOwnerDaoImpl implements HouseOwnerDao {
 			return h;
 		}
 		
+	}
+
+	@Override
+	public void insertHouseOwner(HouseOwnerDetailModel hm) {
+
+		String sql="insert into house_owner_detail(house_owner_id, house_owner_first_name, house_owner_middle_name,house_owner_last_name,marital_status,grand_father_name,father_name,spouse_name,house_number,permanent_address,permanent_address_district,permanent_address_mun_vc,permanent_address_ward_no,	temporary_address,gender,dob_nep,phone_number, mobile_no,email,education_status,occupation_id,disable_type,pan_number,record_status,company_id,branch_id,inputter,authorizer,date_time,curr_number)"
+				+ "values(:house_owner_id,:house_owner_first_name,:house_owner_middle_name,:house_owner_last_name,:marital_status,:grand_father_name,:father_name,:spouse_name,:house_number,:permanent_address,:permanent_address_district,:permanent_address_mun_vc,:permanent_address_ward_no,:temporary_address,:gender,:dob_nep,:phone_number,:mobile_no,:email,:education_status,:occupation_id,:disable_type,:pan_number,:record_status,:company_id,:branch_id,:inputter,:authorizer,:date_time,:curr_number)";
+		template.update(sql, new BeanPropertySqlParameterSource(hm));
 	}
 
 }

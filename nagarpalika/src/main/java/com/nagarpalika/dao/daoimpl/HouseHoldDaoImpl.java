@@ -22,7 +22,7 @@ public class HouseHoldDaoImpl implements HouseHoldDao {
 	}
 	
 	public boolean insertHouseHold(HouseHoldDetailModel hm){
-		String query ="insert into";
+		
 		
 		
 		
