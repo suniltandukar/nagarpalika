@@ -54,7 +54,7 @@ public class FamilyDetailDaoImpl implements FamilyDetailDao {
 	}
 	
 	public void update(FamilyDetailModel f, String id){
-		String query="update family_detail set house_owner_id= :house_owner_id, house_owner_fname= :house_owner_fname, house_owner_mname= :house_owner_mname, house_owner_lname = :house_owner_lname, relation= :relation, marital_status= :marital_status, dob_nep= :dob_nep, disable_type = :disable_type, occupation_id= :occupation_id, gender= :gender where family_detail_id='"+id+"'";
+		String query="update family_detail set house_owner_id= :house_owner_id, house_owner_fname= :house_owner_fname, house_owner_mname= :house_owner_mname, house_owner_lname = :house_owner_lname, relation= :relation, marital_status= :marital_status, dob_nep= :dob_nep, disable_type = :disable_type, occupation_id= :occupation_id, gender= :gender, date_time=now() where family_detail_id='"+id+"'";
 		template.update(query, new BeanPropertySqlParameterSource(f));
 	}
 	

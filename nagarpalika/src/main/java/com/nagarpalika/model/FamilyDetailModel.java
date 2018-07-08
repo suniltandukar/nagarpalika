@@ -1,6 +1,9 @@
 package com.nagarpalika.model;
 
+import org.springframework.web.bind.annotation.SessionAttributes;
+
 public class FamilyDetailModel {
+	
 private int family_detail_id;
 	private String house_owner_id;
 	
@@ -16,9 +19,6 @@ private int family_detail_id;
 	date_time,
 	curr_number;
 	private OccupationModel occupationModel;
-
-	
-	
 	
 	public int getFamily_detail_id() {
 		return family_detail_id;
