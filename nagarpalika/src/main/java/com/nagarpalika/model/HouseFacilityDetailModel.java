@@ -1,13 +1,9 @@
 package com.nagarpalika.model;
 
 import javax.annotation.Generated;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
-@Entity
 public class HouseFacilityDetailModel {
 	
-	@Id
 	private int house_owner_id_hibernate;
 	
 	private String house_owner_id,
