@@ -2,9 +2,9 @@ package com.nagarpalika.model;
 
 public class HouseOwnerDetailModel {
 	private String house_owner_id,
-	house_owner_first_name,
-	house_owner_middle_name,
-	house_owner_last_name,
+	house_owner_fname,
+	house_owner_mname,
+	house_owner_lname,
 	marital_status,
 	grand_father_name,
 	father_name,
@@ -33,36 +33,36 @@ public class HouseOwnerDetailModel {
 	curr_number;
 
 
+	public String getHouse_owner_fname() {
+		return house_owner_fname;
+	}
+
+	public void setHouse_owner_fname(String house_owner_fname) {
+		this.house_owner_fname = house_owner_fname;
+	}
+
+	public String getHouse_owner_mname() {
+		return house_owner_mname;
+	}
+
+	public void setHouse_owner_mname(String house_owner_mname) {
+		this.house_owner_mname = house_owner_mname;
+	}
+
+	public String getHouse_owner_lname() {
+		return house_owner_lname;
+	}
+
+	public void setHouse_owner_lname(String house_owner_lname) {
+		this.house_owner_lname = house_owner_lname;
+	}
+
 	public String getHouse_owner_id() {
 		return house_owner_id;
 	}
 
 	public void setHouse_owner_id(String house_owner_id) {
 		this.house_owner_id = house_owner_id;
-	}
-
-	public String getHouse_owner_first_name() {
-		return house_owner_first_name;
-	}
-
-	public void setHouse_owner_first_name(String house_owner_first_name) {
-		this.house_owner_first_name = house_owner_first_name;
-	}
-
-	public String getHouse_owner_middle_name() {
-		return house_owner_middle_name;
-	}
-
-	public void setHouse_owner_middle_name(String house_owner_middle_name) {
-		this.house_owner_middle_name = house_owner_middle_name;
-	}
-
-	public String getHouse_owner_last_name() {
-		return house_owner_last_name;
-	}
-
-	public void setHouse_owner_last_name(String house_owner_last_name) {
-		this.house_owner_last_name = house_owner_last_name;
 	}
 
 	public String getMarital_status() {

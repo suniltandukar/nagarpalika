@@ -19,9 +19,15 @@
 				</ul>
 
 			
-				<button type="submit" class="btn btn-success ">
-					<i class="fa fa-check"></i> SUBMIT
-				</button>
+				
+				<button class="btn btn-info" type="button" id="validate">Validate</button>
+								<button class="btn btn-primary" type="reset">Reset</button>
+								<c:if test="${empty ho.house_owner_id }">
+								<input type="submit" class="btn btn-success" value="Submit">
+								</c:if>
+								<c:if test="${not empty ho.house_owner_id }">
+								<input type="submit" class="btn btn-primary" value="Update">
+								</c:if>
 				<div class="clearfix"></div>
 
 			</div>
@@ -45,59 +51,60 @@
 										<td><h6>
 												<strong>House Owner ID</strong>
 											</h6> <input type='text' class='form-control'
-											name='house_owner_id'></td>
+											name='house_owner_id' value="${ho.house_owner_id }"></td>
+											
 										<td><h6>
 												<strong>First Name</strong>
 											</h6> <input type='text' class='form-control'
-											name='house_owner_first_name'></td>
+											name='house_owner_fname' value="${ho.house_owner_fname }"></td>
 										<td><h6>
 												<strong>Middle Name</strong>
 											</h6> <input type='text' class='form-control'
-											name='house_owner_middle_name'></td>
+											name='house_owner_mname' value="${ho.house_owner_mname }"></td>
 									</tr>
 									<tr>
 										<td><h6>
 												<strong>Last Name</strong>
 											</h6> <input type='text' class='form-control'
-											name='house_owner_last_name'></td>
+											name='house_owner_lname' value="${ho.house_owner_lname }"></td>
 										<td><h6>
 												<strong>Marital Status (Y/N)</strong>
 											</h6> <input type='text' class='form-control'
-											name='marital_status'></td>
+											name='marital_status' value="${ho.marital_status }"></td>
 										<td><h6>
 												<strong>Grand Father's Name</strong>
 											</h6> <input type='text' class='form-control'
-											name='grand_father_name'></td>
+											name='grand_father_name' value="${ho.grand_father_name}"></td>
 									</tr>
 									<tr>
 										<td><h6>
 												<strong>Father's Name</strong>
-											</h6> <input type='text' class='form-control' name='father_name'></td>
+											</h6> <input type='text' class='form-control' name='father_name' value="${ho.father_name }"></td>
 										<td><h6>
 												<strong>Spouse Name</strong>
-											</h6> <input type='text' class='form-control' name='spouse_name'></td>
+											</h6> <input type='text' class='form-control' name='spouse_name'  value="${ho.spouse_name }"></td>
 										<td><h6>
 												<strong>House Number</strong>
-											</h6> <input type='text' class='form-control' name='house_number'></td>
+											</h6> <input type='text' class='form-control' name='house_number' value="${ho.house_number }"></td>
 									</tr>
 									<tr>
 										<td><h6>
 												<strong>Permanent Address (Now)</strong>
 											</h6> <input type='text' class='form-control'
-											name='permanent_address'></td>
+											name='permanent_address' value="${ho.permanent_address }"></td>
 										<td><h6>
 												<strong>District</strong>
 											</h6> <select class='form-control'
 											name='permanent_address_district'>
 											<option value="">Select District</option>
-												<option value="27">Bhaktapur</option>
+												<option value="27" selected>Bhaktapur</option>
 											</select></td>
 										<td><h6>
 												<strong>Municipality/ Vilage Council</strong>
 											</h6> <select class='form-control'
 											name='permanent_address_mun_vc'>
 											<option value="">Select Muncipality</option>
-												<option value="32703">Madhyepur Thimi</option>
+												<option value="32703" selected>Madhyepur Thimi</option>
 											</select></td>
 									</tr>
 									<tr>
@@ -120,7 +127,7 @@
 										<td><h6>
 												<strong>Temporary Address</strong>
 											</h6> <input type='text' class='form-control'
-											name='temporary_address'></td>
+											name='temporary_address' value="${ho.temporary_address }"></td>
 										<td><h6>
 												<strong>Gender</strong>
 											</h6> <select class='form-control' name='gender'>
@@ -131,18 +138,18 @@
 									<tr>
 										<td><h6>
 												<strong>Date Of Birth (Nepali YYYYMMDD)</strong>
-											</h6> <input type='text' class='form-control' name='dob_nep'></td>
+											</h6> <input type='text' class='form-control' name='dob_nep' value="${ho.dob_nep}"></td>
 										<td><h6>
 												<strong>Phone Number</strong>
-											</h6> <input type='text' class='form-control' name='phone_number '></td>
+											</h6> <input type='text' class='form-control' name='phone_number ' value="${ho.phone_number }"></td>
 										<td><h6>
 												<strong>Mobile Number</strong>
-											</h6> <input type='text' class='form-control' name='mobile_no'></td>
+											</h6> <input type='text' class='form-control' name='mobile_no' value="${ho.mobile_no }"></td>
 									</tr>
 									<tr>
 										<td><h6>
 												<strong>E_mail Address</strong>
-											</h6> <input type='text' class='form-control' name='email'></td>
+											</h6> <input type='text' class='form-control' name='email' value="${ho.email }"></td>
 										<td><h6>
 												<strong>Education Status</strong>
 											</h6> <select class='form-control'
@@ -154,7 +161,7 @@
 											</select></td>
 										<td><h6>
 												<strong>Occupation</strong>
-											</h6> <select class='form-control' name='occupation_id'>
+											</h6> <select class='form-control' name='occupation_id' >
 											<option value="">Select Occupation</option>
 											</select></td>
 									</tr>

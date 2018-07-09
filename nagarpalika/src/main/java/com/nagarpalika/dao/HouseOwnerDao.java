@@ -9,6 +9,8 @@ public interface HouseOwnerDao {
 	public List<HouseHoldDetailModel> findAll();
 	
 	public void insertHouseOwner(HouseOwnerDetailModel hm);
+
+	public HouseOwnerDetailModel editHouseOwner(String id);
 	
 
 }

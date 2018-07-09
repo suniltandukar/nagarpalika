@@ -69,6 +69,8 @@
 
 										<li><a href="nav/houseHoldDetail" target="iframe_a">
 												New Detail </a></li>
+										<li><a href="nav/viewHouseHoldDetail" target="iframe_a">
+												Amend Detail </a></li>
 
 									</ul></li>
 							</ul>
