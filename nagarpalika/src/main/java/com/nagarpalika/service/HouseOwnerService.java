@@ -11,4 +11,8 @@ public interface HouseOwnerService {
 	public void insertHouseOwner(HouseOwnerDetailModel hm);
 
 	public HouseOwnerDetailModel editHouseOwner(String id);
+
+	public void updateHouseOwner(String id, HouseOwnerDetailModel hm);
+
+	public void deleteHouseOwner(String id);
 }

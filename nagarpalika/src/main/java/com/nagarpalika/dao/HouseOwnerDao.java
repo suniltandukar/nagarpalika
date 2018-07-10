@@ -13,4 +13,7 @@ public interface HouseOwnerDao {
 	public HouseOwnerDetailModel editHouseOwner(String id);
 	
 
+	public void updateHouseOwner(String id, HouseOwnerDetailModel hm);
+
+	public void deleteHouseOwner(String id);
 }

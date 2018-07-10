@@ -29,5 +29,15 @@ public class HouseOwnerServiceImpl implements HouseOwnerService {
 		return houseOwnerDao.editHouseOwner(id);
 		
 	}
+	
+	public void updateHouseOwner(String id, HouseOwnerDetailModel hm)
+	{
+		 houseOwnerDao.updateHouseOwner(id, hm);
+	}
+
+	public void deleteHouseOwner(String id) {
+
+		houseOwnerDao.deleteHouseOwner(id);
+	}
 
 }
