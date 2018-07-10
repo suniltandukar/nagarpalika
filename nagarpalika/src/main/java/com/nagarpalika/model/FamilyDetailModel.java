@@ -1,14 +1,10 @@
 package com.nagarpalika.model;
 
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 public class FamilyDetailModel {
 	
 private int family_detail_id;
-	private String house_owner_id;
-	
-	private String house_owner_fname, house_owner_mname, house_owner_lname;
-	private String relation,
+	private String house_owner_fname, house_owner_mname, house_owner_lname,relation,
 	marital_status,
 	dob_nep,
 	disable_type,
@@ -19,6 +15,7 @@ private int family_detail_id;
 	date_time,
 	curr_number;
 	private OccupationModel occupationModel;
+	private HouseOwnerDetailModel houseOwnerDetailModel;
 	
 	public int getFamily_detail_id() {
 		return family_detail_id;
@@ -26,14 +23,6 @@ private int family_detail_id;
 
 	public void setFamily_detail_id(int family_detail_id) {
 		this.family_detail_id = family_detail_id;
-	}
-
-	public String getHouse_owner_id() {
-		return house_owner_id;
-	}
-
-	public void setHouse_owner_id(String house_owner_id) {
-		this.house_owner_id = house_owner_id;
 	}
 
 	public String getHouse_owner_fname() {
@@ -147,6 +136,14 @@ private int family_detail_id;
 
 	public void setOccupationModel(OccupationModel occupationModel) {
 		this.occupationModel = occupationModel;
+	}
+
+	public HouseOwnerDetailModel getHouseOwnerDetailModel() {
+		return houseOwnerDetailModel;
+	}
+
+	public void setHouseOwnerDetailModel(HouseOwnerDetailModel houseOwnerDetailModel) {
+		this.houseOwnerDetailModel = houseOwnerDetailModel;
 	}
 	
 	

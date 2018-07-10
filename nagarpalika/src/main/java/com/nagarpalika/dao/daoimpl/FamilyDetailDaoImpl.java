@@ -33,7 +33,7 @@ public class FamilyDetailDaoImpl implements FamilyDetailDao {
 		}
 	
 	public void save(FamilyDetailModel f){
-		String query="insert into family_detail (house_owner_id, house_owner_fname, house_owner_mname, house_owner_lname, relation, marital_status, dob_nep ,disable_type, occupation_id, gender, date_time) values ( :house_owner_id, :house_owner_fname, :house_owner_mname, :house_owner_lname, :relation, :marital_status, :dob_nep , :disable_type, :occupation_id, :gender, now())";
+		String query="insert into family_detail (house_owner_id, house_owner_fname, house_owner_mname, house_owner_lname, relation, marital_status, dob_nep ,disable_type, occupation_id, gender, date_time) values ( :houseOwnerDetailModel.house_owner_id, :house_owner_fname, :house_owner_mname, :house_owner_lname, :relation, :marital_status, :dob_nep , :disable_type, :occupation_id, :gender, now())";
 		template.update(query, new BeanPropertySqlParameterSource(f));
 	}
 

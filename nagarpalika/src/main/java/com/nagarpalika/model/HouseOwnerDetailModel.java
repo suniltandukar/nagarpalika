@@ -1,7 +1,7 @@
 package com.nagarpalika.model;
 
 public class HouseOwnerDetailModel {
-	private String house_owener_id,
+	private String house_owner_id,
 	house_owner_first_name,
 	house_owner_middle_name,
 	house_owner_last_name,
@@ -32,12 +32,13 @@ public class HouseOwnerDetailModel {
 	date_time,
 	curr_number;
 
-	public String getHouse_owener_id() {
-		return house_owener_id;
+	
+	public String getHouse_owner_id() {
+		return house_owner_id;
 	}
 
-	public void setHouse_owener_id(String house_owener_id) {
-		this.house_owener_id = house_owener_id;
+	public void setHouse_owner_id(String house_owner_id) {
+		this.house_owner_id = house_owner_id;
 	}
 
 	public String getHouse_owner_first_name() {

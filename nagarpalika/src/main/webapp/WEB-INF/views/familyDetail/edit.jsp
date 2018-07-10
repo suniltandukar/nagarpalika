@@ -10,6 +10,12 @@ h5 {
 	font-size: 80%;
 	font-weight: bold;
 }
+.alert{
+ position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    }
 </style>
 </head>
 <body class="background">
@@ -48,6 +54,7 @@ h5 {
 											</h6> <select class='form-control'
 											name='house_owner_id'>
 											<option value="">Select Owner</option>
+											<option value="" selected>${fd.houseOwnerDetailModel.house_owner_id }</option>
 											<c:forEach items="${houseOwner }" var="h">
 											<option value="${h.house_owner_id }">${h.house_owner_id }/${h.house_owner_fname } ${h.house_owner_mname } ${h.house_owner_lname }</option>
 											</c:forEach>
@@ -125,6 +132,9 @@ h5 {
 	})
 	$("form").submit(function(){
 		return confirm("Confirm Submit?");
+	});
+	$(".alert").delay(2000).slideUp(200, function() {
+		$(this).alert('close');
 	});
 </script>
 </body>

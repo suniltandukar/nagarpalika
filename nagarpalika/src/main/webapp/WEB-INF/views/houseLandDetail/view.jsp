@@ -6,7 +6,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
 </head>
 <body class="background">
 	<div class="col-md-12 col-sm-12 col-xs-12">
@@ -14,7 +13,7 @@
 			<div class="x_panel">
 				
 					<div class="x_title">
-						<h2>FAMILY DETAIL</h2>
+						<h2>HOUSE AND LAND DETAIL</h2>
 						<div class="col-md-4 col-sm-4 col-xs-12 pull-right"></div>
 						<div class="clearfix"></div>
 					</div>
@@ -23,23 +22,23 @@
 					<thead>
 						<tr>
 							<th>House Owner Id</th>
-							<th>Father Name</th>
-							<th>Relation</th>
-							<th>Marital Status</th>
-							<th>DOB (Nep)</th>
+							<th>Land and House ID</th>
+							<th>House Number</th>
+							<th>Plot Number</th>
+							<th>Ownership Type</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach items="${familyDetail}" var="f">
+					<c:forEach items="${houseLandDetail}" var="h">
 						<tr>
-							<td>${f.houseOwnerDetailModel.house_owner_id }</td>
-							<td>${f.house_owner_fname }</td>
-							<td>${f.relation }</td>
-							<td>${f.marital_status }</td>
-							<td>${f.dob_nep }</td>
+						<td>${h.houseOwnerDetailModel.house_owner_id }</td>
+							<td>${h.land_house_id }</td>
+							<td>${h.house_number }</td>
+							<td>${h.plot_num}</td>
+							<td>${h.ownership_type }</td>
 							
-							<td><a href="<spring:url value="/familyDetail/edit/${f.family_detail_id }"/>">Edit</a></td>
+							<td><a href="<spring:url value="/houseLand/edit/${h.house_and_land_detail_id }"/>">Edit</a></td>
 							
 						</tr>
 						</c:forEach>

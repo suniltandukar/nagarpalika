@@ -10,6 +10,12 @@ h5 {
 	font-size: 80%;
 	font-weight: bold;
 }
+.alert{
+ position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    }
 </style>
 </head>
 <body class="background">
@@ -23,17 +29,31 @@ h5 {
 
 					<div class="x_title">
 						<h2>HOUSE AND LAND DETAIL</h2>
-						<div class="col-md-4 col-sm-4 col-xs-12 pull-right"></div>
+						<div class="col-md-4 col-sm-4 col-xs-12 pull-right">
+						<div class="alert alert-success"><strong>${msg }</strong></div>
+						</div>
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
+						<div class="form-group">
+							<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+								<button class="btn btn-info" type="button" id="validate">Validate</button>
+								<button class="btn btn-primary" type="reset">Reset</button>
+								<input type="submit" class="btn btn-success" value="Submit">
+							</div>
+						</div>
 						<br />
 						<table class="table">
 							<tbody>
 								<tr>
 									<td><h6>
-											<strong>Owner Id</strong>
-										</h6> <input type='text' class='form-control' name='house_owner_id'></td>
+											<strong>Owner</strong>
+										</h6>  <select class='form-control' name='houseOwnerDetailModel.house_owner_id'>
+											<option value="">Select Owner</option>
+											<c:forEach items="${houseOwner }" var="h">
+												<option value="${h.house_owner_id }">${h.house_owner_id }/${h.house_owner_fname }
+													${h.house_owner_mname } ${h.house_owner_lname }</option>
+											</c:forEach></select></td>
 									<td><h6>
 											<strong>Land and House ID</strong>
 										</h6> <input type='text' class='form-control' name='land_house_id'></td>
@@ -44,13 +64,24 @@ h5 {
 								<tr>
 									<td><h6>
 											<strong>Ownership Type</strong>
-										</h6> <input type='text' class='form-control' name='ownership_type'></td>
+										</h6> <select class='form-control' name='ownership_type'>
+										<option value="">Select Ownership Type</option>
+										<option value="Single">Single</option>
+										<option value="Multiple">Multiple</option>
+										</select>
+										</td>
 									<td><h6>
 											<strong>House Number</strong>
-										</h6> <input type='text' class='form-control' name='house_number'></td>
+										</h6> <input type='text' class='form-control house_number' name='house_number'></td>
 									<td><h6>
 											<strong>Land Unit</strong>
-										</h6> <input type='text' class='form-control' name='land_unit'></td>
+										</h6> <select class='form-control' name='land_unit'>
+										<option value="">Select Land Unit</option>
+										<option value="Ropani">Ropani</option>
+										<option value="Bigha">Bigha</option>
+										<option value="Sq. Meter">Sq. Meter</option>
+										<option value="Sq. Feet">Sq. Feet</option>
+										</select></td>
 								</tr>
 								<tr>
 									<td><h6>
@@ -66,13 +97,22 @@ h5 {
 								<tr>
 									<td><h6>
 											<strong>District</strong>
-										</h6> <input type='text' class='form-control' name='district_uni'></td>
+										</h6> <select class='form-control' name='district_uni'>
+										<option value="27">Bhaktapur</option>
+										</select></td>
 									<td><h6>
 											<strong>Municipality/ Village council</strong>
-										</h6> <input type='text' class='form-control' name='mun_vc_uni'></td>
+										</h6> <select class='form-control' name='mun_vc_uni'>
+										<option value="32703">Madhyepur Thimi</option>
+										</select></td>
 									<td><h6>
 											<strong>Ward Number</strong>
-										</h6> <input type='text' class='form-control' name='ward_no_uni'></td>
+										</h6> <select class='form-control' name='ward_no_uni'>
+										<%int sn;
+										for(sn=1;sn<10;sn++){%>
+										<option value="<%=sn%>"><%=sn %></option>
+										<%} %>
+										</select></td>
 								</tr>
 								<tr>
 									<td><h6>
@@ -105,11 +145,21 @@ h5 {
 										</h6> <input type='text' class='form-control' name='tole'></td>
 									<td><h6>
 											<strong>House Construction Type</strong>
-										</h6> <input type='text' class='form-control'
-										name='house_construction_type'></td>
+										</h6> <select class='form-control'
+										name='house_construction_type'>
+										
+										<option value="">Select Construction Type</option>
+										<c:forEach items="${constructionType }" var="ct">
+										<option value="${ct.id }">${ct.type }</option>
+										</c:forEach>
+										</select></td>
 									<td><h6>
 											<strong>Used Status</strong>
-										</h6> <input type='text' class='form-control' name='used_status'></td>
+										</h6> <select class='form-control' name='used_status'>
+										<option value="">Select Used Status</option>
+										<option value="Self Used">Self Used</option>
+											<option value="Rented">Rented</option>
+										</select></td>
 								</tr>
 								<tr>
 									<td><h6>
@@ -122,8 +172,12 @@ h5 {
 										name='rented_floor_count'></td>
 									<td><h6>
 											<strong>House Area Unit</strong>
-										</h6> <input type='text' class='form-control'
-										name='house_area_unit'></td>
+										</h6> <select class='form-control'
+										name='house_area_unit'>
+										<option value="">Select Area Unit</option>
+										<option value="Sq. Feet">Sq. Feet</option>
+										<option value="Sq. Meter">Sq. Meter</option>
+										</select></td>
 								</tr>
 								<tr>
 									<td><h6>
@@ -143,28 +197,6 @@ h5 {
 											<strong>Construction Start Date</strong>
 										</h6> <input type='text' class='form-control'
 										name='construction_start_date'></td>
-									<td><h6>
-											<strong>Construction Completion Date</strong>
-										</h6> <input type='text' class='form-control'
-										name='construction_completion_date'></td>
-									<td><h6>
-											<strong>Construction Completion Municipality/
-												Village Council</strong>
-										</h6> <input type='text' class='form-control'
-										name='construction_completion_approval_date'></td>
-								</tr>
-								<tr>
-									<td><h6>
-											<strong>Completion Approved By</strong>
-										</h6> <input type='text' class='form-control'
-										name='completion_approved_by'></td>
-									<td><h6>
-											<strong>House Map Municipality/ Village Council</strong>
-										</h6> <input type='text' class='form-control'
-										name='house_map_prepared_by'></td>
-									<td><h6>
-											<strong>Current Number</strong>
-										</h6> <input type='text' class='form-control' name='curr_number'></td>
 								</tr>
 							</tbody>
 						</table>
@@ -179,6 +211,9 @@ h5 {
 	})
 	$("form").submit(function(){
 		return confirm("Confirm Submit?");
+	});
+	$(".alert").delay(2000).slideUp(200, function() {
+		$(this).alert('close');
 	});
 </script>
 </body>

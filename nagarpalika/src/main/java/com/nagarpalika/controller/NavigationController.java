@@ -1,5 +1,7 @@
 package com.nagarpalika.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +12,11 @@ import com.nagarpalika.dao.BranchDao;
 import com.nagarpalika.dao.DocumentTypeDao;
 import com.nagarpalika.dao.EducationDetailDao;
 import com.nagarpalika.dao.FamilyDetailDao;
+import com.nagarpalika.dao.HouseLandDetailDao;
 import com.nagarpalika.model.BranchModel;
+import com.nagarpalika.model.HouseLandDetailModel;
 import com.nagarpalika.service.FormDetailService;
+import com.nagarpalika.service.HouseConstructionTypeService;
 import com.nagarpalika.service.HouseOwnerService;
 import com.nagarpalika.service.OccupationService;
 import com.nagarpalika.service.RelationService;
@@ -43,6 +48,12 @@ public class NavigationController {
 	@Autowired
 	HouseOwnerService houseOwnerService;
 	
+	@Autowired
+	HouseConstructionTypeService houseConstructionTypeService;
+	
+	@Autowired
+	HouseLandDetailDao houseLandDetailDao;
+	
 	@RequestMapping(value = "/houseOwnerDetail")
 	public String houseOwnerDetail(){
 		return "form/houseOwnerDetail";
@@ -50,11 +61,13 @@ public class NavigationController {
 	
 	@ModelAttribute
 	public void getAttribute(Model model, @ModelAttribute("msg") String msg){
+		if(msg!=null){
 		model.addAttribute("msg",msg);
+		}
+		model.addAttribute("houseOwner",houseOwnerService.findAll());
 	}
 	@RequestMapping(value = "/familyDetail")
 	public String familyDetail(Model model){
-		model.addAttribute("houseOwner",houseOwnerService.findAll());
 		model.addAttribute("occupation",occupationService.findAll());
 		model.addAttribute("relation",relationService.findAll());
 		model.addAttribute("disablity",formDetailService.getDisableType());
@@ -78,8 +91,15 @@ public class NavigationController {
 	}
 	
 	@RequestMapping(value = "/houseLandDetail")
-	public String houseLandDetail(){
+	public String houseLandDetail(Model model){
+		model.addAttribute("constructionType",houseConstructionTypeService.findAll());
 		return "houseLandDetail/insert";
+	}
+	@RequestMapping(value = "/viewHouseLandDetail")
+	public String viewHouseLandDetail(Model model){
+		List<HouseLandDetailModel> houseLandDetail = houseLandDetailDao.findAll(); 
+		model.addAttribute("houseLandDetail", houseLandDetail);
+		return "houseLandDetail/view";
 	}
 	
 

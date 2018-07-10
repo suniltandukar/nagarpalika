@@ -10,6 +10,12 @@ h5 {
 	font-size: 80%;
 	font-weight: bold;
 }
+.alert{
+ position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    }
 </style>
 </head>
 <body class="background">
@@ -26,7 +32,7 @@ h5 {
 						<h2>FAMILY DETAIL</h2>
 						
 						<div class="col-md-4 col-sm-4 col-xs-12 pull-right">
-						
+						<div class="alert alert-success"><strong>${msg }</strong></div>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -45,7 +51,7 @@ h5 {
 								<tr>
 									<td><h6>
 											<strong>Owner</strong>
-										</h6> <select class='form-control' name='house_owner_id'>
+										</h6> <select class='form-control' name='houseOwnerDetailModel.house_owner_id'>
 											<option value="">Select Owner</option>
 											<c:forEach items="${houseOwner }" var="h">
 												<option value="${h.house_owner_id }">${h.house_owner_id }/${h.house_owner_fname }
@@ -123,9 +129,7 @@ h5 {
 				</form:form>
 			</div>
 		</div>
-		<div class="col-md-4 col-xs-12">
-		<div class="alert alert-success"><strong>${msg }</strong></div>
-		</div>
+		
 	</div>
 	
 	<script>

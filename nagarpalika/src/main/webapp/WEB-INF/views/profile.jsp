@@ -90,6 +90,8 @@
 
 										<li><a href="nav/houseLandDetail" target="iframe_a">
 												New Detail </a></li>
+												<li><a href="nav/viewHouseLandDetail" target="iframe_a">
+												View Detail </a></li>
 
 									</ul></li>
 							</ul>

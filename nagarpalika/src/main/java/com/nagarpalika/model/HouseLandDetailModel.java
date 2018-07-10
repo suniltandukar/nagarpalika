@@ -1,47 +1,22 @@
 package com.nagarpalika.model;
 
 public class HouseLandDetailModel {
-	private String house_owener_id,
-	land_house_id,
-	family_id,
-	ownership_type,
-	house_number,
-	land_unit,
-	land_size,
-	plot_num,
-	sheet_num,
-	district_uni,
-	mun_vc_uni,
-	ward_no_uni,
-	moth_num_uni,
-	kitta_num_uni,
-	land_legacy_address,
-	land_current_district,
-	land_current_mun_vc,
-	ward_no,
-	tole,
-	house_type,
-	residential_status,
-	house_floor_count,
-	house_floor_rented_count,
-	house_area_unit,
-	house_area,
-	map_application_date,
-	map_approved_date,
-	construction_start_date,
-	construction_completion_date,
-	construction_completion_approval_date,
-	completion_approved_by,
-	house_map_prepared_by,
-	record_status,
-	company_id,
-	branch_id,
-	inputter,
-	authorizer,
-	date_time,
-	curr_number,
-	house_construction_type,
-	used_status;
+	private String house_and_land_detail_id, land_house_id, family_id, ownership_type, house_number, land_unit,
+			land_size, plot_num, sheet_num, district_uni, mun_vc_uni, ward_no_uni, moth_num_uni, kitta_num_uni,
+			land_legacy_address, land_current_district, land_current_mun_vc, ward_no, tole, house_type,
+			residential_status, house_floor_count, rented_floor_count, house_area_unit, house_area,
+			map_application_date, map_approved_date, construction_start_date, construction_completion_date,
+			construction_completion_approval_date, completion_approved_by, house_map_prepared_by, record_status,
+			company_id, branch_id, inputter, authorizer, date_time, curr_number, house_construction_type, used_status;
+	private HouseOwnerDetailModel houseOwnerDetailModel;
+
+	public String getHouse_and_land_detail_id() {
+		return house_and_land_detail_id;
+	}
+
+	public void setHouse_and_land_detail_id(String house_and_land_detail_id) {
+		this.house_and_land_detail_id = house_and_land_detail_id;
+	}
 
 	public String getUsed_status() {
 		return used_status;
@@ -57,14 +32,6 @@ public class HouseLandDetailModel {
 
 	public void setHouse_construction_type(String house_construction_type) {
 		this.house_construction_type = house_construction_type;
-	}
-
-	public String getHouse_owener_id() {
-		return house_owener_id;
-	}
-
-	public void setHouse_owener_id(String house_owener_id) {
-		this.house_owener_id = house_owener_id;
 	}
 
 	public String getLand_house_id() {
@@ -235,12 +202,14 @@ public class HouseLandDetailModel {
 		this.house_floor_count = house_floor_count;
 	}
 
-	public String getHouse_floor_rented_count() {
-		return house_floor_rented_count;
+	
+
+	public String getRented_floor_count() {
+		return rented_floor_count;
 	}
 
-	public void setHouse_floor_rented_count(String house_floor_rented_count) {
-		this.house_floor_rented_count = house_floor_rented_count;
+	public void setRented_floor_count(String rented_floor_count) {
+		this.rented_floor_count = rented_floor_count;
 	}
 
 	public String getHouse_area_unit() {
@@ -370,8 +339,13 @@ public class HouseLandDetailModel {
 	public void setCurr_number(String curr_number) {
 		this.curr_number = curr_number;
 	}
-	
-	
 
+	public HouseOwnerDetailModel getHouseOwnerDetailModel() {
+		return houseOwnerDetailModel;
+	}
+
+	public void setHouseOwnerDetailModel(HouseOwnerDetailModel houseOwnerDetailModel) {
+		this.houseOwnerDetailModel = houseOwnerDetailModel;
+	}
 
 }
