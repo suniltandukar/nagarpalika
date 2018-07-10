@@ -15,6 +15,8 @@ import com.nagarpalika.dao.FamilyDetailDao;
 import com.nagarpalika.dao.HouseLandDetailDao;
 import com.nagarpalika.model.BranchModel;
 import com.nagarpalika.model.HouseLandDetailModel;
+import com.nagarpalika.model.HouseHoldDetailModel;
+import com.nagarpalika.model.HouseOwnerDetailModel;
 import com.nagarpalika.service.FormDetailService;
 import com.nagarpalika.service.HouseConstructionTypeService;
 import com.nagarpalika.service.HouseOwnerService;
@@ -86,7 +88,9 @@ public class NavigationController {
 	}
 	
 	@RequestMapping(value = "/houseHoldDetail")
-	public String houseHoldDetail(){
+	public String houseHoldDetail(Model model, @ModelAttribute("ho") HouseOwnerDetailModel hm){
+		model.addAttribute("edu",educationDetailDao.getEducationDetail());
+		model.addAttribute("ho",hm);
 		return "houseHoldDetail/insert";
 	}
 	
@@ -138,6 +142,17 @@ public class NavigationController {
 		return "settings/branch/insert";
 	}
 	
+	@RequestMapping(value="/viewHouseHoldDetail")
+	public String viewHouseHoldDetail(Model model)
+	{
+		List<HouseHoldDetailModel> list=houseOwnerService.findAll();
+		model.addAttribute("list",list);
+		return "houseHoldDetail/view";
+	
+	
+}
+	
+
 	
 	/*@RequestMapping(value="/")
 	public String (Model model)

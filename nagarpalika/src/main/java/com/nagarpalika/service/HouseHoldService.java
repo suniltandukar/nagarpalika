@@ -1,9 +1,9 @@
 package com.nagarpalika.service;
 
-import com.nagarpalika.model.HouseHoldDetailModel;
+import com.nagarpalika.model.HouseOwnerDetailModel;
 
 public interface HouseHoldService {
 
-	void insertHouseHold(HouseHoldDetailModel hm);
+	void insertHouseHold(HouseOwnerDetailModel hm);
 
 }
