@@ -16,6 +16,7 @@ h5 {
     top: 0px;
     z-index: 1;
     }
+  
 </style>
 </head>
 <body class="background">
@@ -31,9 +32,11 @@ h5 {
 					<div class="x_title">
 						<h2>FAMILY DETAIL</h2>
 						
-						<div class="col-md-4 col-sm-4 col-xs-12 pull-right">
-						<div class="alert alert-success"><strong>${msg }</strong></div>
+						<c:if test="${not empty msg }">
+							<div class="col-md-4 col-sm-4 col-xs-12 pull-right">
+						<div class="alert alert-danger"><strong>${msg }</strong></div>
 						</div>
+						</c:if>
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
@@ -82,15 +85,15 @@ h5 {
 									<td><h6>
 											<strong>First Name</strong>
 										</h6> <input type='text' class='form-control'
-										name='house_owner_fname'></td>
+										name='fname'></td>
 									<td><h6>
 											<strong>Middle Name</strong>
 										</h6> <input type='text' class='form-control'
-										name='house_owner_mname'></td>
+										name='mname'></td>
 									<td><h6>
 											<strong>Last Name</strong>
 										</h6> <input type='text' class='form-control'
-										name='house_owner_lname'></td>
+										name='lname'></td>
 								</tr>
 								<tr>
 
@@ -98,8 +101,8 @@ h5 {
 											<strong>Marital Status</strong>
 										</h6> <select class='form-control' name='marital_status'>
 											<option value="">Select Marital Status</option>
-											<option value="Married">Married</option>
-											<option value="Unmarried">Unmarried</option>
+											<option value="y">Yes</option>
+											<option value="n">No</option>
 									</select></td>
 									<td><h6>
 											<strong>Date of birth (Nepali YYYYMMDD)</strong>
@@ -108,15 +111,15 @@ h5 {
 								<tr>
 									<td><h6>
 											<strong>Occupation</strong>
-										</h6> <select class='form-control' name='occupation_id'>
-											<option value="1">Select Occupation</option>
+										</h6> <select class='form-control' name='occupationModel.occupation_id'>
+											<option value="">Select Occupation</option>
 											<c:forEach items="${occupation }" var="o">
 												<option value="${o.occu_id }">${o.occupation_type }</option>
 											</c:forEach>
 									</select></td>
 									<td><h6>
 											<strong>Disability if any</strong>
-										</h6> <select class='form-control' name='disable_type'>
+										</h6> <select class='form-control' name='disableTypeModel.disable_type'>
 											<option value="">Select Disability</option>
 											<c:forEach items="${disablity }" var="d">
 												<option value="${d.id }">${d.typehead }</option>

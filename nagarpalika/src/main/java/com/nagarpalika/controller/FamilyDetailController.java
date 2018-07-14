@@ -42,34 +42,35 @@ public class FamilyDetailController {
 	FormDetailService formDetailService;
 	
 	@RequestMapping(value="/save")
-	@ResponseBody
-	public ModelAndView save(@ModelAttribute FamilyDetailModel familyDetail, BindingResult result){
+	public String save(@ModelAttribute FamilyDetailModel familyDetail, RedirectAttributes attributes, Model model){
 		
-		if(result.hasErrors()){
-			ModelAndView model1 = new ModelAndView("familyDetail/insert");
-			return model1;
-		}
 		familyDetailService.save(familyDetail);
-		familyDetail.setFamily_detail_id(familyDetailService.findMax());
-		int family_detail_id = familyDetail.getFamily_detail_id();
-		ModelAndView model1 = new ModelAndView(new RedirectView("edit/"+family_detail_id+""));
-		model1.addObject("fd", familyDetail);
 		
-		return model1;
+		int max_id = familyDetailService.findMax();
+		familyDetail.setFamily_detail_id(max_id);
+		
+		int family_detail_id = familyDetail.getFamily_detail_id();
+		
+		model.addAttribute("fd", familyDetail);
+		attributes.addAttribute("msg","Save Successful!");
+		return "redirect:/familyDetail/edit/"+family_detail_id+"";
 		
 	}
 	@ModelAttribute
-	public void addAttributes(Model model){
+	public void addAttributes(@ModelAttribute("msg") String msg, Model model){
 		model.addAttribute("houseOwner",houseOwnerService.findAll());
 		model.addAttribute("occupation",occupationService.findAll());
 		model.addAttribute("relation",relationService.findAll());
 		model.addAttribute("disablity",formDetailService.getDisableType());
+		if(msg!=null){
+			model.addAttribute("msg",msg);
+		}
 		
 	}
 	@RequestMapping(value="/edit/{id}", method=RequestMethod.GET)
-	public String edit(@PathVariable String id, Model model){
-		System.out.println("id is"+id);
-		model.addAttribute("fd",familyDetailService.findById(id));
+	public String edit(@PathVariable String id,Model model){
+		FamilyDetailModel familyDetailModel=familyDetailService.findById(id);
+		model.addAttribute("fd",familyDetailModel);
 		return "familyDetail/edit";
 	}
 	
@@ -81,6 +82,7 @@ public class FamilyDetailController {
 		return "redirect:/nav/familyDetail";
 		}
 		catch(Exception e){
+			System.out.println(e);
 			attributes.addFlashAttribute("msg", "Update Failed!");
 			return "redirect:/nav/familyDetail";
 		}
@@ -88,16 +90,17 @@ public class FamilyDetailController {
 	}
 	
 	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
-	@ResponseBody
-	public String delete(@PathVariable String id)
+	public String delete(@PathVariable String id, RedirectAttributes attributes)
 	{
 		try {
 			familyDetailService.delete(id);
+			attributes.addFlashAttribute("msg", "Delete Successful!");
 		} catch (Exception e) {
-			return "Delete Failed!";
+			System.out.println(e);
+			attributes.addFlashAttribute("msg", "Delete Failed!");
 		}
-	 
-		return "Delete Successful!";
+		
+		return "redirect:/nav/familyDetail";
 	}
 
 }

@@ -17,5 +17,6 @@ public interface HouseLandDetailDao {
 	public void update(HouseLandDetailModel h, String id);
 
 	public List<HouseLandDetailModel> findAll();
+	
 
 }

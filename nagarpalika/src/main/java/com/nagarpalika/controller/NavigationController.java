@@ -14,14 +14,17 @@ import com.nagarpalika.dao.EducationDetailDao;
 import com.nagarpalika.dao.FamilyDetailDao;
 import com.nagarpalika.dao.HouseLandDetailDao;
 import com.nagarpalika.model.BranchModel;
-import com.nagarpalika.model.HouseLandDetailModel;
 import com.nagarpalika.model.HouseHoldDetailModel;
+import com.nagarpalika.model.HouseLandDetailModel;
 import com.nagarpalika.model.HouseOwnerDetailModel;
+import com.nagarpalika.service.DrinkingWaterTypeService;
 import com.nagarpalika.service.FormDetailService;
 import com.nagarpalika.service.HouseConstructionTypeService;
+import com.nagarpalika.service.HouseFacilityService;
 import com.nagarpalika.service.HouseOwnerService;
 import com.nagarpalika.service.OccupationService;
 import com.nagarpalika.service.RelationService;
+import com.nagarpalika.service.RoadTypeService;
 
 @Controller
 @RequestMapping("/nav")
@@ -56,6 +59,15 @@ public class NavigationController {
 	@Autowired
 	HouseLandDetailDao houseLandDetailDao;
 	
+	@Autowired
+	DrinkingWaterTypeService drinkingWaterTypeService;
+	
+	@Autowired 
+	RoadTypeService roadTypeService;
+	
+	@Autowired
+	HouseFacilityService houseFacilityService;
+	
 	@RequestMapping(value = "/houseOwnerDetail")
 	public String houseOwnerDetail(){
 		return "form/houseOwnerDetail";
@@ -83,8 +95,16 @@ public class NavigationController {
 	}
 	
 	@RequestMapping(value = "/houseFacilityDetail")
-	public String houseFacilityDetail(){
+	public String houseFacilityDetail(Model model){
+		model.addAttribute("drinkingWater",drinkingWaterTypeService.findAll());
+		model.addAttribute("roadType",roadTypeService.findAll());
 		return "houseFacilityDetail/insert";
+	}
+	
+	@RequestMapping(value = "/viewHouseFacilityDetail")
+	public String viewHouseFacilityDetail(Model model){
+		model.addAttribute("houseFacility",houseFacilityService.findAll());
+		return "houseFacilityDetail/view";
 	}
 	
 	@RequestMapping(value = "/houseHoldDetail")
@@ -148,16 +168,14 @@ public class NavigationController {
 		List<HouseHoldDetailModel> list=houseOwnerService.findAll();
 		model.addAttribute("list",list);
 		return "houseHoldDetail/view";
-	
-	
-}
+	}
 	
 
 	
-	/*@RequestMapping(value="/")
-	public String (Model model)
+	@RequestMapping(value="/drinkingWater")
+	public String drinkingWater(Model model)
 	{
-		
-		return "";
-	}*/
+		model.addAttribute("drinkingWaterType",drinkingWaterTypeService.findAll());
+		return "settings/drinkingWater/insert";
+	}
 }

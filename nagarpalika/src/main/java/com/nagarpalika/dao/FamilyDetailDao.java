@@ -16,5 +16,7 @@ public interface FamilyDetailDao {
 	public void delete(String id);
 	
 	public int findMax();
+	
+	public List<FamilyDetailModel> findByHouseOwnerId(String id);
 
 }

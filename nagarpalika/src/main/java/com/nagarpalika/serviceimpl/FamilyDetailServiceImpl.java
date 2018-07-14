@@ -47,4 +47,9 @@ public class FamilyDetailServiceImpl implements FamilyDetailService {
 		return familyDetailDao.findMax();
 	}
 
+	@Override
+	public List<FamilyDetailModel> findByHouseOwnerId(String id) {
+		return familyDetailDao.findByHouseOwnerId(id);
+	}
+
 }

@@ -2,7 +2,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <html lang="en">
 <head>
@@ -31,7 +31,9 @@
 			<div class="col-md-3 left_col">
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="" class="site_title"> <img src="<%=request.getContextPath()%>/resources/img/nagarpalika.png" class="img-rounded" style="width:20%"> <span>MMIS</span></a>
+						<a href="" class="site_title"> <img
+							src="<%=request.getContextPath()%>/resources/img/nagarpalika.png"
+							class="img-rounded" style="width: 20%"> <span>MMIS</span></a>
 					</div>
 
 					<div class="clearfix"></div>
@@ -63,8 +65,9 @@
 										<li><a href="nav/dashboard" target="iframe_a">Dashboard</a></li>
 									</ul></li>
 							</ul>
-						<ul class="nav side-menu">
-								<li><a><span class="fa fa-chevron-down"></span>House Hold Detail</a>
+							<ul class="nav side-menu">
+								<li><a><span class="fa fa-chevron-down"></span>House
+										Hold Detail</a>
 									<ul class="nav child_menu">
 
 										<li><a href="nav/houseHoldDetail" target="iframe_a">
@@ -79,37 +82,42 @@
 										Detail</a>
 									<ul class="nav child_menu">
 
-										<li><a href="nav/familyDetail" target="iframe_a">
-												New Family Detail </a></li>
-												<li><a href="nav/viewFamilyDetail" target="iframe_a">
-												Ammend Family Detail </a></li>
+										<li><a href="nav/familyDetail" target="iframe_a"> New
+												Family Detail </a></li>
+										<li><a href="nav/viewFamilyDetail" target="iframe_a">
+												Ammend Detail </a></li>
 
 									</ul></li>
 							</ul>
 							<ul class="nav side-menu">
-								<li><a><span class="fa fa-chevron-down"></span>House and Land Detail</a>
+								<li><a><span class="fa fa-chevron-down"></span>House
+										and Land Detail</a>
 									<ul class="nav child_menu">
 
 										<li><a href="nav/houseLandDetail" target="iframe_a">
 												New Detail </a></li>
-												<li><a href="nav/viewHouseLandDetail" target="iframe_a">
-												View Detail </a></li>
+										<li><a href="nav/viewHouseLandDetail" target="iframe_a">
+												Ammend Detail </a></li>
 
 									</ul></li>
 							</ul>
 							<ul class="nav side-menu">
-								<li><a><span class="fa fa-chevron-down"></span>House Facility Detail</a>
+								<li><a><span class="fa fa-chevron-down"></span>House
+										Facility Detail</a>
 									<ul class="nav child_menu">
 
 										<li><a href="nav/houseFacilityDetail" target="iframe_a">
-												New</a></li>
+												New Detail</a></li>
+													<li><a href="nav/viewHouseFacilityDetail" target="iframe_a">
+												Ammend Detail</a></li>
 
 									</ul></li>
 							</ul>
-							
-							
+
+
 							<ul class="nav side-menu">
-								<li><a><span class="fa fa-chevron-down"></span>House Rent Detail</a>
+								<li><a><span class="fa fa-chevron-down"></span>House
+										Rent Detail</a>
 									<ul class="nav child_menu">
 
 										<li><a href="nav/houseRentDetail" target="iframe_a">
@@ -118,20 +126,20 @@
 									</ul></li>
 							</ul>
 							<ul class="nav side-menu">
-								<li><a><span class="fa fa-chevron-down"></span>Tenant Detail</a>
+								<li><a><span class="fa fa-chevron-down"></span>Tenant
+										Detail</a>
 									<ul class="nav child_menu">
 
-										<li><a href="#" target="iframe_a">
-												New Detail </a></li>
+										<li><a href="#" target="iframe_a"> New Detail </a></li>
 
 									</ul></li>
 							</ul>
-								<ul class="nav side-menu">
-								<li><a><span class="fa fa-chevron-down"></span>ID Photo Upload</a>
+							<ul class="nav side-menu">
+								<li><a><span class="fa fa-chevron-down"></span>ID Photo
+										Upload</a>
 									<ul class="nav child_menu">
 
-										<li><a href="#" target="iframe_a">
-												New Detail </a></li>
+										<li><a href="#" target="iframe_a"> New Detail </a></li>
 
 									</ul></li>
 							</ul>
@@ -147,14 +155,14 @@
 										<li><a><span class="fa fa-chevron-down"></span>User</a>
 											<ul class="nav child_menu">
 
-												<li><a href="nav/addUser" target="iframe_a">
-														Manage User </a></li>
+												<li><a href="nav/addUser" target="iframe_a"> Manage
+														User </a></li>
 												<li><a href="addusergroup.user" target="iframe_a">
 														Create user Group</a></li>
 												<li><a href="pageNotFound.jsp" target="iframe_a">
 														Authorize user </a></li>
-														
-												
+
+
 											</ul></li>
 										<li><a><span class="fa fa-chevron-down"></span>Admin
 												Settings</a>
@@ -162,13 +170,15 @@
 
 												<li><a href="nav/educationDetail" target="iframe_a">
 														Education Detail </a></li>
-												<li><a href="nav/idType" target="iframe_a"> Document Type
-														</a></li>
+												<li><a href="nav/idType" target="iframe_a">
+														Document Type </a></li>
 												<li><a href="nav/occupationType" target="iframe_a">
 														Occupation Type </a></li>
-												<li><a href="nav/branch" target="iframe_a">
-														Branch Setting </a></li>
-														
+												<li><a href="nav/branch" target="iframe_a"> Branch
+														Setting </a></li>
+												<li><a href="nav/drinkingWater" target="iframe_a">
+														Drinking Water Setting </a></li>
+
 											</ul></li>
 
 									</ul></li>
@@ -187,10 +197,10 @@
 							aria-hidden="true"></i>
 						</a> <a data-toggle="tooltip" data-placement="top" title="Lock"> <i
 							class="fa fa-eye-slash" aria-hidden="true"></i>
-							
+
 						</a> <a data-toggle="tooltip" data-placement="top" title="Logout"
-							href="<spring:url value="/logout"/>"> <i class="fa fa-sign-out"
-							aria-hidden="true"></i>
+							href="<spring:url value="/logout"/>"> <i
+							class="fa fa-sign-out" aria-hidden="true"></i>
 						</a>
 					</div>
 					<!-- /menu footer buttons -->
@@ -228,8 +238,7 @@
 
 			<!-- page content -->
 			<div class="right_col" role="main">
-				<iframe height="2000px" width="100%"
-					src="" id="Iframe"
+				<iframe height="2000px" width="100%" src="" id="Iframe"
 					name="iframe_a" style="border: none;"> </iframe>
 			</div>
 			<!-- /page content -->

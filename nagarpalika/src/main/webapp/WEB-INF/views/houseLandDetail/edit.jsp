@@ -29,9 +29,11 @@ h5 {
 
 					<div class="x_title">
 						<h2>HOUSE AND LAND DETAIL</h2>
-						<div class="col-md-4 col-sm-4 col-xs-12 pull-right">
-						<div class="alert alert-success"><strong>${msg }</strong></div>
+							<c:if test="${not empty msg }">
+							<div class="col-md-4 col-sm-4 col-xs-12 pull-right">
+						<div class="alert alert-danger"><strong>${msg }</strong></div>
 						</div>
+						</c:if>
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
@@ -52,7 +54,7 @@ h5 {
 								<tr>
 									<td><h6>
 											<strong>Owner</strong>
-										</h6>  <select class='form-control' name='houseOwnerDetailModel.house_owner_id'>
+										</h6>  <select class='form-control' name='houseOwnerDetailModel.house_owner_id' id="house_owner_id">
 											<option value="">Select Owner</option>
 											<c:forEach items="${houseOwner }" var="h">
 												<option value="${h.house_owner_id }" <c:if test="${h.house_owner_id eq hd.houseOwnerDetailModel.house_owner_id }">selected</c:if>>${h.house_owner_id }/${h.house_owner_fname }
@@ -63,7 +65,12 @@ h5 {
 										</h6> <input type='text' class='form-control' name='land_house_id' value="${hd.land_house_id }"></td>
 									<td><h6>
 											<strong>Family Id</strong>
-										</h6> <input type='text' class='form-control' name='family_id' value="${hd.family_id }"></td>
+										</h6> <select  class='form-control' name='family_id' id="family_id">
+										<option value="">Select Family Id</option>
+										<c:forEach items="${familyDetail }" var="f">
+										<option value="${f.family_detail_id}" <c:if test="${f.family_detail_id eq hd.family_id }">selected</c:if>>${f.family_detail_id }/${f.fname } ${f.lname }</option>
+										</c:forEach>
+										</select></td>
 								</tr>
 								<tr>
 									<td><h6>
@@ -212,6 +219,7 @@ h5 {
 			</div>
 		</div>
 	</div>
+	<input type="hidden" id="url" value="<spring:url value="/houseLand/findFamilyId"/>">
 	<script>
 	$(".confirm").click(function(){
 		return confirm("Confirm?");
@@ -221,6 +229,17 @@ h5 {
 	});
 	$(".alert").delay(2000).slideUp(200, function() {
 		$(this).alert('close');
+	});
+	$('#house_owner_id').change(function(){
+	    $.ajax({
+	        url: $("#url").val(),
+	        data: { "houseOwnerDetailModel.house_owner_id": $("#house_owner_id").val() },
+	        dataType:"html",
+	        type: "post",
+	        success: function(data){
+	           $('#family_id').append(data);
+	        }
+	    });
 	});
 </script>
 </body>
