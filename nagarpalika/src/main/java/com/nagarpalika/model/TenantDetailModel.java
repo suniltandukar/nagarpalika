@@ -1,11 +1,10 @@
 package com.nagarpalika.model;
 
 public class TenantDetailModel {
-	private String house_owener_id,
+	private String tenants_id,
 	land_house_id,
 	tenant_name,
 	tenant_address,
-	occupation_id,
 	phone_number,
 	identity,
 	identity_number,
@@ -18,12 +17,16 @@ public class TenantDetailModel {
 	date_time,
 	curr_number;
 
-	public String getHouse_owener_id() {
-		return house_owener_id;
+	private HouseOwnerDetailModel houseOwnerDetailModel;
+	private OccupationModel occupationModel;
+
+	
+	public String getTenants_id() {
+		return tenants_id;
 	}
 
-	public void setHouse_owener_id(String house_owener_id) {
-		this.house_owener_id = house_owener_id;
+	public void setTenants_id(String tenants_id) {
+		this.tenants_id = tenants_id;
 	}
 
 	public String getLand_house_id() {
@@ -48,14 +51,6 @@ public class TenantDetailModel {
 
 	public void setTenant_address(String tenant_address) {
 		this.tenant_address = tenant_address;
-	}
-
-	public String getOccupation_id() {
-		return occupation_id;
-	}
-
-	public void setOccupation_id(String occupation_id) {
-		this.occupation_id = occupation_id;
 	}
 
 	public String getPhone_number() {
@@ -144,6 +139,22 @@ public class TenantDetailModel {
 
 	public void setCurr_number(String curr_number) {
 		this.curr_number = curr_number;
+	}
+
+	public HouseOwnerDetailModel getHouseOwnerDetailModel() {
+		return houseOwnerDetailModel;
+	}
+
+	public void setHouseOwnerDetailModel(HouseOwnerDetailModel houseOwnerDetailModel) {
+		this.houseOwnerDetailModel = houseOwnerDetailModel;
+	}
+
+	public OccupationModel getOccupationModel() {
+		return occupationModel;
+	}
+
+	public void setOccupationModel(OccupationModel occupationModel) {
+		this.occupationModel = occupationModel;
 	}
 	
 	

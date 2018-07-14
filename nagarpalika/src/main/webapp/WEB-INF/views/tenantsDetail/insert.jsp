@@ -10,6 +10,12 @@ h5 {
 	font-size: 80%;
 	font-weight: bold;
 }
+.alert{
+ position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    }
 </style>
 </head>
 <body class="background">
@@ -17,12 +23,17 @@ h5 {
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="col-md-8 col-xs-12">
 			<div class="x_panel">
+			<spring:url value="/tenants/save" var="formUrl"/>
 				<form:form class="form-horizontal form-label-left input_mask"
 					method="post" action="${formUrl }">
 
 					<div class="x_title">
-						<h2>Add New Staff</h2>
-						<div class="col-md-4 col-sm-4 col-xs-12 pull-right"></div>
+						<h2>TENANTS DETAIL</h2>
+					<c:if test="${not empty msg }">
+							<div class="col-md-4 col-sm-4 col-xs-12 pull-right">
+						<div class="alert alert-danger"><strong>${msg }</strong></div>
+						</div>
+						</c:if>
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
@@ -32,73 +43,20 @@ h5 {
 								<button class="btn btn-primary" type="reset">Reset</button>
 								<input type="submit" class="btn btn-success" value="Submit">
 							</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 						</div>
 						<br />
 						<table class="table">
 							<tr>
 								<td><h6>
 										<strong>House Owner ID</strong>
-									</h6> <input type='text' class='form-control' name='house_owener_id'></td>
+									</h6> <select class='form-control'
+										name='houseOwnerDetailModel.house_owner_id' id="house_owner_id">
+											<option value="">Select Owner</option>
+											<c:forEach items="${houseOwner }" var="h">
+												<option value="${h.house_owner_id }">${h.house_owner_id }/${h.house_owner_fname }
+													${h.house_owner_mname } ${h.house_owner_lname }</option>
+											</c:forEach>
+									</select></td>
 								<td><h6>
 										<strong>Land House ID</strong>
 									</h6> <input type='text' class='form-control' name='land_house_id'></td>
@@ -112,7 +70,12 @@ h5 {
 									</h6> <input type='text' class='form-control' name='tenant_address'></td>
 								<td><h6>
 										<strong>Occupation</strong>
-									</h6> <input type='text' class='form-control' name='occu_id'></td>
+									</h6> <select class='form-control' name='occupationModel.occu_id'>
+									<option value="">Select Occupation</option>
+									<c:forEach items="${occupation }" var="o">
+									<option value="${o.occu_id }">${o.occupation_type }</option>
+									</c:forEach>
+									</select></td>
 								<td><h6>
 										<strong>Phone/ Mobile Number</strong>
 									</h6> <input type='text' class='form-control' name='phone_number'></td>
@@ -128,34 +91,6 @@ h5 {
 										<strong>Number of Tenants</strong>
 									</h6> <input type='text' class='form-control' name='tenant_nos'></td>
 							</tr>
-							<tr>
-								<td><h6>
-										<strong>Record Status</strong>
-									</h6> <input type='text' class='form-control' name='record_status'></td>
-								<td><h6>
-										<strong>Company ID</strong>
-									</h6> <input type='text' class='form-control' name='company_id'></td>
-								<td><h6>
-										<strong>Branch ID</strong>
-									</h6> <input type='text' class='form-control' name='branch_id'></td>
-							</tr>
-							<tr>
-								<td><h6>
-										<strong>Inputter</strong>
-									</h6> <input type='text' class='form-control' name='inputter'></td>
-								<td><h6>
-										<strong>Authorizer</strong>
-									</h6> <input type='text' class='form-control' name='authorizer'></td>
-								<td><h6>
-										<strong>date and Time</strong>
-									</h6> <input type='text' class='form-control' name='date_time'></td>
-							</tr>
-							<tr>
-								<td><h6>
-										<strong>Current Number</strong>
-									</h6> <input type='text' class='form-control' name='curr_number'></td>
-							</tr>
-
 						</table>
 
 					</div>
@@ -169,6 +104,9 @@ h5 {
 	})
 	$("form").submit(function(){
 		return confirm("Confirm Submit?");
+	});
+	$(".alert").delay(2000).slideUp(200, function() {
+		$(this).alert('close');
 	});
 </script>
 </body>

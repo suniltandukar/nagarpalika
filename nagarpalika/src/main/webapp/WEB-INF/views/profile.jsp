@@ -134,7 +134,8 @@
 										Detail</a>
 									<ul class="nav child_menu">
 
-										<li><a href="#" target="iframe_a"> New Detail </a></li>
+										<li><a href="nav/tenantsDetail" target="iframe_a"> New Detail </a></li>
+										<li><a href="nav/viewTenantsDetail" target="iframe_a"> Ammend Detail </a></li>
 
 									</ul></li>
 							</ul>
