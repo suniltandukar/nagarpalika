@@ -74,7 +74,6 @@ public class HouseFacilityDaoImpl implements HouseFacilityDao {
 	@Override
 	public List<HouseFacilityDetailModel> findAll() {
 		String query = "select * from house_facility_detail";
-		
 		return template.query(query, new HouseFacilityRowMapper());
 	}
 

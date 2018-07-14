@@ -1,7 +1,7 @@
 package com.nagarpalika.model;
 
 public class HouseRentDetailModel {
-	private String house_owener_id,
+	private String house_rent_id,
 	land_house_id,
 	rented_storied,
 	rented_room,
@@ -15,12 +15,14 @@ public class HouseRentDetailModel {
 	date_time,
 	curr_number;
 
-	public String getHouse_owener_id() {
-		return house_owener_id;
+	private HouseOwnerDetailModel houseOwnerDetailModel;
+
+	public HouseOwnerDetailModel getHouseOwnerDetailModel() {
+		return houseOwnerDetailModel;
 	}
 
-	public void setHouse_owener_id(String house_owener_id) {
-		this.house_owener_id = house_owener_id;
+	public void setHouseOwnerDetailModel(HouseOwnerDetailModel houseOwnerDetailModel) {
+		this.houseOwnerDetailModel = houseOwnerDetailModel;
 	}
 
 	public String getLand_house_id() {
@@ -117,6 +119,14 @@ public class HouseRentDetailModel {
 
 	public void setCurr_number(String curr_number) {
 		this.curr_number = curr_number;
+	}
+
+	public String getHouse_rent_id() {
+		return house_rent_id;
+	}
+
+	public void setHouse_rent_id(String house_rent_id) {
+		this.house_rent_id = house_rent_id;
 	}
 	
 	

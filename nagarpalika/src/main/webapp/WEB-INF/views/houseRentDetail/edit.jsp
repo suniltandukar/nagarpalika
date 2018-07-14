@@ -23,12 +23,12 @@ h5 {
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="col-md-8 col-xs-12">
 			<div class="x_panel">
-			<spring:url value="/houseRent/save" var="formUrl"/>
+			<spring:url value="/houseRent/update" var="formUrl"/>
 				<form:form class="form-horizontal form-label-left input_mask"
-					method="post" action="${formUrl }">
+					method="post" action="${formUrl }/${hd.house_rent_id }">
 
 					<div class="x_title">
-						<h2>HOUSE RENT DETAIL</h2>
+						<h2>UPDATE HOUSE RENT DETAIL</h2>
 						<c:if test="${not empty msg }">
 							<div class="col-md-4 col-sm-4 col-xs-12 pull-right">
 						<div class="alert alert-danger"><strong>${msg }</strong></div>
@@ -38,13 +38,16 @@ h5 {
 					</div>
 					<div class="x_content">
 					<div class="form-group">
-							<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-								<button class="btn btn-info" type="button" id="validate">Validate</button>
-								<button class="btn btn-primary" type="reset">Reset</button>
-								<input type="submit" class="btn btn-success" value="Submit">
-							</div>
+						<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+							<button class="btn btn-info" type="button" id="validate">Validate</button>
+							<button class="btn btn-primary" type="reset">Reset</button>
 							
+							<a class="btn btn-danger confirm" href="<spring:url value="/houseRent/delete/${hd.house_rent_id }"/>">Delete</a>
+							<input type="submit" class="btn btn-success" value="Update">
+							
+							<a class="btn btn-info" href="<spring:url value="/nav/houseRentDetail"/>"> Add New</a>
 						</div>
+					</div>
 						<br />
 						<table class="table">
 							<tr>
@@ -54,27 +57,26 @@ h5 {
 										name='houseOwnerDetailModel.house_owner_id' id="house_owner_id">
 											<option value="">Select Owner</option>
 											<c:forEach items="${houseOwner }" var="h">
-												<option value="${h.house_owner_id }">${h.house_owner_id }/${h.house_owner_fname }
-													${h.house_owner_mname } ${h.house_owner_lname }</option>
+											<option value="${h.house_owner_id }" <c:if test="${h.house_owner_id eq hd.houseOwnerDetailModel.house_owner_id}">selected</c:if>>${h.house_owner_id }/${h.house_owner_fname } ${h.house_owner_mname } ${h.house_owner_lname }</option>
 											</c:forEach>
 									</select></td>
 								<td><h6>
 										<strong>Land House ID</strong>
-									</h6> <input type='text' class='form-control' name='land_house_id'></td>
+									</h6> <input type='text' class='form-control' name='land_house_id' value="${hd.land_house_id }"></td>
 								<td><h6>
 										<strong>Rented Storied</strong>
-									</h6> <input type='text' class='form-control' name='rented_storied'></td>
+									</h6> <input type='text' class='form-control' name='rented_storied' value="${hd.rented_storied }"></td>
 							</tr>
 							<tr>
 								<td><h6>
 										<strong>Rented Room</strong>
-									</h6> <input type='text' class='form-control' name='rented_room'></td>
+									</h6> <input type='text' class='form-control' name='rented_room' value="${hd.rented_room }"></td>
 								<td><h6>
 										<strong>Rented from</strong>
-									</h6> <input type='text' class='form-control' name='rented_from'></td>
+									</h6> <input type='text' class='form-control' name='rented_from' value="${hd.rented_from }"></td>
 								<td><h6>
 										<strong>Rented Purpose</strong>
-									</h6> <input type='text' class='form-control' name='rented_purpose'></td>
+									</h6> <input type='text' class='form-control' name='rented_purpose' value="${hd.rented_purpose }"></td>
 							</tr>
 						</table>
 

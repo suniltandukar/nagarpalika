@@ -22,6 +22,7 @@ import com.nagarpalika.service.FormDetailService;
 import com.nagarpalika.service.HouseConstructionTypeService;
 import com.nagarpalika.service.HouseFacilityService;
 import com.nagarpalika.service.HouseOwnerService;
+import com.nagarpalika.service.HouseRentDetailService;
 import com.nagarpalika.service.OccupationService;
 import com.nagarpalika.service.RelationService;
 import com.nagarpalika.service.RoadTypeService;
@@ -67,6 +68,9 @@ public class NavigationController {
 	
 	@Autowired
 	HouseFacilityService houseFacilityService;
+	
+	@Autowired
+	HouseRentDetailService houseRentDetailService; 
 	
 	@RequestMapping(value = "/houseOwnerDetail")
 	public String houseOwnerDetail(){
@@ -130,6 +134,12 @@ public class NavigationController {
 	@RequestMapping(value = "/houseRentDetail")
 	public String houseRentDetail(){
 		return "houseRentDetail/insert";
+	}
+	
+	@RequestMapping(value = "/viewHouseRentDetail")
+	public String viewHouseRentDetail(Model model){
+		model.addAttribute("houseRent",houseRentDetailService.findAll());
+		return "houseRentDetail/view";
 	}
 	
 	

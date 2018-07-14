@@ -122,6 +122,10 @@
 
 										<li><a href="nav/houseRentDetail" target="iframe_a">
 												New Detail </a></li>
+												
+										
+										<li><a href="nav/viewHouseRentDetail" target="iframe_a">
+												Ammend Detail </a></li>
 
 									</ul></li>
 							</ul>
