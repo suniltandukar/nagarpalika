@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.nagarpalika.model.FamilyDetailModel;
 import com.nagarpalika.model.HouseFacilityDetailModel;
 import com.nagarpalika.service.DrinkingWaterTypeService;
 import com.nagarpalika.service.HouseFacilityService;
@@ -60,6 +61,20 @@ public class HouseFacilityDetailController {
 		model.addAttribute("roadType",roadTypeService.findAll());
 		model.addAttribute("msg", msg);
 		return "houseFacilityDetail/edit";
+	}
+	
+	@RequestMapping(value="/update/{id}", method = RequestMethod.POST)
+	public String update(@PathVariable String id, @ModelAttribute HouseFacilityDetailModel h, RedirectAttributes attributes){
+		try{
+		houseFacilityService.update(h, id);
+		attributes.addFlashAttribute("msg", "Update Successful!");
+		}
+		catch(Exception e){
+			System.out.println(e);
+			attributes.addFlashAttribute("msg", "Update Failed!");
+		}
+		return "redirect:/nav/viewHouseFacilityDetail";
+		
 	}
 	
 	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)

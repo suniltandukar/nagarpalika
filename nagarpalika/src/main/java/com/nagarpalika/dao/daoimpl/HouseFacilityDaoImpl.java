@@ -67,8 +67,8 @@ public class HouseFacilityDaoImpl implements HouseFacilityDao {
 
 	@Override
 	public void update(HouseFacilityDetailModel h, String id) {
-		// TODO Auto-generated method stub
-
+		String query = "update house_facility_detail set house_owner_id= :houseOwnerDetailModel.house_owner_id, land_house_id=:land_house_id, drinking_water_type_id=:drinkingWaterTypeModel.drinking_water_type_id, drinking_water_sufficiency=:drinking_water_sufficiency, drainage_management=:drainage_management, electricity_facility=:electricity_facility, street_light_facility=:street_light_facility, telephone_facility=:telephone_facility, internet_facility=:internet_facility, tv_facility=:tv_facility, road_type_id=:road_type_id, road_width=:road_width, date_time=now() where house_facility_id = '"+id+"'";
+		template.update(query, new BeanPropertySqlParameterSource(h));
 	}
 
 	@Override

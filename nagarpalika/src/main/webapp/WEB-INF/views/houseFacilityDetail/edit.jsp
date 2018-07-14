@@ -23,7 +23,7 @@ h5 {
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="col-md-8 col-xs-12">
 			<div class="x_panel">
-			<spring:url value="/houseFacility/update" var="formUrl"/>
+			<spring:url value="/houseFacility/update/${hd.house_facility_id }" var="formUrl"/>
 				<form:form class="form-horizontal form-label-left input_mask"
 					method="post" action="${formUrl }">
 
