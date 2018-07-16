@@ -76,7 +76,9 @@ public class HomeController {
 	}
 
 	public UserModel getUser(UserModel user) {
-		return dao.getUserDetails(user);
+		UserModel userDetail = dao.getUserDetails(user);
+		return userDetail;
+		
 	}
 	@RequestMapping(value = "/logout")
 	public String logout(HttpSession session){
