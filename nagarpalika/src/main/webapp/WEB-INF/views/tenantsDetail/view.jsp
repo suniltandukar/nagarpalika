@@ -7,7 +7,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <style>
-
 .alert{
  position: absolute;
     left: 0px;
@@ -22,10 +21,10 @@
 			<div class="x_panel">
 				
 					<div class="x_title">
-						<h2>FAMILY DETAIL</h2>
+						<h2>TENANTS DETAIL</h2>
 						<c:if test="${not empty msg }">
-						<div class="col-md-4 col-sm-4 col-xs-12 pull-right">
-						<div class="alert alert-success"><strong>${msg }</strong></div>
+							<div class="col-md-4 col-sm-4 col-xs-12 pull-right">
+						<div class="alert alert-danger"><strong>${msg }</strong></div>
 						</div>
 						</c:if>
 						<div class="clearfix"></div>
@@ -35,24 +34,16 @@
 					<thead>
 						<tr>
 							<th>House Owner Id</th>
-							<th>Name</th>
-							<th>Relation</th>
-							<th>Marital Status</th>
-							<th>DOB (Nep)</th>
+							<th>Land House Id</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach items="${familyDetail}" var="f">
+					<c:forEach items="${tenantsDetail}" var="t">
 						<tr>
-							<td>${f.houseOwnerDetailModel.house_owner_id }</td>
-							<td>${f.fname } ${f.mname } ${f.lname }</td>
-							<td>${f.relation }</td>
-							<td>${f.marital_status }</td>
-							<td>${f.dob_nep }</td>
-							
-							<td><a href="<spring:url value="/familyDetail/edit/${f.family_detail_id }"/>">Edit</a></td>
-							
+							<td>${t.houseOwnerDetailModel.house_owner_id }</td>
+							<td>${t.land_house_id}</td>
+							<td><a href="<spring:url value="/tenants/edit/${t.tenants_id }"/>">Edit</a></td>
 						</tr>
 						</c:forEach>
 					</tbody>
@@ -62,7 +53,6 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-	
 	$(".alert").delay(2000).slideUp(200, function() {
 		$(this).alert('close');
 	});

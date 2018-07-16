@@ -3,11 +3,12 @@ package com.nagarpalika.model;
 public class HouseLandDetailModel {
 	private String house_and_land_detail_id, land_house_id, family_id, ownership_type, house_number, land_unit,
 			land_size, plot_num, sheet_num, district_uni, mun_vc_uni, ward_no_uni, moth_num_uni, kitta_num_uni,
-			land_legacy_address, land_current_district, land_current_mun_vc, ward_no, tole, house_type,
+			land_legacy_address, land_current_district, land_current_mun_vc, tole, house_type,
 			residential_status, house_floor_count, rented_floor_count, house_area_unit, house_area,
 			map_application_date, map_approved_date, construction_start_date, construction_completion_date,
 			construction_completion_approval_date, completion_approved_by, house_map_prepared_by, record_status,
 			company_id, branch_id, inputter, authorizer, date_time, curr_number, house_construction_type, used_status;
+	private int ward_no;
 	private HouseOwnerDetailModel houseOwnerDetailModel;
 
 	public String getHouse_and_land_detail_id() {
@@ -162,11 +163,12 @@ public class HouseLandDetailModel {
 		this.land_current_mun_vc = land_current_mun_vc;
 	}
 
-	public String getWard_no() {
+
+	public int getWard_no() {
 		return ward_no;
 	}
 
-	public void setWard_no(String ward_no) {
+	public void setWard_no(int ward_no) {
 		this.ward_no = ward_no;
 	}
 

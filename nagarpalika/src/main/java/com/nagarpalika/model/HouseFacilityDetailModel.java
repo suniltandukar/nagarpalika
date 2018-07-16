@@ -4,19 +4,16 @@ import javax.annotation.Generated;
 
 public class HouseFacilityDetailModel {
 	
-	private int house_owner_id_hibernate;
-	
-	private String house_owner_id,
-	land_house_id,
-	drinking_water_type,
+	private String land_house_id,
+	house_facility_id,
 	drinking_water_sufficiency,
-	drainage_manegement,
+	drainage_management,
 	electricity_facility,
 	street_light_facility,
 	telephone_facility,
 	internet_facility,
 	tv_facility,
-	road_type,
+	road_type_id,
 	road_width,
 	record_status,
 	company_id,
@@ -25,14 +22,17 @@ public class HouseFacilityDetailModel {
 	authorizer,
 	date_time,
 	curr_number;
+private HouseOwnerDetailModel houseOwnerDetailModel;
+private DrinkingWaterTypeModel drinkingWaterTypeModel; 
 
-	public String getHouse_owner_id() {
-		return house_owner_id;
-	}
 
-	public void setHouse_owener_id(String house_owner_id) {
-		this.house_owner_id = house_owner_id;
-	}
+	public String getHouse_facility_id() {
+	return house_facility_id;
+}
+
+public void setHouse_facility_id(String house_facility_id) {
+	this.house_facility_id = house_facility_id;
+}
 
 	public String getLand_house_id() {
 		return land_house_id;
@@ -40,14 +40,6 @@ public class HouseFacilityDetailModel {
 
 	public void setLand_house_id(String land_house_id) {
 		this.land_house_id = land_house_id;
-	}
-
-	public String getDrinking_water_type() {
-		return drinking_water_type;
-	}
-
-	public void setDrinking_water_type(String drinking_water_type) {
-		this.drinking_water_type = drinking_water_type;
 	}
 
 	public String getDrinking_water_sufficiency() {
@@ -58,12 +50,12 @@ public class HouseFacilityDetailModel {
 		this.drinking_water_sufficiency = drinking_water_sufficiency;
 	}
 
-	public String getDrainage_manegement() {
-		return drainage_manegement;
+	public String getDrainage_management() {
+		return drainage_management;
 	}
 
-	public void setDrainage_manegement(String drainage_manegement) {
-		this.drainage_manegement = drainage_manegement;
+	public void setDrainage_management(String drainage_management) {
+		this.drainage_management = drainage_management;
 	}
 
 	public String getElectricity_facility() {
@@ -106,12 +98,12 @@ public class HouseFacilityDetailModel {
 		this.tv_facility = tv_facility;
 	}
 
-	public String getRoad_type() {
-		return road_type;
+	public String getRoad_type_id() {
+		return road_type_id;
 	}
 
-	public void setRoad_type(String road_type) {
-		this.road_type = road_type;
+	public void setRoad_type_id(String road_type_id) {
+		this.road_type_id = road_type_id;
 	}
 
 	public String getRoad_width() {
@@ -176,6 +168,22 @@ public class HouseFacilityDetailModel {
 
 	public void setCurr_number(String curr_number) {
 		this.curr_number = curr_number;
+	}
+
+	public HouseOwnerDetailModel getHouseOwnerDetailModel() {
+		return houseOwnerDetailModel;
+	}
+
+	public void setHouseOwnerDetailModel(HouseOwnerDetailModel houseOwnerDetailModel) {
+		this.houseOwnerDetailModel = houseOwnerDetailModel;
+	}
+
+	public DrinkingWaterTypeModel getDrinkingWaterTypeModel() {
+		return drinkingWaterTypeModel;
+	}
+
+	public void setDrinkingWaterTypeModel(DrinkingWaterTypeModel drinkingWaterTypeModel) {
+		this.drinkingWaterTypeModel = drinkingWaterTypeModel;
 	}
 	
 	

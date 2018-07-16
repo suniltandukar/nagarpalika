@@ -28,7 +28,6 @@ public class HouseOwnerDaoImpl implements HouseOwnerDao {
 	public List<HouseHoldDetailModel> findAll() {
 		String query="select * from house_owner_detail";
 		return template.query(query, new BeanPropertySqlParameterSource(new HouseHoldDetailModel()), new BeanPropertyRowMapper<HouseHoldDetailModel>(HouseHoldDetailModel.class));
-
 	}
 	
 

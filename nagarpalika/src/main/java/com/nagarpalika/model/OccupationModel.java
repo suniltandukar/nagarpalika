@@ -7,8 +7,8 @@ public class OccupationModel {
 	inputter,
 	authorizer,
 	date_time,
-	curr_number;
-
+	curr_number,
+occupation_id;
 	
 
 	public String getOccu_id() {
@@ -65,6 +65,14 @@ public class OccupationModel {
 
 	public void setCurr_number(String curr_number) {
 		this.curr_number = curr_number;
+	}
+
+	public String getOccupation_id() {
+		return occupation_id;
+	}
+
+	public void setOccupation_id(String occupation_id) {
+		this.occupation_id = occupation_id;
 	}
 	
 	

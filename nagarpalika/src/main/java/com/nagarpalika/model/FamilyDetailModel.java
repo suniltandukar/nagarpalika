@@ -4,18 +4,21 @@ package com.nagarpalika.model;
 public class FamilyDetailModel {
 	
 private int family_detail_id;
-	private String house_owner_fname, house_owner_mname, house_owner_lname,relation,
+	private String relation,
 	marital_status,
 	dob_nep,
-	disable_type,
 	occupation_id,
 	gender,
 	inputter,
 	authorizer,
 	date_time,
-	curr_number;
+	curr_number,
+	fname,
+	mname,
+	lname;
 	private OccupationModel occupationModel;
 	private HouseOwnerDetailModel houseOwnerDetailModel;
+	private DisableTypeModel disableTypeModel;
 	
 	public int getFamily_detail_id() {
 		return family_detail_id;
@@ -25,30 +28,7 @@ private int family_detail_id;
 		this.family_detail_id = family_detail_id;
 	}
 
-	public String getHouse_owner_fname() {
-		return house_owner_fname;
-	}
 
-	public void setHouse_owner_fname(String house_owner_fname) {
-		this.house_owner_fname = house_owner_fname;
-	}
-
-	
-	public String getHouse_owner_mname() {
-		return house_owner_mname;
-	}
-
-	public void setHouse_owner_mname(String house_owner_mname) {
-		this.house_owner_mname = house_owner_mname;
-	}
-
-	public String getHouse_owner_lname() {
-		return house_owner_lname;
-	}
-
-	public void setHouse_owner_lname(String house_owner_lname) {
-		this.house_owner_lname = house_owner_lname;
-	}
 
 	public String getRelation() {
 		return relation;
@@ -74,13 +54,6 @@ private int family_detail_id;
 		this.dob_nep = dob_nep;
 	}
 
-	public String getDisable_type() {
-		return disable_type;
-	}
-
-	public void setDisable_type(String disable_type) {
-		this.disable_type = disable_type;
-	}
 
 	public String getOccupation_id() {
 		return occupation_id;
@@ -145,7 +118,39 @@ private int family_detail_id;
 	public void setHouseOwnerDetailModel(HouseOwnerDetailModel houseOwnerDetailModel) {
 		this.houseOwnerDetailModel = houseOwnerDetailModel;
 	}
-	
+
+	public DisableTypeModel getDisableTypeModel() {
+		return disableTypeModel;
+	}
+
+	public void setDisableTypeModel(DisableTypeModel disableTypeModel) {
+		this.disableTypeModel = disableTypeModel;
+	}
+
+	public String getFname() {
+		return fname;
+	}
+
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+
+	public String getMname() {
+		return mname;
+	}
+
+	public void setMname(String mname) {
+		this.mname = mname;
+	}
+
+	public String getLname() {
+		return lname;
+	}
+
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
+
 	
 
 }
