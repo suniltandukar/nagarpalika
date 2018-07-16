@@ -1,15 +1,13 @@
 package com.nagarpalika.dao.daoimpl;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -17,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import com.nagarpalika.dao.HouseOwnerDao;
 import com.nagarpalika.model.HouseHoldDetailModel;
 import com.nagarpalika.model.HouseOwnerDetailModel;
+import com.nagarpalika.model.OwnerDetailModel;
 
 @Repository
 public class HouseOwnerDaoImpl implements HouseOwnerDao {
@@ -59,6 +58,31 @@ public class HouseOwnerDaoImpl implements HouseOwnerDao {
 	public void deleteHouseOwner(String id) {
 		String sql="delete from house_owner_detail where house_owner_id='"+id+"'";
 		template.update(sql, new BeanPropertySqlParameterSource(id));
+	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public void insertOwnerIdentity(OwnerDetailModel owner,int i) {
+
+		String sql="insert into owner_identity_detail(house_owner_id,id_type,id_number,issue_date,expiry_date,issued_by,record_status)"
+				+ "values(:house_owner_id,:id_type,:id_number,:issue_date,:expiry_date,:issued_by,:record_status)";
+		Map params=new HashMap();
+		params.put("house_owner_id", owner.getHouse_owner_id().get(i));
+		params.put("id_type",owner.getId_type().get(i));
+		params.put("id_number", owner.getId_number().get(i));
+		params.put("issue_date", owner.getIssue_date().get(i));
+		params.put("expiry_date",owner.getExpiry_date().get(i));
+		params.put("issued_by", owner.getIssued_by().get(i));
+		params.put("record_status", owner.getRecord_status().get(i));
+		
+		template.update(sql, params);
+		
+		
+	}
+	@Override
+	public List<OwnerDetailModel> editOwnerDetail(String id) {
+		
+		String sql="select * from owner_identity_detail where house_owner_id=?";
+		return template.query(sql, new BeanPropertySqlParameterSource(new Object[] {id}),new BeanPropertyRowMapper<OwnerDetailModel>(OwnerDetailModel.class));
 	}
 
 }

@@ -6,7 +6,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<style>
+.alert{
+ position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    }
+</style>
 </head>
 <body class="background">
 	<div class="col-md-12 col-sm-12 col-xs-12">
@@ -15,7 +22,11 @@
 				
 					<div class="x_title">
 						<h2>House Owner Details</h2>
-						<div class="col-md-4 col-sm-4 col-xs-12 pull-right"></div>
+						<c:if test="${not empty msg }">
+						<div class="col-md-4 col-sm-4 col-xs-12 pull-right">
+						<div class="alert alert-success"><strong>${msg }</strong></div>
+						</div>
+						</c:if>
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
@@ -51,5 +62,11 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+	
+	$(".alert").delay(2000).slideUp(200, function() {
+		$(this).alert('close');
+	});
+	</script>
 </body>
 </html>
