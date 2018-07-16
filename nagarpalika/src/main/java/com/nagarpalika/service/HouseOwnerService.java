@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.nagarpalika.model.HouseHoldDetailModel;
 import com.nagarpalika.model.HouseOwnerDetailModel;
+import com.nagarpalika.model.OwnerDetailModel;
+import com.nagarpalika.model.OwnerIdentityDetailModel;
 
 public interface HouseOwnerService {
 	public List<HouseHoldDetailModel> findAll();
@@ -15,4 +17,8 @@ public interface HouseOwnerService {
 	public void updateHouseOwner(String id, HouseOwnerDetailModel hm);
 
 	public void deleteHouseOwner(String id);
+
+	public void insertOwnerIdentity(OwnerDetailModel owner,int i);
+
+	public List<OwnerDetailModel> editOwnerDetail(String id);
 }

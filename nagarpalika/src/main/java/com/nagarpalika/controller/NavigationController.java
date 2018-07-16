@@ -2,6 +2,8 @@ package com.nagarpalika.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,7 @@ import com.nagarpalika.model.BranchModel;
 import com.nagarpalika.model.HouseHoldDetailModel;
 import com.nagarpalika.model.HouseLandDetailModel;
 import com.nagarpalika.model.HouseOwnerDetailModel;
+import com.nagarpalika.model.OwnerDetailModel;
 import com.nagarpalika.service.DrinkingWaterTypeService;
 import com.nagarpalika.service.FormDetailService;
 import com.nagarpalika.service.HouseConstructionTypeService;
@@ -33,34 +36,34 @@ import com.nagarpalika.service.TenantsDetailService;
 public class NavigationController {
 	@Autowired
 	EducationDetailDao educationDetailDao;
-	
+
 	@Autowired
-	DocumentTypeDao documentTypeDao;	
-	
+	DocumentTypeDao documentTypeDao;
+
 	@Autowired
 	OccupationService occupationService;
-	
+
 	@Autowired
 	FamilyDetailDao familyDetailDao;
-	
+
 	@Autowired
 	FormDetailService formDetailService;
-	
+
 	@Autowired
 	BranchDao branchDao;
-	
+
 	@Autowired
 	RelationService relationService;
-	
+
 	@Autowired
 	HouseOwnerService houseOwnerService;
-	
+
 	@Autowired
 	HouseConstructionTypeService houseConstructionTypeService;
-	
+
 	@Autowired
 	HouseLandDetailDao houseLandDetailDao;
-	
+
 	@Autowired
 	DrinkingWaterTypeService drinkingWaterTypeService;
 	
@@ -77,31 +80,32 @@ public class NavigationController {
 	TenantsDetailService tenantsDetailService;
 	
 	@RequestMapping(value = "/houseOwnerDetail")
-	public String houseOwnerDetail(){
+	public String houseOwnerDetail() {
 		return "form/houseOwnerDetail";
 	}
-	
+
 	@ModelAttribute
-	public void getAttribute(Model model, @ModelAttribute("msg") String msg){
-		if(msg!=null){
-		model.addAttribute("msg",msg);
+	public void getAttribute(Model model, @ModelAttribute("msg") String msg) {
+		if (msg != null) {
+			model.addAttribute("msg", msg);
 		}
-		model.addAttribute("houseOwner",houseOwnerService.findAll());
+		model.addAttribute("houseOwner", houseOwnerService.findAll());
 	}
+
 	@RequestMapping(value = "/familyDetail")
-	public String familyDetail(Model model){
-		model.addAttribute("occupation",occupationService.findAll());
-		model.addAttribute("relation",relationService.findAll());
-		model.addAttribute("disablity",formDetailService.getDisableType());
+	public String familyDetail(Model model) {
+		model.addAttribute("occupation", occupationService.findAll());
+		model.addAttribute("relation", relationService.findAll());
+		model.addAttribute("disablity", formDetailService.getDisableType());
 		return "familyDetail/insert";
 	}
-	
+
 	@RequestMapping(value = "/viewFamilyDetail")
-	public String viewFamilyDetail(Model model){
+	public String viewFamilyDetail(Model model) {
 		model.addAttribute("familyDetail", familyDetailDao.getFamilyDetail());
 		return "familyDetail/view";
 	}
-	
+
 	@RequestMapping(value = "/houseFacilityDetail")
 	public String houseFacilityDetail(Model model){
 		model.addAttribute("drinkingWater",drinkingWaterTypeService.findAll());
@@ -114,29 +118,32 @@ public class NavigationController {
 		model.addAttribute("houseFacility",houseFacilityService.findAll());
 		return "houseFacilityDetail/view";
 	}
-	
+
 	@RequestMapping(value = "/houseHoldDetail")
-	public String houseHoldDetail(Model model, @ModelAttribute("ho") HouseOwnerDetailModel hm){
-		model.addAttribute("edu",educationDetailDao.getEducationDetail());
-		model.addAttribute("ho",hm);
+	public String houseHoldDetail(Model model, @ModelAttribute("ho") HouseOwnerDetailModel hm) {
+		model.addAttribute("edu", educationDetailDao.getEducationDetail());
+		model.addAttribute("ho", hm);
+		model.addAttribute("occupation",occupationService.findAll());
+		model.addAttribute("disablity", formDetailService.getDisableType());
+		//model.addAttribute("ownerList",ownerList);
 		return "houseHoldDetail/insert";
 	}
-	
+
 	@RequestMapping(value = "/houseLandDetail")
-	public String houseLandDetail(Model model){
-		model.addAttribute("constructionType",houseConstructionTypeService.findAll());
+	public String houseLandDetail(Model model) {
+		model.addAttribute("constructionType", houseConstructionTypeService.findAll());
 		return "houseLandDetail/insert";
 	}
+
 	@RequestMapping(value = "/viewHouseLandDetail")
-	public String viewHouseLandDetail(Model model){
-		List<HouseLandDetailModel> houseLandDetail = houseLandDetailDao.findAll(); 
+	public String viewHouseLandDetail(Model model) {
+		List<HouseLandDetailModel> houseLandDetail = houseLandDetailDao.findAll();
 		model.addAttribute("houseLandDetail", houseLandDetail);
 		return "houseLandDetail/view";
 	}
-	
 
 	@RequestMapping(value = "/houseRentDetail")
-	public String houseRentDetail(){
+	public String houseRentDetail() {
 		return "houseRentDetail/insert";
 	}
 	
@@ -157,44 +164,42 @@ public class NavigationController {
 		model.addAttribute("tenantsDetail",tenantsDetailService.findAll());
 		return "tenantsDetail/view";
 	}
-	
-	
-	//settings
-	
+
+	// settings
+
 	@RequestMapping(value = "/educationDetail")
-	public String educationDetail(Model model){
+	public String educationDetail(Model model) {
 		System.out.println(educationDetailDao.getEducationDetail());
-		model.addAttribute("educationDetail",educationDetailDao.getEducationDetail());
+		model.addAttribute("educationDetail", educationDetailDao.getEducationDetail());
 		return "settings/educationDetail/insert";
 	}
 
 	@RequestMapping(value = "/idType")
-	public String idType(Model model){
-		model.addAttribute("documentType",documentTypeDao.getDocumentType());
+	public String idType(Model model) {
+		model.addAttribute("documentType", documentTypeDao.getDocumentType());
 		return "settings/idType/insert";
 	}
-	
+
 	@RequestMapping(value = "/occupationType")
-	public String occupationType(Model model){
+	public String occupationType(Model model) {
 		model.addAttribute("occupation", occupationService.findAll());
 		return "settings/occupationType/insert";
 	}
-	
-	@RequestMapping(value="/branch")
-	public String viewBranch(Model model,@ModelAttribute("bmedit") BranchModel bm)
-	{
-		model.addAttribute("bm",branchDao.findAll());
-		model.addAttribute("bmedit",bm);
+
+	@RequestMapping(value = "/branch")
+	public String viewBranch(Model model, @ModelAttribute("bmedit") BranchModel bm) {
+		model.addAttribute("bm", branchDao.findAll());
+		model.addAttribute("bmedit", bm);
 		return "settings/branch/insert";
 	}
-	
-	@RequestMapping(value="/viewHouseHoldDetail")
-	public String viewHouseHoldDetail(Model model)
-	{
-		List<HouseHoldDetailModel> list=houseOwnerService.findAll();
-		model.addAttribute("list",list);
+
+	@RequestMapping(value = "/viewHouseHoldDetail")
+	public String viewHouseHoldDetail(Model model) {
+		List<HouseHoldDetailModel> list = houseOwnerService.findAll();
+		model.addAttribute("list", list);
 		return "houseHoldDetail/view";
 	}
+	
 	
 
 	

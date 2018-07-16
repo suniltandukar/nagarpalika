@@ -5,6 +5,14 @@
 
 <html>
 <head>
+<style>
+.alert {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 1;
+}
+</style>
 </head>
 <body class="background">
 	<div class="col-md-12 col-sm-12 col-xs-12">
@@ -15,7 +23,8 @@
 
 
 		<c:if test="${not empty ho.house_owner_id }">
-			<spring:url value="/houseOwner/update/${ho.house_owner_id }" var="formUrl" />
+			<spring:url value="/houseOwner/update/${ho.house_owner_id }"
+				var="formUrl" />
 		</c:if>
 
 		<form method="post" action="${formUrl }">
@@ -31,6 +40,19 @@
 
 
 
+
+
+
+					<div class="x_title">
+						<c:if test="${not empty msg }">
+							<div class="col-md-4 col-sm-4 col-xs-12 pull-right">
+								<div class="alert alert-success">
+									<strong>${msg }</strong>
+								</div>
+							</div>
+						</c:if>
+						<div class="clearfix"></div>
+					</div>
 					<button class="btn btn-info" type="button" id="validate">Validate</button>
 					<button class="btn btn-primary" type="reset">Reset</button>
 					<c:if test="${empty ho.house_owner_id }">
@@ -38,7 +60,8 @@
 					</c:if>
 					<c:if test="${not empty ho.house_owner_id }">
 						<input type="submit" class="btn btn-primary" value="Update">
-						<spring:url value="/houseOwner/delete/${ho.house_owner_id }" var="del"></spring:url>
+						<spring:url value="/houseOwner/delete/${ho.house_owner_id }"
+							var="del"></spring:url>
 						<a class="btn btn-danger" href="${del }">Delete</a>
 					</c:if>
 					<div class="clearfix"></div>
@@ -80,10 +103,15 @@
 													<strong>Last Name</strong>
 												</h6> <input type='text' class='form-control'
 												name='house_owner_lname' value="${ho.house_owner_lname }"></td>
+
 											<td><h6>
-													<strong>Marital Status (Y/N)</strong>
-												</h6> <input type='text' class='form-control'
-												name='marital_status' value="${ho.marital_status }"></td>
+													<strong>Marital Status</strong>
+												</h6> <select name="marital_class" class="form-control">
+													<option value="">Marital Status</option>
+													<option value="Y">Yes</option>
+													<option value="N">No</option>
+
+											</select>
 											<td><h6>
 													<strong>Grand Father's Name</strong>
 												</h6> <input type='text' class='form-control'
@@ -174,20 +202,30 @@
 												</h6> <select class='form-control' name='education_status'>
 													<option value="">Select Education Status</option>
 													<c:forEach var="edu" items="${edu}">
-												
-														<option value="${edu.edu_id }" 	<c:if test="${edu.edu_id eq ho.education_status}">selected</c:if>>${edu.education_type }</option>
+
+														<option value="${edu.edu_id }"
+															<c:if test="${edu.edu_id eq ho.education_status}">selected</c:if>>${edu.education_type }</option>
 													</c:forEach>
 											</select></td>
 											<td><h6>
 													<strong>Occupation</strong>
 												</h6> <select class='form-control' name='occupation_id'>
-													<option value="">Select Occupation</option>
+													<option value="1">Select Occupation</option>
+													<c:forEach items="${occupation }" var="o">
+														<option value="${o.occu_id }">${o.occupation_type }</option>
+													</c:forEach>
 											</select></td>
+
 										</tr>
 										<tr>
 											<td><h6>
 													<strong>Disablilty if any</strong>
-												</h6> <input type='text' class='form-control' name='disable_type'></td>
+												</h6> <select class='form-control' name='disable_type'>
+													<option value="">Select Disability</option>
+													<c:forEach items="${disablity }" var="d">
+														<option value="${d.id }">${d.typehead }</option>
+													</c:forEach>
+													</select>
 											<td><h6>
 													<strong>PAN Number</strong>
 												</h6> <input type='text' class='form-control' name='pan_Number'></td>
@@ -196,32 +234,7 @@
 												</h6> <input type='text' class='form-control'
 												name='record_status'></td>
 										</tr>
-										<tr>
-											<td><h6>
-													<strong>Company ID</strong>
-												</h6> <input type='text' class='form-control' name='company_id'
-												value="${ho.company_id}"></td>
-											<td><h6>
-													<strong>Branch ID</strong>
-												</h6> <input type='text' class='form-control' name='branch_id'
-												value="${ho.branch_id}"></td>
-											<td><h6>
-													<strong>Inputter</strong>
-												</h6> <input type='text' class='form-control' name='inputter'></td>
-										</tr>
-										<tr>
-											<td><h6>
-													<strong>Authorizer</strong>
-												</h6> <input type='text' class='form-control' name='authorizer'></td>
-											<td><h6>
-													<strong>date and Time</strong>
-												</h6> <input type='text' class='form-control' name='date_time'
-												value="${ho.date_time}"></td>
-											<td><h6>
-													<strong>Current Number</strong>
-												</h6> <input type='text' class='form-control' name='curr_number'
-												value="${ho.curr_number}"></td>
-										</tr>
+									
 
 
 									</tbody>
@@ -231,57 +244,43 @@
 								aria-labelledby="profile-tab">
 								<table class="table">
 									<tbody>
+									
+										<%-- <c:forEach items="${ownerList }" var="o"></c:forEach> --%>
 										<tr>
-											<td><h6>
+											<!-- <td><h6>
 													<strong>House Owner ID</strong>
 												</h6> <input type='text' class='form-control'
-												name='house_owener_id'></td>
+												name='house_owener_id'></td> -->
+												
+											
 											<td><h6>
 													<strong>Identity Type</strong>
-												</h6> <input type='text' class='form-control' name='id_type'></td>
+												</h6> <input type='text' class='form-control' name='id_type' value="${o.id_type }"></td>
 											<td><h6>
 													<strong>Identity Number</strong>
-												</h6> <input type='text' class='form-control' name='id_number'></td>
+												</h6> <input type='text' class='form-control' name='id_number' value="${o.id_number }"></td>
 										</tr>
 										<tr>
 											<td><h6>
 													<strong>Issue Date</strong>
-												</h6> <input type='text' class='form-control' name='issue_date'></td>
+												</h6> <input type='text' class='form-control' name='issue_date' value="${o.issue_date }"></td>
+											
 											<td><h6>
 													<strong>Expiry Date</strong>
-												</h6> <input type='text' class='form-control' name='expiry_date'></td>
+												</h6> <input type='text' class='form-control' name='expiry_date' value="${o.expiry_date }"></td>
 											<td><h6>
 													<strong>Issued By</strong>
-												</h6> <input type='text' class='form-control' name='issued_by'></td>
+												</h6> <input type='text' class='form-control' name='issued_by' value="${o.issued_by }"></td>
 										</tr>
 										<tr>
 											<td><h6>
 													<strong>Record Status</strong>
 												</h6> <input type='text' class='form-control'
-												name='record_status'></td>
-											<td><h6>
-													<strong>Company ID</strong>
-												</h6> <input type='text' class='form-control' name='company_id'></td>
-											<td><h6>
-													<strong>Branch ID</strong>
-												</h6> <input type='text' class='form-control' name='branch_id'></td>
+												name='record_status' value="${o.record_status }"></td>
+										
 										</tr>
-										<tr>
-											<td><h6>
-													<strong>Inputter</strong>
-												</h6> <input type='text' class='form-control' name='inputter'></td>
-											<td><h6>
-													<strong>Authorizer</strong>
-												</h6> <input type='text' class='form-control' name='authorizer'></td>
-											<td><h6>
-													<strong>date and Time</strong>
-												</h6> <input type='text' class='form-control' name='date_time'></td>
-										</tr>
-										<tr>
-											<td><h6>
-													<strong>Current Number</strong>
-												</h6> <input type='text' class='form-control' name='curr_number'></td>
-										</tr>
+										
+										
 									</tbody>
 								</table>
 							</div>
@@ -333,6 +332,10 @@
 				}
 			});
 		}
+
+		$(".alert").delay(2000).slideUp(200, function() {
+			$(this).alert('close');
+		});
 	</script>
 </body>
 </html>
