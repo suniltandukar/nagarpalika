@@ -21,10 +21,9 @@
 					<table class="table jambo_table table-striped table-bordered dt-responsive nowrap display dataTable dtr-inline" style="font-size: 95%; width: 100%;">
 					<thead>
 						<tr>
-							<th>House Owner Id</th>
-							<th>Land and House ID</th>
+							<th>Resident ID</th>
 							<th>House Number</th>
-							<th>Plot Number</th>
+							<th>Land and House ID</th>
 							<th>Ownership Type</th>
 							<th>Action</th>
 						</tr>
@@ -33,13 +32,10 @@
 					<c:forEach items="${houseLandDetail}" var="h">
 						<tr>
 						<td>${h.houseOwnerDetailModel.house_owner_id }</td>
-							<td>${h.land_house_id }</td>
 							<td>${h.house_number }</td>
-							<td>${h.plot_num}</td>
+							<td>${h.land_house_id }</td>
 							<td>${h.ownership_type }</td>
-							
 							<td><a href="<spring:url value="/houseLand/edit/${h.house_and_land_detail_id }"/>">Edit</a></td>
-							
 						</tr>
 						</c:forEach>
 					</tbody>

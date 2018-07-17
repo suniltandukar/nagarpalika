@@ -53,10 +53,10 @@ h5 {
 								<tbody>
 									<tr>
 										<td><h6>
-												<strong>Owner</strong>
+												<strong>Resident Id</strong>
 											</h6> <select class='form-control'
 											name='houseOwnerDetailModel.house_owner_id'>
-											<option value="">Select Owner</option>
+											<option value="">Select Resident Id</option>
 											<c:forEach items="${houseOwner }" var="h">
 											<option value="${h.house_owner_id }" <c:if test="${h.house_owner_id eq fd.houseOwnerDetailModel.house_owner_id}">selected</c:if>>${h.house_owner_id }/${h.house_owner_fname } ${h.house_owner_mname } ${h.house_owner_lname }</option>
 											</c:forEach>

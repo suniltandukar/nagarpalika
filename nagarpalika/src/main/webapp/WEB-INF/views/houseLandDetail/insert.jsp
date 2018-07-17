@@ -52,10 +52,10 @@ h5 {
 							<tbody>
 								<tr>
 									<td><h6>
-											<strong>Owner</strong>
+											<strong>Resident Id</strong>
 										</h6> <select class='form-control'
 										name='houseOwnerDetailModel.house_owner_id' id="house_owner_id">
-											<option value="">Select Owner</option>
+											<option value="">Select Resident Id</option>
 											<c:forEach items="${houseOwner }" var="h">
 												<option value="${h.house_owner_id }">${h.house_owner_id }/${h.house_owner_fname }
 													${h.house_owner_mname } ${h.house_owner_lname }</option>
@@ -105,27 +105,17 @@ h5 {
 								</tr>
 								<tr>
 									<td><h6>
-											<strong>District</strong>
-										</h6> <select class='form-control' name='district_uni'>
-											<option value="27">Bhaktapur</option>
-									</select></td>
+											<strong>Land Legacy District</strong>
+										</h6> <input type="text" class='form-control' name='district_uni'>
+											</td>
 									<td><h6>
 											<strong>Municipality/ Village council</strong>
-										</h6> <select class='form-control' name='mun_vc_uni'>
-											<option value="32703">Madhyepur Thimi</option>
-									</select></td>
+										</h6> <input type="type" class='form-control' name='mun_vc_uni'>
+											</td>
 									<td><h6>
 											<strong>Ward Number</strong>
-										</h6> <select class='form-control' name='ward_no_uni'>
-											<%
-												int sn;
-													for (sn = 1; sn < 10; sn++) {
-											%>
-											<option value="<%=sn%>"><%=sn%></option>
-											<%
-												}
-											%>
-									</select></td>
+										</h6> <input type="text" class='form-control' name='ward_no_uni'>
+											</td>
 								</tr>
 								<tr>
 									<td><h6>
@@ -142,15 +132,30 @@ h5 {
 								<tr>
 									<td><h6>
 											<strong>Land Current District</strong>
-										</h6> <input type='text' class='form-control'
-										name='land_current_district'></td>
+										</h6> 
+										<select class='form-control' name='land_current_district'>
+											<option value="27">Bhaktapur</option>
+									</select></td>
 									<td><h6>
 											<strong>Land Current Municipality/ Village Council</strong>
-										</h6> <input type='text' class='form-control'
-										name='land_current_mun_vc'></td>
+										</h6> 
+										<select class='form-control' name='land_current_mun_vc'>
+											<option value="32703">Madhyepur Thimi</option>
+									</select></td>
 									<td><h6>
 											<strong>Ward No</strong>
-										</h6> <input type='text' class='form-control' name='ward_no'></td>
+										</h6> 
+										<select class='form-control' name='ward_no'>
+											<%
+												int n;
+													for (n = 1; n < 10; n++) {
+											%>
+											<option value="<%=n%>"><%=n%></option>
+											<%
+												}
+											%>
+									</select>
+										</td>
 								</tr>
 								<tr>
 									<td><h6>
