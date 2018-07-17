@@ -38,8 +38,8 @@ public class HouseRentDetailDaoImpl implements HouseRentDetailDao {
 
 	@Override
 	public int save(HouseRentDetailModel h) {
-		String query = "insert into house_rent_detail (house_owner_id, land_house_id, rented_storied, rented_room, rented_from, rented_purpose, date_time) values "
-				+ "(:houseOwnerDetailModel.house_owner_id,:land_house_id,:rented_storied,:rented_room,:rented_from,:rented_purpose, now())";
+		String query = "insert into house_rent_detail (house_owner_id, land_house_id, rented_storied, rented_room, rented_from, rented_purpose, date_time, inputter, curr_number) values "
+				+ "(:houseOwnerDetailModel.house_owner_id,:land_house_id,:rented_storied,:rented_room,:rented_from,:rented_purpose, now(), :inputter, 1)";
 		int value = template.update(query, new BeanPropertySqlParameterSource(h));
 		return value;	
 		}
@@ -66,7 +66,7 @@ public class HouseRentDetailDaoImpl implements HouseRentDetailDao {
 
 	@Override
 	public void update(HouseRentDetailModel h, String id) {
-		String query = "update house_rent_detail set house_owner_id=:houseOwnerDetailModel.house_owner_id, land_house_id=:land_house_id, rented_storied=:rented_storied, rented_room=:rented_room, rented_from=:rented_from, rented_purpose=:rented_purpose, date_time=now() where house_rent_id = '"+id+"'";
+		String query = "update house_rent_detail set house_owner_id=:houseOwnerDetailModel.house_owner_id, land_house_id=:land_house_id, rented_storied=:rented_storied, rented_room=:rented_room, rented_from=:rented_from, rented_purpose=:rented_purpose, date_time=now(), inputter=:inputter where house_rent_id = '"+id+"'";
 		template.update(query, new BeanPropertySqlParameterSource(h));
 
 	}

@@ -45,23 +45,6 @@ h5 {
 										<td><h6>
 												<strong>Occupation Type</strong>
 											</h6> <input type='text' class='form-control' name='occupation_type' value="${o.occupation_type }"></td>
-										<td><h6>
-												<strong>Record Status</strong>
-											</h6> <input type='text' class='form-control' name='record_status' value="${o.record_status }"></td>
-									</tr>
-									<tr>
-									<td><h6>
-												<strong>Inputter</strong>
-											</h6> <input type='text' class='form-control' name='inputter' value="${o.inputter }"></td>
-										<td><h6>
-												<strong>Authorizer</strong>
-											</h6> <input type='text' class='form-control' name='authorizer' value="${o.authorizer }"></td>
-										<td><h6>
-												<strong>date and Time</strong>
-											</h6> <input type='text' class='form-control' name='date_time' value="${o.date_time }"></td>
-										<td><h6>
-												<strong>Current Number</strong>
-											</h6> <input type='text' class='form-control' name='curr_number' value="${o.curr_number }"></td>
 									</tr>
 								</tbody>
 							</table>

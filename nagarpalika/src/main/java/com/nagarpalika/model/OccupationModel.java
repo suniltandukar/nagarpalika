@@ -9,7 +9,6 @@ public class OccupationModel {
 	date_time,
 	curr_number,
 occupation_id;
-	
 
 	public String getOccu_id() {
 		return occu_id;
@@ -74,8 +73,6 @@ occupation_id;
 	public void setOccupation_id(String occupation_id) {
 		this.occupation_id = occupation_id;
 	}
-	
-	
 
 
 }
