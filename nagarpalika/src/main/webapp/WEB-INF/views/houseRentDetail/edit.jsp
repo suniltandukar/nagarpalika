@@ -52,10 +52,10 @@ h5 {
 						<table class="table">
 							<tr>
 								<td><h6>
-										<strong>House Owner ID</strong>
+										<strong>Resident Id</strong>
 									</h6> <select class='form-control'
 										name='houseOwnerDetailModel.house_owner_id' id="house_owner_id">
-											<option value="">Select Owner</option>
+											<option value="">Select Resident Id</option>
 											<c:forEach items="${houseOwner }" var="h">
 											<option value="${h.house_owner_id }" <c:if test="${h.house_owner_id eq hd.houseOwnerDetailModel.house_owner_id}">selected</c:if>>${h.house_owner_id }/${h.house_owner_fname } ${h.house_owner_mname } ${h.house_owner_lname }</option>
 											</c:forEach>
@@ -76,7 +76,13 @@ h5 {
 									</h6> <input type='text' class='form-control' name='rented_from' value="${hd.rented_from }"></td>
 								<td><h6>
 										<strong>Rented Purpose</strong>
-									</h6> <input type='text' class='form-control' name='rented_purpose' value="${hd.rented_purpose }"></td>
+									</h6> <select class='form-control' name='rented_purpose'>
+									
+									<option value="">Select Rented Purpose</option>
+									<option value="Commercial" <c:if test="${hd.rented_purpose eq 'Commercial'}">selected</c:if>>Commercial</option>
+									<option value="Residential" <c:if test="${hd.rented_purpose eq 'Residential'}">selected</c:if>>Residential</option>
+									</select>
+									</td>
 							</tr>
 						</table>
 

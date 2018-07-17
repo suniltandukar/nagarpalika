@@ -49,10 +49,10 @@ h5 {
 						<table class="table">
 							<tr>
 								<td><h6>
-										<strong>House Owner ID</strong>
+										<strong>Resident Id</strong>
 									</h6> <select class='form-control'
 										name='houseOwnerDetailModel.house_owner_id' id="house_owner_id">
-											<option value="">Select Owner</option>
+											<option value="">Select Resident Id</option>
 											<c:forEach items="${houseOwner }" var="h">
 												<option value="${h.house_owner_id }">${h.house_owner_id }/${h.house_owner_fname }
 													${h.house_owner_mname } ${h.house_owner_lname }</option>
@@ -74,7 +74,12 @@ h5 {
 									</h6> <input type='text' class='form-control' name='rented_from'></td>
 								<td><h6>
 										<strong>Rented Purpose</strong>
-									</h6> <input type='text' class='form-control' name='rented_purpose'></td>
+									</h6> <select class='form-control' name='rented_purpose'>
+									
+									<option value="">Select Rented Purpose</option>
+									<option value="Commercial">Commercial</option>
+									<option value="Residential">Residential</option>
+									</select></td>
 							</tr>
 						</table>
 

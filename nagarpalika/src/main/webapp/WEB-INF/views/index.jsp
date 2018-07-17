@@ -29,10 +29,13 @@
 			id="signin"></a>
 
 		<div class="login_wrapper">
+		
 			<div class="animate form login_form">
+			
 				<section class="login_content">
 					<form method="post" action="login">
 						 <img src="<%=request.getContextPath()%>/resources/img/nagarpalika.png" class="img-rounded" style="width:40%"> 
+						<h2>Thimi Municipality Management Information System </h2>
 						<c:if test="${msg!='' }">
 						<div class="alert alert-danger">
 							${msg }
@@ -61,7 +64,7 @@
 
 					<div class="separator">
 						<p class="change_link">
-							Municipality Management Information System 
+							
 						</p>
 
 						<div class="clearfix"></div>

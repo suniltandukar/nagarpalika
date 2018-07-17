@@ -50,10 +50,10 @@ h5 {
 						<table class="table">
 							<tr>
 								<td><h6>
-										<strong>House Owner ID</strong>
+										<strong>Resident Id</strong>
 									</h6> <select class='form-control'
 										name='houseOwnerDetailModel.house_owner_id' id="house_owner_id">
-											<option value="">Select Owner</option>
+											<option value="">Select Resident Id</option>
 											<c:forEach items="${houseOwner }" var="h">
 												<option value="${h.house_owner_id }">${h.house_owner_id }/${h.house_owner_fname }
 													${h.house_owner_mname } ${h.house_owner_lname }</option>
@@ -144,8 +144,17 @@ h5 {
 									</select>
 									</td>
 								<td><h6>
-										<strong>Road size (feet)</strong>
-									</h6> <input type='text' class='form-control' name='road_width'></td>
+										<strong>Road size (meter)</strong>
+									</h6> 
+									<select class="form-control" name="road_width">
+									<option value="">Select Road Size</option>
+									<%int sn;
+									for(sn=1;sn<=10;sn++){%>
+									<option value="<%=sn%>"><%=sn%></option>
+									<%} %>
+									<option value="Other">Other</option>
+									</select>
+									</td>
 							</tr>
 						</table>
 

@@ -53,9 +53,9 @@ h5 {
 							<tbody>
 								<tr>
 									<td><h6>
-											<strong>Owner</strong>
+											<strong>Resident Id</strong>
 										</h6>  <select class='form-control' name='houseOwnerDetailModel.house_owner_id' id="house_owner_id">
-											<option value="">Select Owner</option>
+											<option value="">Select Resident Id</option>
 											<c:forEach items="${houseOwner }" var="h">
 												<option value="${h.house_owner_id }" <c:if test="${h.house_owner_id eq hd.houseOwnerDetailModel.house_owner_id }">selected</c:if>>${h.house_owner_id }/${h.house_owner_fname }
 													${h.house_owner_mname } ${h.house_owner_lname }</option>
@@ -88,10 +88,10 @@ h5 {
 											<strong>Land Unit</strong>
 										</h6> <select class='form-control' name='land_unit'>
 										<option value="">Select Land Unit</option>
-										<option value="Ropani" <c:if test="${hd.ownership_type eq 'Ropani' }">selected</c:if>>Ropani</option>
-										<option value="Bigha" <c:if test="${hd.ownership_type eq 'Bigha' }">selected</c:if>>Bigha</option>
-										<option value="Sq. Meter" <c:if test="${hd.ownership_type eq 'Sq. Meter' }">selected</c:if>>Sq. Meter</option>
-										<option value="Sq. Feet" <c:if test="${hd.ownership_type eq 'Sq. Feet' }">selected</c:if>>Sq. Feet</option>
+										<option value="Ropani" <c:if test="${hd.land_unit eq 'Ropani' }">selected</c:if>>Ropani</option>
+										<option value="Bigha" <c:if test="${hd.land_unit eq 'Bigha' }">selected</c:if>>Bigha</option>
+										<option value="Sq. Meter" <c:if test="${hd.land_unit eq 'Sq. Meter' }">selected</c:if>>Sq. Meter</option>
+										<option value="Sq. Feet" <c:if test="${hd.land_unit eq 'Sq. Feet' }">selected</c:if>>Sq. Feet</option>
 										</select></td>
 								</tr>
 								<tr>
@@ -107,24 +107,17 @@ h5 {
 								</tr>
 								<tr>
 									<td><h6>
-											<strong>District</strong>
-										</h6> <select class='form-control' name='district_uni'>
-										<option value="27">Bhaktapur</option>
-										</select></td>
+											<strong>Land Legacy District</strong>
+										</h6> <input type="text" value="${hd.district_uni }" class='form-control' name='district_uni'>
+										</td>
 									<td><h6>
-											<strong>Municipality/ Village council</strong>
-										</h6> <select class='form-control' name='mun_vc_uni'>
-										<option value="32703">Madhyepur Thimi</option>
-										</select></td>
+											<strong>Land Legacy Municipality/ Village council</strong>
+										</h6> <input type="text" value="${hd.mun_vc_uni }" class='form-control' name='mun_vc_uni'>
+										</td>
 									<td><h6>
-											<strong>Ward Number</strong>
-										</h6> <select class='form-control' name='ward_no_uni'>
-										<option value="${hd.ward_no_uni }">${hd.ward_no_uni }</option>
-										<%int sn;
-										for(sn=1;sn<10;sn++){%>
-										<option value="<%=sn%>"><%=sn %></option>
-										<%} %>
-										</select></td>
+											<strong>Land Legacy Ward Number</strong>
+										</h6> <input type="text" value="${hd.ward_no_uni }"class='form-control' name='ward_no_uni'>
+										</td>
 								</tr>
 								<tr>
 									<td><h6>
@@ -141,15 +134,29 @@ h5 {
 								<tr>
 									<td><h6>
 											<strong>Land Current District</strong>
-										</h6> <input type='text' class='form-control'
-										name='land_current_district' value="${hd.land_current_district }"></td>
+										</h6> <select class='form-control' name='land_current_district'>
+											<option value="27">Bhaktapur</option>
+									</select></td>
 									<td><h6>
 											<strong>Land Current Municipality/ Village Council</strong>
-										</h6> <input type='text' class='form-control'
-										name='land_current_mun_vc' value="${hd.land_current_mun_vc }"></td>
+										</h6> <select class='form-control' name='land_current_mun_vc'>
+											<option value="32703">Madhyepur Thimi</option>
+									</select>
+									</td>
 									<td><h6>
 											<strong>Ward No</strong>
-										</h6> <input type='text' class='form-control' name='ward_no' value="${hd.ward_no }"></td>
+										</h6> 
+										<select class='form-control' name='ward_no'>
+										<option value="${hd.ward_no }" selected>${hd.ward_no }</option>
+											<%
+												int n;
+													for (n = 1; n < 10; n++) {
+											%>
+											<option value="<%=n%>"><%=n%></option>
+											<%
+												}
+											%>
+									</select>
 								</tr>
 								<tr>
 									<td><h6>
