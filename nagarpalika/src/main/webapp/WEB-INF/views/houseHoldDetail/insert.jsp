@@ -84,7 +84,7 @@
 											
 											<td><h6>
 													<strong>Marital Status</strong>
-												</h6> <select name="marital_class" class="form-control">
+												</h6> <select name="marital_status" class="form-control">
 													<option value="">Marital Status</option>
 													<option value="Y">Yes</option>
 													<option value="N">No</option>
@@ -205,7 +205,12 @@
 													</select>
 											<td><h6>
 													<strong>PAN Number</strong>
-												</h6> <input type='text' class='form-control' name='pan_Number'></td>
+												</h6> <input type='text' class='form-control' name='pan_number'></td>
+											<td><h6>
+													<strong>Record Status</strong>
+												</h6> <input type='text' class='form-control'
+												name='record_status'></td>
+
 										</tr>
 									</tbody>
 								</table>
