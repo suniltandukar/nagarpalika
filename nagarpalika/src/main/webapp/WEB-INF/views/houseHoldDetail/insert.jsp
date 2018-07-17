@@ -37,12 +37,6 @@
 						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 						</li>
 					</ul>
-
-
-
-
-
-
 					<div class="x_title">
 						<c:if test="${not empty msg }">
 							<div class="col-md-4 col-sm-4 col-xs-12 pull-right">
@@ -106,7 +100,7 @@
 
 											<td><h6>
 													<strong>Marital Status</strong>
-												</h6> <select name="marital_class" class="form-control">
+												</h6> <select name="marital_status" class="form-control">
 													<option value="">Marital Status</option>
 													<option value="Y">Yes</option>
 													<option value="N">No</option>
@@ -228,7 +222,7 @@
 													</select>
 											<td><h6>
 													<strong>PAN Number</strong>
-												</h6> <input type='text' class='form-control' name='pan_Number'></td>
+												</h6> <input type='text' class='form-control' name='pan_number'></td>
 											<td><h6>
 													<strong>Record Status</strong>
 												</h6> <input type='text' class='form-control'
