@@ -36,7 +36,7 @@ public class FamilyDetailDaoImpl implements FamilyDetailDao {
 	}
 
 	public void save(FamilyDetailModel f) {
-		String query = "insert into family_detail (house_owner_id, fname, mname, lname, relation, marital_status, dob_nep ,disable_type, occupation_id, gender, date_time) values ( :houseOwnerDetailModel.house_owner_id, :fname, :mname, :lname, :relation, :marital_status, :dob_nep , :disableTypeModel.disable_type, :occupationModel.occupation_id, :gender, now())";
+		String query = "insert into family_detail (house_owner_id, fname, mname, lname, relation, marital_status, dob_nep ,disable_type, occupation_id, gender, date_time,inputter, curr_number) values ( :houseOwnerDetailModel.house_owner_id, :fname, :mname, :lname, :relation, :marital_status, :dob_nep , :disableTypeModel.disable_type, :occupationModel.occupation_id, :gender, now(),:inputter,1)";
 		template.update(query, new BeanPropertySqlParameterSource(f));
 	}
 
@@ -58,7 +58,7 @@ public class FamilyDetailDaoImpl implements FamilyDetailDao {
 	}
 
 	public void update(FamilyDetailModel f, String id) {
-		String query = "update family_detail set house_owner_id= :houseOwnerDetailModel.house_owner_id, fname= :fname, mname= :mname, lname = :lname, relation= :relation, marital_status= :marital_status, dob_nep= :dob_nep, disable_type = :disableTypeModel.disable_type, occupation_id= :occupationModel.occupation_id, gender= :gender, date_time=now() where family_detail_id='"+ id + "'";
+		String query = "update family_detail set house_owner_id= :houseOwnerDetailModel.house_owner_id, ,inputter= :inputter,fname= :fname, mname= :mname, lname = :lname, relation= :relation, marital_status= :marital_status, dob_nep= :dob_nep, disable_type = :disableTypeModel.disable_type, occupation_id= :occupationModel.occupation_id, gender= :gender, date_time=now() where family_detail_id='"+ id + "'";
 		template.update(query, new BeanPropertySqlParameterSource(f));
 	}
 

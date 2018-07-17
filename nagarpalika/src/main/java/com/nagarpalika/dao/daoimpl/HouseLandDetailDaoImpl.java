@@ -38,8 +38,8 @@ public class HouseLandDetailDaoImpl implements HouseLandDetailDao {
 
 	@Override
 	public int save(HouseLandDetailModel h) {
-		String query = "insert into house_and_land_detail (house_owner_id,land_house_id,family_id,ownership_type,house_number,land_unit,land_size,plot_num,sheet_num,district_uni,mun_vc_uni,ward_no_uni,moth_num_uni,kitta_num_uni,land_legacy_address,land_current_district,land_current_mun_vc,ward_no,tole,house_construction_type, used_status, house_floor_count, rented_floor_count, house_area_unit, house_area, map_application_date, map_approved_date, construction_start_date) values ("
-				+ ":houseOwnerDetailModel.house_owner_id,:land_house_id,:family_id,:ownership_type,:house_number,:land_unit,:land_size,:plot_num,:sheet_num,:district_uni,:mun_vc_uni,:ward_no_uni,:moth_num_uni,:kitta_num_uni,:land_legacy_address,:land_current_district,:land_current_mun_vc,:ward_no,:tole,:house_construction_type, :used_status, :house_floor_count, :rented_floor_count, :house_area_unit, :house_area, :map_application_date, :map_approved_date, :construction_start_date)";
+		String query = "insert into house_and_land_detail (house_owner_id,land_house_id,inputter,family_id,ownership_type,house_number,land_unit,land_size,plot_num,sheet_num,district_uni,mun_vc_uni,ward_no_uni,moth_num_uni,kitta_num_uni,land_legacy_address,land_current_district,land_current_mun_vc,ward_no,tole,house_construction_type, used_status, house_floor_count, rented_floor_count, house_area_unit, house_area, map_application_date, map_approved_date, construction_start_date, curr_number) values ("
+				+ ":houseOwnerDetailModel.house_owner_id,:land_house_id,:family_id,:ownership_type,:inputter,:house_number,:land_unit,:land_size,:plot_num,:sheet_num,:district_uni,:mun_vc_uni,:ward_no_uni,:moth_num_uni,:kitta_num_uni,:land_legacy_address,:land_current_district,:land_current_mun_vc,:ward_no,:tole,:house_construction_type, :used_status, :house_floor_count, :rented_floor_count, :house_area_unit, :house_area, :map_application_date, :map_approved_date, :construction_start_date,1)";
 		int i = template.update(query, new BeanPropertySqlParameterSource(h));
 		if (i > 0) {
 			return i;
