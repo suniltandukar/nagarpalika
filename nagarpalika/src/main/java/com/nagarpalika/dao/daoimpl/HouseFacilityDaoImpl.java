@@ -36,8 +36,8 @@ public class HouseFacilityDaoImpl implements HouseFacilityDao {
 
 	@Override
 	public int save(HouseFacilityDetailModel h) {
-		String query = "insert into house_facility_detail (house_owner_id, land_house_id, drinking_water_type_id, drinking_water_sufficiency, drainage_management, electricity_facility, street_light_facility, telephone_facility, internet_facility, tv_facility, road_type_id, road_width, date_time) values "
-				+ "(:houseOwnerDetailModel.house_owner_id, :land_house_id, :drinkingWaterTypeModel.drinking_water_type_id, :drinking_water_sufficiency, :drainage_management, :electricity_facility, :street_light_facility, :telephone_facility, :internet_facility, :tv_facility, :road_type_id, :road_width, now())";
+		String query = "insert into house_facility_detail (house_owner_id, inputter, land_house_id, drinking_water_type_id, drinking_water_sufficiency, drainage_management, electricity_facility, street_light_facility, telephone_facility, internet_facility, tv_facility, road_type_id, road_width, date_time, curr_number) values "
+				+ "(:houseOwnerDetailModel.house_owner_id,:inputter, :land_house_id, :drinkingWaterTypeModel.drinking_water_type_id, :drinking_water_sufficiency, :drainage_management, :electricity_facility, :street_light_facility, :telephone_facility, :internet_facility, :tv_facility, :road_type_id, :road_width, now(),1)";
 		int value = template.update(query, new BeanPropertySqlParameterSource(h));
 		return value;
 	}
@@ -67,7 +67,7 @@ public class HouseFacilityDaoImpl implements HouseFacilityDao {
 
 	@Override
 	public void update(HouseFacilityDetailModel h, String id) {
-		String query = "update house_facility_detail set house_owner_id= :houseOwnerDetailModel.house_owner_id, land_house_id=:land_house_id, drinking_water_type_id=:drinkingWaterTypeModel.drinking_water_type_id, drinking_water_sufficiency=:drinking_water_sufficiency, drainage_management=:drainage_management, electricity_facility=:electricity_facility, street_light_facility=:street_light_facility, telephone_facility=:telephone_facility, internet_facility=:internet_facility, tv_facility=:tv_facility, road_type_id=:road_type_id, road_width=:road_width, date_time=now() where house_facility_id = '"+id+"'";
+		String query = "update house_facility_detail set house_owner_id= :houseOwnerDetailModel.house_owner_id, land_house_id=:land_house_id, inputter=:inputter,drinking_water_type_id=:drinkingWaterTypeModel.drinking_water_type_id, drinking_water_sufficiency=:drinking_water_sufficiency, drainage_management=:drainage_management, electricity_facility=:electricity_facility, street_light_facility=:street_light_facility, telephone_facility=:telephone_facility, internet_facility=:internet_facility, tv_facility=:tv_facility, road_type_id=:road_type_id, road_width=:road_width, date_time=now() where house_facility_id = '"+id+"'";
 		template.update(query, new BeanPropertySqlParameterSource(h));
 	}
 

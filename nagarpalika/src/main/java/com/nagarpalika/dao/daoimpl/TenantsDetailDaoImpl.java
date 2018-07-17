@@ -39,7 +39,7 @@ public class TenantsDetailDaoImpl implements TenantsDetailDao {
 
 	@Override
 	public int save(TenantDetailModel t) {
-		String query = "insert into tenants_detail (house_owner_id, land_house_id, tenant_name, tenant_address, occu_id, phone_number, identity, identity_number, tenant_nos, date_time, curr_number) values (:houseOwnerDetailModel.house_owner_id, :land_house_id, :tenant_name, :tenant_address, :occupationModel.occu_id, :phone_number, :identity, :identity_number, :tenant_nos, now(), 1)";
+		String query = "insert into tenants_detail (house_owner_id, land_house_id, tenant_name, tenant_address, occu_id, phone_number, identity, identity_number, tenant_nos, date_time, curr_number,inputter) values (:houseOwnerDetailModel.house_owner_id, :land_house_id, :tenant_name, :tenant_address, :occupationModel.occu_id, :phone_number, :identity, :identity_number, :tenant_nos, now(), 1,:inputter)";
 		int value = template.update(query, new BeanPropertySqlParameterSource(t));
 		return value;
 	}
@@ -68,7 +68,7 @@ public class TenantsDetailDaoImpl implements TenantsDetailDao {
 
 	@Override
 	public void update(TenantDetailModel t, String id) {
-		String query = "update tenants_detail set house_owner_id=:houseOwnerDetailModel.house_owner_id, land_house_id=:land_house_id, tenant_name=:tenant_name, tenant_address=:tenant_address, occu_id=:occupationModel.occu_id, phone_number=:phone_number, identity=:identity, identity_number=:identity_number, tenant_nos=:tenant_nos, date_time=now() where tenants_id = '"+id+"'";
+		String query = "update tenants_detail set house_owner_id=:houseOwnerDetailModel.house_owner_id, land_house_id=:land_house_id, inputter=:inputter,tenant_name=:tenant_name, tenant_address=:tenant_address, occu_id=:occupationModel.occu_id, phone_number=:phone_number, identity=:identity, identity_number=:identity_number, tenant_nos=:tenant_nos, date_time=now() where tenants_id = '"+id+"'";
 		template.update(query, new BeanPropertySqlParameterSource(t));
 
 	}
