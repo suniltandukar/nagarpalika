@@ -4,15 +4,17 @@ import java.util.List;
 
 public class OwnerDetailModel {
 	
-	List<String> owner_identity_id,house_owner_id,id_type,id_number,issue_date,expiry_date,issued_by,record_status,inputter,authorizer,date_time,curr_number;
+	List<String> owner_identity_id,id_type,id_number,issue_date,expiry_date,issued_by,record_status,inputter,authorizer,date_time,curr_number;
+String house_owner_id;
+	
 
-	public List<String> getHouse_owner_id() {
-		return house_owner_id;
-	}
+	public String getHouse_owner_id() {
+	return house_owner_id;
+}
 
-	public void setHouse_owner_id(List<String> house_owner_id) {
-		this.house_owner_id = house_owner_id;
-	}
+public void setHouse_owner_id(String house_owner_id) {
+	this.house_owner_id = house_owner_id;
+}
 
 	public List<String> getId_type() {
 		return id_type;

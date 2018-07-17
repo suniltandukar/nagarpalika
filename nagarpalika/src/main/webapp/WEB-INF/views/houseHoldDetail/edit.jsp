@@ -16,33 +16,17 @@
 </head>
 <body class="background">
 	<div class="col-md-12 col-sm-12 col-xs-12">
-
-		<c:if test="${empty ho.house_owner_id }">
-			<spring:url value="/houseOwner/insert" var="formUrl" />
-		</c:if>
-
-
-		<c:if test="${not empty ho.house_owner_id }">
-			<spring:url value="/houseOwner/update/${ho.house_owner_id }"
-				var="formUrl" />
-		</c:if>
-
+			<spring:url value="/houseOwner/update/${ho.house_owner_id }" var="formUrl" />
 		<form method="post" action="${formUrl }">
 
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>HOUSE HOLD DETAIL</h2>
+					<h2>UPDATE HOUSE HOLD DETAIL</h2>
 
 					<ul class="nav navbar-right panel_toolbox">
 						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 						</li>
 					</ul>
-
-
-
-
-
-
 					<div class="x_title">
 						<c:if test="${not empty msg }">
 							<div class="col-md-4 col-sm-4 col-xs-12 pull-right">
@@ -55,15 +39,10 @@
 					</div>
 					<button class="btn btn-info" type="button" id="validate">Validate</button>
 					<button class="btn btn-primary" type="reset">Reset</button>
-					<c:if test="${empty ho.house_owner_id }">
-						<input type="submit" class="btn btn-success" value="Submit">
-					</c:if>
-					<c:if test="${not empty ho.house_owner_id }">
+					
 						<input type="submit" class="btn btn-primary" value="Update">
-						<spring:url value="/houseOwner/delete/${ho.house_owner_id }"
-							var="del"></spring:url>
-						<a class="btn btn-danger" href="${del }">Delete</a>
-					</c:if>
+						
+						<a class="btn btn-danger" href="<spring:url value="/houseOwner/delete/${ho.house_owner_id }"/>">Delete</a>
 					<div class="clearfix"></div>
 
 				</div>
@@ -254,22 +233,22 @@
 											
 											<td><h6>
 													<strong>Identity Type</strong>
-												</h6> <input type='text' class='form-control' name='ownerIdentityDetailModel.id_type' value=""></td>
+												</h6> <input type='text' class='form-control' name='id_type' value=""></td>
 											<td><h6>
 													<strong>Identity Number</strong>
-												</h6> <input type='text' class='form-control' name='ownerIdentityDetailModel.id_number' value=""></td>
+												</h6> <input type='text' class='form-control' name='id_number' value=""></td>
 										</tr>
 										<tr>
 											<td><h6>
 													<strong>Issue Date</strong>
-												</h6> <input type='text' class='form-control' name='ownerIdentityDetailModel.issue_date' value=""></td>
+												</h6> <input type='text' class='form-control' name='issue_date' value=""></td>
 											
 											<td><h6>
 													<strong>Expiry Date</strong>
-												</h6> <input type='text' class='form-control' name='ownerIdentityDetailModel.expiry_date' value=""></td>
+												</h6> <input type='text' class='form-control' name='expiry_date' value=""></td>
 											<td><h6>
 													<strong>Issued By</strong>
-												</h6> <input type='text' class='form-control' name='ownerIdentityDetailModel.issued_by' value=""></td>
+												</h6> <input type='text' class='form-control' name='issued_by' value=""></td>
 										</tr>
 									</c:if>
 										 <c:forEach items="${ownerList }" var="o" varStatus="descIndex">
@@ -282,22 +261,22 @@
 											
 											<td><h6>
 													<strong>Identity Type</strong>
-												</h6> <input type='text' class='form-control' name='ownerIdentityDetailModel.id_type' value="${o[descIndex.index].id_type }"></td>
+												</h6> <input type='text' class='form-control' name='id_type' value="${o[descIndex.index].id_type }"></td>
 											<td><h6>
 													<strong>Identity Number</strong>
-												</h6> <input type='text' class='form-control' name='ownerIdentityDetailModel.id_number' value="${o[descIndex.index].id_number }"></td>
+												</h6> <input type='text' class='form-control' name='id_number' value="${o[descIndex.index].id_number }"></td>
 										</tr>
 										<tr>
 											<td><h6>
 													<strong>Issue Date</strong>
-												</h6> <input type='text' class='form-control' name='ownerIdentityDetailModel.issue_date' value="${o[descIndex.index].issue_date }"></td>
+												</h6> <input type='text' class='form-control' name='issue_date' value="${o[descIndex.index].issue_date }"></td>
 											
 											<td><h6>
 													<strong>Expiry Date</strong>
-												</h6> <input type='text' class='form-control' name='ownerIdentityDetailModel.expiry_date' value="${o[descIndex.index].expiry_date }"></td>
+												</h6> <input type='text' class='form-control' name='expiry_date' value="${o[descIndex.index].expiry_date }"></td>
 											<td><h6>
 													<strong>Issued By</strong>
-												</h6> <input type='text' class='form-control' name='ownerIdentityDetailModel.issued_by' value="${o[descIndex.index].issued_by }"></td>
+												</h6> <input type='text' class='form-control' name='issued_by' value="${o[descIndex.index].issued_by }"></td>
 										</tr>
 										
 										</c:forEach>

@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
-<body>
+<body class="background">
     <div class="alert alert-warning">
         <a href="#" class="close" data-dismiss="alert">&times;</a>
 

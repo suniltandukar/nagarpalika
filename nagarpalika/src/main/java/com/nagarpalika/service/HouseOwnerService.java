@@ -10,7 +10,7 @@ import com.nagarpalika.model.OwnerIdentityDetailModel;
 public interface HouseOwnerService {
 	public List<HouseHoldDetailModel> findAll();
 
-	public void insertHouseOwner(HouseOwnerDetailModel hm);
+	public int insertHouseOwner(HouseOwnerDetailModel hm);
 
 	public HouseOwnerDetailModel editHouseOwner(String id);
 
@@ -18,7 +18,9 @@ public interface HouseOwnerService {
 
 	public void deleteHouseOwner(String id);
 
-	public void insertOwnerIdentity(OwnerDetailModel owner,int i);
+	public void insertOwnerIdentity(HouseOwnerDetailModel owner,int i);
 
-	public List<OwnerDetailModel> editOwnerDetail(String id);
+	public List<OwnerDetailModel> findById(String id);
+	
+	public int findMaxValue();
 }

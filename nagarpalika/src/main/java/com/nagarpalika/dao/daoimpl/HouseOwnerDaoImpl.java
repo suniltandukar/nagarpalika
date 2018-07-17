@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import com.nagarpalika.dao.HouseOwnerDao;
 import com.nagarpalika.model.HouseHoldDetailModel;
+import com.nagarpalika.model.HouseLandDetailModel;
 import com.nagarpalika.model.HouseOwnerDetailModel;
 import com.nagarpalika.model.OwnerDetailModel;
 
@@ -32,12 +33,11 @@ public class HouseOwnerDaoImpl implements HouseOwnerDao {
 	
 
 	@Override
-	public void insertHouseOwner(HouseOwnerDetailModel hm) {
+	public int insertHouseOwner(HouseOwnerDetailModel hm) {
 
 		String sql="insert into house_owner_detail(house_owner_id, house_owner_fname, house_owner_mname,house_owner_lname,marital_status,grand_father_name,father_name,spouse_name,house_number,permanent_address,permanent_address_district,permanent_address_mun_vc,permanent_address_ward_no,temporary_address,gender,dob_nep,phone_number, mobile_no,email,education_status,occupation_id,disable_type,pan_number,record_status,company_id,branch_id,inputter,authorizer,date_time,curr_number)"
 				+ "values(:house_owner_id,:house_owner_fname,:house_owner_mname,:house_owner_lname,:marital_status,:grand_father_name,:father_name,:spouse_name,:house_number,:permanent_address,:permanent_address_district,:permanent_address_mun_vc,:permanent_address_ward_no,:temporary_address,:gender,:dob_nep,:phone_number,:mobile_no,:email,:education_status,:occupation_id,:disable_type,:pan_number,:record_status,:company_id,:branch_id,:inputter,:authorizer,:date_time,:curr_number)";
-		template.update(sql, new BeanPropertySqlParameterSource(hm));
-		System.out.println(sql);
+		return template.update(sql, new BeanPropertySqlParameterSource(hm));
 	}
 
 	
@@ -60,28 +60,32 @@ public class HouseOwnerDaoImpl implements HouseOwnerDao {
 	}
 	@SuppressWarnings("unchecked")
 	@Override
-	public void insertOwnerIdentity(OwnerDetailModel owner,int i) {
+	public void insertOwnerIdentity(HouseOwnerDetailModel owner,int i) {
 
-		String sql="insert into owner_identity_detail(house_owner_id,id_type,id_number,issue_date,expiry_date,issued_by,record_status)"
-				+ "values(:house_owner_id,:id_type,:id_number,:issue_date,:expiry_date,:issued_by,:record_status)";
+		String sql="insert into owner_identity_detail(house_owner_id,id_type,id_number,issue_date,expiry_date,issued_by)"
+				+ "values(:house_owner_id,:id_type,:id_number,:issue_date,:expiry_date,:issued_by)";
 		Map params=new HashMap();
-		params.put("house_owner_id", owner.getHouse_owner_id().get(i));
-		params.put("id_type",owner.getId_type().get(i));
-		params.put("id_number", owner.getId_number().get(i));
-		params.put("issue_date", owner.getIssue_date().get(i));
-		params.put("expiry_date",owner.getExpiry_date().get(i));
-		params.put("issued_by", owner.getIssued_by().get(i));
-		params.put("record_status", owner.getRecord_status().get(i));
+		params.put("house_owner_id", owner.getHouse_owner_id());
+		params.put("id_type",owner.getOwnerIdentityDetailModel().getId_type().get(i));
+		params.put("id_number", owner.getOwnerIdentityDetailModel().getId_number().get(i));
+		params.put("issue_date", owner.getOwnerIdentityDetailModel().getIssue_date().get(i));
+		params.put("expiry_date",owner.getOwnerIdentityDetailModel().getExpiry_date().get(i));
+		params.put("issued_by", owner.getOwnerIdentityDetailModel().getIssued_by().get(i));
 		
 		template.update(sql, params);
 		
 		
 	}
 	@Override
-	public List<OwnerDetailModel> editOwnerDetail(String id) {
-		
-		String sql="select * from owner_identity_detail where house_owner_id=?";
-		return template.query(sql, new BeanPropertySqlParameterSource(new Object[] {id}),new BeanPropertyRowMapper<OwnerDetailModel>(OwnerDetailModel.class));
+	public List<OwnerDetailModel> findById(String id) {
+		System.out.println(id);
+		String sql="select * from owner_identity_detail where house_owner_id='"+id+"'";
+		return template.query(sql, new BeanPropertyRowMapper<OwnerDetailModel>(OwnerDetailModel.class));
+	}
+	@Override
+	public int findMaxValue() {
+		String query = "select max(owner_identity_id) as owner_identity_id from owner_identity_detail";
+		return  template.queryForObject(query, new BeanPropertySqlParameterSource(OwnerDetailModel.class), Integer.class);
 	}
 
 }

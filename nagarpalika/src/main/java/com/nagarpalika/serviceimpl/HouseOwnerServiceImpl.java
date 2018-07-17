@@ -22,8 +22,8 @@ public class HouseOwnerServiceImpl implements HouseOwnerService {
 	}
 	
 	@Override
-	public void insertHouseOwner(HouseOwnerDetailModel hm) {
-		houseOwnerDao.insertHouseOwner(hm);
+	public int insertHouseOwner(HouseOwnerDetailModel hm) {
+		return houseOwnerDao.insertHouseOwner(hm);
 	}
 	
 	public HouseOwnerDetailModel editHouseOwner(String id){
@@ -42,13 +42,18 @@ public class HouseOwnerServiceImpl implements HouseOwnerService {
 	}
 
 	@Override
-	public void insertOwnerIdentity(OwnerDetailModel owner,int i) {
+	public void insertOwnerIdentity(HouseOwnerDetailModel owner,int i){
 		houseOwnerDao.insertOwnerIdentity(owner,i);
 	}
 
 	@Override
-	public List<OwnerDetailModel> editOwnerDetail(String id) {
-		return houseOwnerDao.editOwnerDetail(id);
+	public List<OwnerDetailModel> findById(String id) {
+		return houseOwnerDao.findById(id);
+	}
+
+	@Override
+	public int findMaxValue() {
+		return houseOwnerDao.findMaxValue();
 	}
 
 }

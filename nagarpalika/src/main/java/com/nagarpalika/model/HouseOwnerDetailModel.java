@@ -31,7 +31,7 @@ public class HouseOwnerDetailModel {
 	authorizer,
 	date_time,
 	curr_number;
-
+private OwnerDetailModel ownerIdentityDetailModel;
 	public String getHouse_owner_id() {
 		return house_owner_id;
 	}
@@ -271,6 +271,19 @@ public class HouseOwnerDetailModel {
 	public void setCurr_number(String curr_number) {
 		this.curr_number = curr_number;
 	}
+
+	public OwnerDetailModel getOwnerIdentityDetailModel() {
+		return ownerIdentityDetailModel;
+	}
+
+	public void setOwnerIdentityDetailModel(OwnerDetailModel ownerIdentityDetailModel) {
+		this.ownerIdentityDetailModel = ownerIdentityDetailModel;
+	}
+
+
+
+
+	
 
 	
 
