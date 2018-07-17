@@ -21,7 +21,8 @@ public class EducationDetailController {
 	
 	@RequestMapping(value="/save", method = RequestMethod.POST)
 	@ResponseBody
-	public String save(@ModelAttribute EducationDetailModel e){
+	public String save(@ModelAttribute EducationDetailModel e,@ModelAttribute("user") String user){
+		e.setInputter(user);
 		es.save(e);
 		System.out.println(e);
 		return "Save Successful!";
@@ -36,7 +37,8 @@ public class EducationDetailController {
 	
 	@RequestMapping(value="/update/{id}", method = RequestMethod.POST)
 	@ResponseBody
-	public String update(@PathVariable String id,@ModelAttribute EducationDetailModel e){
+	public String update(@PathVariable String id,@ModelAttribute EducationDetailModel e,@ModelAttribute("user") String user){
+		e.setInputter(user);
 		es.update(e,id);
 		System.out.println(e);
 		return "Save Successful!";
