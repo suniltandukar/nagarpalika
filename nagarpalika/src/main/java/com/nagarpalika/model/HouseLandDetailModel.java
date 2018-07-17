@@ -1,6 +1,7 @@
 package com.nagarpalika.model;
 
 public class HouseLandDetailModel {
+	
 	private String house_and_land_detail_id, land_house_id, family_id, ownership_type, house_number, land_unit,
 			land_size, plot_num, sheet_num, district_uni, mun_vc_uni, ward_no_uni, moth_num_uni, kitta_num_uni,
 			land_legacy_address, land_current_district, land_current_mun_vc, tole, house_type,

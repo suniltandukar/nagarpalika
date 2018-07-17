@@ -31,12 +31,13 @@ public class HouseFacilityDetailController {
 	RoadTypeService roadTypeService;
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ModelAndView save(@ModelAttribute HouseFacilityDetailModel h, BindingResult result, RedirectAttributes attributes) {
+	public ModelAndView save(@ModelAttribute HouseFacilityDetailModel h, @ModelAttribute("user") String user,BindingResult result, RedirectAttributes attributes) {
 		if(result.hasErrors()){
 			ModelAndView model1 = new ModelAndView("redirect:/nav/houseFacilityDetail");
 			attributes.addFlashAttribute("hf",h);
 			return model1;
 		}
+		h.setInputter(user);
 		int save = houseFacilityService.save(h);
 		if (save > 0) {
 			int max_value = houseFacilityService.findMax();
@@ -62,8 +63,9 @@ public class HouseFacilityDetailController {
 	}
 	
 	@RequestMapping(value="/update/{id}", method = RequestMethod.POST)
-	public String update(@PathVariable String id, @ModelAttribute HouseFacilityDetailModel h, RedirectAttributes attributes){
+	public String update(@PathVariable String id, @ModelAttribute HouseFacilityDetailModel h,@ModelAttribute("user") String user, RedirectAttributes attributes){
 		try{
+			h.setInputter(user);
 		houseFacilityService.update(h, id);
 		attributes.addFlashAttribute("msg", "Update Successful!");
 		}

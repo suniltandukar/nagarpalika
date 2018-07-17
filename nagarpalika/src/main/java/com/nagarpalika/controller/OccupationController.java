@@ -21,7 +21,8 @@ public class OccupationController {
 	
 	@RequestMapping(value="/save")
 	@ResponseBody
-	public String save(OccupationModel o){
+	public String save(OccupationModel o, @ModelAttribute("user") String user){
+		o.setInputter(user);
 			occupationService.save(o);
 		return "Save Successful!";
 	}
@@ -34,8 +35,9 @@ public class OccupationController {
 
 	@RequestMapping(value="/update/{id}", method = RequestMethod.POST)
 	@ResponseBody
-	public String update(@PathVariable String id, @ModelAttribute OccupationModel o ){
+	public String update(@PathVariable String id, @ModelAttribute OccupationModel o,@ModelAttribute("user") String user ){
 		try{
+			o.setInputter(user);
 		occupationService.update(o, id);
 		}
 		catch(Exception e){

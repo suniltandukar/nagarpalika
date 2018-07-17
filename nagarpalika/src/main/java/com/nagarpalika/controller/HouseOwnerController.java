@@ -35,8 +35,9 @@ public class HouseOwnerController {
 	HouseOwnerService hhs;
 	
 	@RequestMapping(value="/insert")
-	public String insertHouseOwner(@ModelAttribute HouseOwnerDetailModel hm,RedirectAttributes attributes)
+	public String insertHouseOwner(@ModelAttribute HouseOwnerDetailModel hm,@ModelAttribute("user") String user,RedirectAttributes attributes)
 	{
+		hm.setInputter(user);
 		int save_status = hhs.insertHouseOwner(hm);
 		int size = hm.getOwnerIdentityDetailModel().getId_number().size();
 		for(int i=0;i<size;i++){
@@ -70,7 +71,8 @@ public class HouseOwnerController {
 	}
 	
 	@RequestMapping(value="/update/{id}")
-	public String updateHouseOwner(Model model, @PathVariable String id,@ModelAttribute HouseOwnerDetailModel hm, RedirectAttributes attr){
+	public String updateHouseOwner(Model model, @PathVariable String id,@ModelAttribute HouseOwnerDetailModel hm,@ModelAttribute("user") String user, RedirectAttributes attr){
+		hm.setInputter(user);
 		hhs.updateHouseOwner(id,hm);
 		attr.addFlashAttribute("msg","Update Successful!");
 		return "redirect:/nav/viewHouseHoldDetail";

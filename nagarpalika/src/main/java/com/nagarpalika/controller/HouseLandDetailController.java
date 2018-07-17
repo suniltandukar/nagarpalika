@@ -40,12 +40,14 @@ public class HouseLandDetailController {
 	FamilyDetailService familyDetailService;
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ModelAndView save(@ModelAttribute HouseLandDetailModel h, BindingResult result, RedirectAttributes attributes) {
+	public ModelAndView save(@ModelAttribute HouseLandDetailModel h, @ModelAttribute("user") String user, BindingResult result, RedirectAttributes attributes) {
+		
 		if(result.hasErrors()){
 			ModelAndView model1 = new ModelAndView("redirect:/nav/houseLandDetail");
 			attributes.addFlashAttribute("hl",h);
 			return model1;
 		}
+		h.setInputter(user);
 		int save = houseLandDetailDao.save(h);
 		if (save > 0) {
 			int max_value = houseLandDetailDao.findMax();
@@ -76,9 +78,10 @@ public class HouseLandDetailController {
 	}
 
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-	public String update(@PathVariable String id, @ModelAttribute HouseLandDetailModel h,
+	public String update(@PathVariable String id, @ModelAttribute HouseLandDetailModel h, @ModelAttribute("user") String user,
 			RedirectAttributes attribute) {
 		try {
+			h.setInputter(user);
 			houseLandDetailDao.update(h, id);
 			attribute.addAttribute("msg", "Update Successful!");
 			return "redirect:/nav/houseLandDetail";
@@ -126,5 +129,6 @@ public class HouseLandDetailController {
 		return "" + list + "";
 
 	}
+	
 
 }

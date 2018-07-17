@@ -42,8 +42,8 @@ public class FamilyDetailController {
 	FormDetailService formDetailService;
 	
 	@RequestMapping(value="/save")
-	public String save(@ModelAttribute FamilyDetailModel familyDetail, RedirectAttributes attributes, Model model){
-		
+	public String save(@ModelAttribute FamilyDetailModel familyDetail,@ModelAttribute("user") String user, RedirectAttributes attributes, Model model){
+		familyDetail.setInputter(user);
 		familyDetailService.save(familyDetail);
 		
 		int max_id = familyDetailService.findMax();
@@ -75,8 +75,9 @@ public class FamilyDetailController {
 	}
 	
 	@RequestMapping(value="/update/{id}", method = RequestMethod.POST)
-	public String update(@PathVariable String id, @ModelAttribute FamilyDetailModel f, RedirectAttributes attributes){
+	public String update(@PathVariable String id, @ModelAttribute FamilyDetailModel f,@ModelAttribute("user") String user, RedirectAttributes attributes){
 		try{
+			f.setInputter(user);
 		familyDetailService.update(f, id);
 		attributes.addFlashAttribute("msg", "Update Successful!");
 		return "redirect:/nav/familyDetail";
