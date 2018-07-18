@@ -15,6 +15,14 @@ public class TenantDetailModel {
 	inputter,
 	authorizer,
 	date_time;
+	private String company_name;
+	private String owner;
+	private String register_number;
+	private String register_date;
+	private String license_provider;
+	private String phone;
+	private String business_type;
+	private String rented_purpose;
 	private String curr_number;
 
 	private HouseOwnerDetailModel houseOwnerDetailModel;
@@ -157,8 +165,68 @@ public class TenantDetailModel {
 	public void setOccupationModel(OccupationModel occupationModel) {
 		this.occupationModel = occupationModel;
 	}
-	
-	
 
+	public String getCompany_name() {
+		return company_name;
+	}
 
+	public void setCompany_name(String company_name) {
+		this.company_name = company_name;
+	}
+
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+
+	public String getRegister_number() {
+		return register_number;
+	}
+
+	public void setRegister_number(String register_number) {
+		this.register_number = register_number;
+	}
+
+	public String getRegister_date() {
+		return register_date;
+	}
+
+	public void setRegister_date(String register_date) {
+		this.register_date = register_date;
+	}
+
+	public String getLicense_provider() {
+		return license_provider;
+	}
+
+	public void setLicense_provider(String license_provider) {
+		this.license_provider = license_provider;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getBusiness_type() {
+		return business_type;
+	}
+
+	public void setBusiness_type(String business_type) {
+		this.business_type = business_type;
+	}
+
+	public String getRented_purpose() {
+		return rented_purpose;
+	}
+
+	public void setRented_purpose(String rented_purpose) {
+		this.rented_purpose = rented_purpose;
+	}
 }
