@@ -16,6 +16,9 @@ h5 {
     top: 0px;
     z-index: 1;
     }
+    .commercial{
+display:none;
+}
 </style>
 </head>
 <body class="background">
@@ -94,6 +97,50 @@ h5 {
 										<strong>Number of Tenants</strong>
 									</h6> <input type='text' class='form-control' name='tenant_nos' value="${t.tenant_nos }"></td>
 							</tr>
+							
+								<tr>
+								<td><h6>
+										<strong>Rented Purpose</strong>
+									</h6> <select class='form-control comm_on' name='rented_purpose'>
+
+										<option value="">Select Rented Purpose</option>
+										<option value="Commercial" >Commercial</option>
+										<option value="Residential">Residential</option>
+								</select></td>
+								</tr>
+								
+								<tr class="commercial">
+							<td><h6>
+									<strong>Name of Company</strong>
+								</h6> <input type='text' class='form-control' name='company_name'></td>
+
+							<td><h6>
+									<strong>Manager/Owner/Proprietor</strong>
+								</h6> <input type='text' class='form-control' name='owner'></td>
+							<td><h6>
+									<strong>Register Number</strong>
+								</h6> <input type='text' class='form-control' name='register_number'></td>
+								
+								</tr>
+					
+						<tr class="commercial">
+							<td><h6>
+									<strong>Register Date</strong>
+								</h6> <input type='text' class='form-control' name='register_date'></td>
+							<td><h6>
+									<strong>License Providing Office</strong>
+								</h6> <input type='text' class='form-control' name='license_provider'></td>
+							<td><h6>
+									<strong>Telephone Number</strong>
+								</h6> <input type='text' class='form-control' name='phone'></td>
+								
+								</tr>
+								
+								<tr class="commercial">
+								<td><h6>
+									<strong>Types Of Business </strong>
+								</h6> <input type='text' class='form-control' name='business_type'></td>
+								</tr>
 						</table>
 
 					</div>
@@ -111,6 +158,14 @@ h5 {
 	$(".alert").delay(2000).slideUp(200, function() {
 		$(this).alert('close');
 	});
+	var rented_purpose=$(".comm_on").val();
+	  if (rented_purpose.value == "Commercial") {
+          //show the tr if value is others
+          $('.commercial').show();
+      } else {
+          //Hide the tr if value is others
+          $('.commercial').hide();
+      }
 </script>
 </body>
 </html>

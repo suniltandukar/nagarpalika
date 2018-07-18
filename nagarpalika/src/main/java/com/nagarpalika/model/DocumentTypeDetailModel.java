@@ -5,8 +5,9 @@ public class DocumentTypeDetailModel {
 	description,
 	inputter,
 	authorizer,
-	date_time,
-	curr_number;
+	date_time;
+
+	private int curr_number;
 
 	public String getId_type() {
 		return id_type;
@@ -48,13 +49,15 @@ public class DocumentTypeDetailModel {
 		this.date_time = date_time;
 	}
 
-	public String getCurr_number() {
+	public int getCurr_number() {
 		return curr_number;
 	}
 
-	public void setCurr_number(String curr_number) {
+	public void setCurr_number(int curr_number) {
 		this.curr_number = curr_number;
 	}
+
+	
 	
 	
 

@@ -51,7 +51,7 @@ public class DocumentTypeDaoImpl implements DocumentTypeDao {
 			d.setId_type(rs.getString("id_type"));
 			d.setDescription(rs.getString("description"));
 			d.setAuthorizer(rs.getString("authorizer"));
-			d.setCurr_number(rs.getString("curr_number"));
+			d.setCurr_number(rs.getInt("curr_number"));
 			d.setDate_time(rs.getString("date_time"));
 			d.setInputter(rs.getString("inputter"));
 			return d;

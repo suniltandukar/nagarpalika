@@ -14,7 +14,9 @@ public class HouseRentDetailModel {
 	authorizer,
 	date_time;
 	private String curr_number;
-
+	
+	private String company_name,register_number,registered_date,license_providing_office,telephone_number,type_of_business,manager_owner;
+	
 	private HouseOwnerDetailModel houseOwnerDetailModel;
 
 	public HouseOwnerDetailModel getHouseOwnerDetailModel() {

@@ -38,6 +38,7 @@ public class HouseOwnerController {
 	public String insertHouseOwner(@ModelAttribute HouseOwnerDetailModel hm,@ModelAttribute("user") String user,RedirectAttributes attributes)
 	{
 		hm.setInputter(user);
+		System.out.println(hm.getInputter()+"inputter");
 		int save_status = hhs.insertHouseOwner(hm);
 		int size = hm.getOwnerIdentityDetailModel().getId_number().size();
 		for(int i=0;i<size;i++){
