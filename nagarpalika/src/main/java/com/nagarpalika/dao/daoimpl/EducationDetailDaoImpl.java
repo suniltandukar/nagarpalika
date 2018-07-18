@@ -68,7 +68,7 @@ public class EducationDetailDaoImpl implements EducationDetailDao {
 		}
 		}
 	public void update(EducationDetailModel e, String id) {
-		String query="update education_detail set education_type='"+e.getEducation_type()+"', record_status='"+e.getRecord_status()+"' where edu_id='"+id+"'";
+		String query="update education_detail set education_type='"+e.getEducation_type()+"', inputter='"+e.getInputter()+"' where edu_id='"+id+"'";
 		jdbcTemplate.update(query);
 	}
 

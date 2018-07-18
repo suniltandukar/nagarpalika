@@ -6,8 +6,7 @@ education_type,
 record_status,
 inputter,
 authorizer,
-date_time,
-curr_number;
+date_time, curr_number;
 
 public String getEdu_id() {
 	return edu_id;
@@ -63,12 +62,6 @@ public String getCurr_number() {
 
 public void setCurr_number(String curr_number) {
 	this.curr_number = curr_number;
-}
-
-@Override
-public String toString() {
-	return "EducationDetailModel [edu_id=" + edu_id + ", education_type=" + education_type + ", inputter=" + inputter
-			+ ", authorizer=" + authorizer + ", date_time=" + date_time + ", curr_number=" + curr_number + "]";
 }
 
 

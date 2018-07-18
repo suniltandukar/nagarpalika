@@ -6,8 +6,8 @@ public class TypeDetailModel {
 	record_status,
 	inputter,
 	authorizer,
-	date_time,
-	curr_number;
+	date_time;
+	private String curr_number;
 
 	public String getId_type() {
 		return id_type;
@@ -64,8 +64,6 @@ public class TypeDetailModel {
 	public void setCurr_number(String curr_number) {
 		this.curr_number = curr_number;
 	}
-	
-	
 
 
 }

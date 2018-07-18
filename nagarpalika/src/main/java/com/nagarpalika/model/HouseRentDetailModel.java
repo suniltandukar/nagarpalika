@@ -12,8 +12,8 @@ public class HouseRentDetailModel {
 	branch_id,
 	inputter,
 	authorizer,
-	date_time,
-	curr_number;
+	date_time;
+	private String curr_number;
 
 	private HouseOwnerDetailModel houseOwnerDetailModel;
 
@@ -111,14 +111,6 @@ public class HouseRentDetailModel {
 
 	public void setDate_time(String date_time) {
 		this.date_time = date_time;
-	}
-
-	public String getCurr_number() {
-		return curr_number;
-	}
-
-	public void setCurr_number(String curr_number) {
-		this.curr_number = curr_number;
 	}
 
 	public String getHouse_rent_id() {

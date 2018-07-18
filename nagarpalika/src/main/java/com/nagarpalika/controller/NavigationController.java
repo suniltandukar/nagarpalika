@@ -169,7 +169,6 @@ public class NavigationController {
 
 	@RequestMapping(value = "/educationDetail")
 	public String educationDetail(Model model) {
-		System.out.println(educationDetailDao.getEducationDetail());
 		model.addAttribute("educationDetail", educationDetailDao.getEducationDetail());
 		return "settings/educationDetail/insert";
 	}

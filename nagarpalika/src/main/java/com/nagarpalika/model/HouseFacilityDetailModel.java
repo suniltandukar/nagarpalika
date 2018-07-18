@@ -20,8 +20,7 @@ public class HouseFacilityDetailModel {
 	branch_id,
 	inputter,
 	authorizer,
-	date_time,
-	curr_number;
+	date_time, curr_number;
 private HouseOwnerDetailModel houseOwnerDetailModel;
 private DrinkingWaterTypeModel drinkingWaterTypeModel; 
 
@@ -161,7 +160,7 @@ public void setHouse_facility_id(String house_facility_id) {
 	public void setDate_time(String date_time) {
 		this.date_time = date_time;
 	}
-
+	
 	public String getCurr_number() {
 		return curr_number;
 	}

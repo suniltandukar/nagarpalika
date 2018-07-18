@@ -8,7 +8,8 @@ public class HouseLandDetailModel {
 			residential_status, house_floor_count, rented_floor_count, house_area_unit, house_area,
 			map_application_date, map_approved_date, construction_start_date, construction_completion_date,
 			construction_completion_approval_date, completion_approved_by, house_map_prepared_by, record_status,
-			company_id, branch_id, inputter, authorizer, date_time, curr_number, house_construction_type, used_status;
+			company_id, branch_id, inputter, authorizer, date_time, house_construction_type, used_status;
+	private String curr_number;
 	private int ward_no;
 	private HouseOwnerDetailModel houseOwnerDetailModel;
 

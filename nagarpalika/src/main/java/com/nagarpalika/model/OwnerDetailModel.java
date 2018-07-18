@@ -4,9 +4,9 @@ import java.util.List;
 
 public class OwnerDetailModel {
 	
-	List<String> owner_identity_id,id_type,id_number,issue_date,expiry_date,issued_by,record_status,inputter,authorizer,date_time,curr_number;
+	List<String> owner_identity_id,id_type,id_number,issue_date,expiry_date,issued_by,record_status,inputter,authorizer,date_time;
 String house_owner_id;
-	
+private String curr_number;	
 
 	public String getHouse_owner_id() {
 	return house_owner_id;
@@ -88,11 +88,12 @@ public void setHouse_owner_id(String house_owner_id) {
 		this.date_time = date_time;
 	}
 
-	public List<String> getCurr_number() {
+
+	public String getCurr_number() {
 		return curr_number;
 	}
 
-	public void setCurr_number(List<String> curr_number) {
+	public void setCurr_number(String curr_number) {
 		this.curr_number = curr_number;
 	}
 

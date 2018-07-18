@@ -66,7 +66,7 @@ public class OccupationDaoImpl implements OccupationDao {
 	public void update(OccupationModel o, String id) {
 		String query = "update occupation_type set occu_id='" + o.getOccu_id() + "', occupation_type='"
 				+ o.getOccupation_type() + "', record_status='" + o.getRecord_status() + "', inputter='"
-				+ o.getInputter() + "', authorizer='" + o.getAuthorizer() + "', date_time=now(), curr_number='"+o.getCurr_number()+"' where occu_id='" + id + "'";
+				+ o.getInputter() + "', authorizer='" + o.getAuthorizer() + "', date_time=now() where occu_id='" + id + "'";
 		jdbcTemplate.update(query);
 
 	}

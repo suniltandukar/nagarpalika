@@ -29,8 +29,8 @@ public class HouseOwnerDetailModel {
 	branch_id,
 	inputter,
 	authorizer,
-	date_time,
-	curr_number;
+	date_time;
+	private String curr_number;
 private OwnerDetailModel ownerIdentityDetailModel;
 	public String getHouse_owner_id() {
 		return house_owner_id;

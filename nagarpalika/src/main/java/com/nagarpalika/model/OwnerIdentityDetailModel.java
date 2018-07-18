@@ -9,8 +9,8 @@ expiry_date,
 issued_by,
 inputter,
 authorizer,
-date_time,
-curr_number;
+date_time;
+private String curr_number;
 
 public String getHouse_owner_id() {
 	return house_owner_id;
@@ -84,6 +84,7 @@ public void setDate_time(String date_time) {
 	this.date_time = date_time;
 }
 
+
 public String getCurr_number() {
 	return curr_number;
 }
@@ -91,6 +92,11 @@ public String getCurr_number() {
 public void setCurr_number(String curr_number) {
 	this.curr_number = curr_number;
 }
+
+public void setHouse_owner_id(String house_owner_id) {
+	this.house_owner_id = house_owner_id;
+}
+
 
 
 

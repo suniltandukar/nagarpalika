@@ -14,8 +14,8 @@ public class TenantDetailModel {
 	branch_id,
 	inputter,
 	authorizer,
-	date_time,
-	curr_number;
+	date_time;
+	private String curr_number;
 
 	private HouseOwnerDetailModel houseOwnerDetailModel;
 	private OccupationModel occupationModel;
@@ -132,6 +132,7 @@ public class TenantDetailModel {
 	public void setDate_time(String date_time) {
 		this.date_time = date_time;
 	}
+
 
 	public String getCurr_number() {
 		return curr_number;

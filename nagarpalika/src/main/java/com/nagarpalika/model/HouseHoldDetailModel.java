@@ -28,8 +28,7 @@ public class HouseHoldDetailModel {
 	pan_number, 
 	inputter,
 	authorizer,
-	date_time,
-	curr_number;
+	date_time, curr_number;
 	
 
 	
@@ -248,7 +247,7 @@ public class HouseHoldDetailModel {
 	public void setCurr_number(String curr_number) {
 		this.curr_number = curr_number;
 	}
-	
-	
+
+
 
 }

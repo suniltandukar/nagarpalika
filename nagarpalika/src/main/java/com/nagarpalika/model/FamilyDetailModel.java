@@ -12,10 +12,9 @@ private int family_detail_id;
 	inputter,
 	authorizer,
 	date_time,
-	curr_number,
 	fname,
 	mname,
-	lname;
+	lname,curr_number;
 	private OccupationModel occupationModel;
 	private HouseOwnerDetailModel houseOwnerDetailModel;
 	private DisableTypeModel disableTypeModel;
@@ -95,6 +94,8 @@ private int family_detail_id;
 		this.date_time = date_time;
 	}
 
+	
+	
 	public String getCurr_number() {
 		return curr_number;
 	}
