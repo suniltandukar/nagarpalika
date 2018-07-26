@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -17,6 +19,7 @@ import com.nagarpalika.service.DrinkingWaterTypeService;
 import com.nagarpalika.service.HouseFacilityService;
 import com.nagarpalika.service.HouseOwnerService;
 import com.nagarpalika.service.RoadTypeService;
+import com.nagarpalika.service.UploadService;
 
 @Controller
 @RequestMapping("/houseFacility")
@@ -30,8 +33,16 @@ public class HouseFacilityDetailController {
 	@Autowired
 	RoadTypeService roadTypeService;
 	
+	@Autowired
+	UploadService uploadService;
+	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ModelAndView save(@ModelAttribute HouseFacilityDetailModel h, @ModelAttribute("user") String user,BindingResult result, RedirectAttributes attributes) {
+	public ModelAndView save(@RequestParam("files") MultipartFile file,@ModelAttribute HouseFacilityDetailModel h, @ModelAttribute("user") String user,BindingResult result, RedirectAttributes attributes) {
+		String saveFileName ="";
+		String fileLocation="/usr/local/tomcat7/webapps/images/thimi"; //can be taken from database
+		String house_owner_id = h.getHouseOwnerDetailModel().getHouse_owner_id();
+		String house_land_id = h.getLand_house_id();
+		
 		if(result.hasErrors()){
 			ModelAndView model1 = new ModelAndView("redirect:/nav/houseFacilityDetail");
 			attributes.addFlashAttribute("hf",h);
@@ -40,6 +51,15 @@ public class HouseFacilityDetailController {
 		h.setInputter(user);
 		int save = houseFacilityService.save(h);
 		if (save > 0) {
+			if (!file.getOriginalFilename().isEmpty()) {
+				saveFileName=house_owner_id+"HF"+house_land_id+".jpg";
+				uploadService.upload(fileLocation, saveFileName, file);
+				attributes.addFlashAttribute("msg", "Save Successful!");
+
+			} else {
+				attributes.addFlashAttribute("msg", "Save Failed!");
+
+			}
 			int max_value = houseFacilityService.findMax();
 			attributes.addFlashAttribute("msg", "Save Successful!");
 			ModelAndView model1 = new ModelAndView("redirect:edit/" + max_value + "");

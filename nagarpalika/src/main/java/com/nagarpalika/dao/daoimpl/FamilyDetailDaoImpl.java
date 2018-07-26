@@ -19,6 +19,7 @@ import com.nagarpalika.model.DisableTypeModel;
 import com.nagarpalika.model.FamilyDetailModel;
 import com.nagarpalika.model.HouseOwnerDetailModel;
 import com.nagarpalika.model.OccupationModel;
+import com.nagarpalika.model.RelationModel;
 
 @Repository
 public class FamilyDetailDaoImpl implements FamilyDetailDao {
@@ -35,9 +36,9 @@ public class FamilyDetailDaoImpl implements FamilyDetailDao {
 		this.template = new NamedParameterJdbcTemplate(dataSource);
 	}
 
-	public void save(FamilyDetailModel f) {
-		String query = "insert into family_detail (house_owner_id, fname, mname, lname, relation, marital_status, dob_nep ,disable_type, occupation_id, gender, date_time,inputter, curr_number) values ( :houseOwnerDetailModel.house_owner_id, :fname, :mname, :lname, :relation, :marital_status, :dob_nep , :disableTypeModel.disable_type, :occupationModel.occupation_id, :gender, now(),:inputter,1)";
-		template.update(query, new BeanPropertySqlParameterSource(f));
+	public int save(FamilyDetailModel f) {
+		String query = "insert into family_detail (house_owner_id, fname, mname, lname, relation, marital_status, dob_nep ,disable_type, occupation_id, gender, date_time,inputter, curr_number) values ( :houseOwnerDetailModel.house_owner_id, :fname, :mname, :lname, :relationModel.relation, :marital_status, :dob_nep , :disableTypeModel.disable_type, :occupationModel.occupation_id, :gender, now(),:inputter,1)";
+		return template.update(query, new BeanPropertySqlParameterSource(f));
 	}
 
 	public List<FamilyDetailModel> getFamilyDetail() {
@@ -58,7 +59,7 @@ public class FamilyDetailDaoImpl implements FamilyDetailDao {
 	}
 
 	public void update(FamilyDetailModel f, String id) {
-		String query = "update family_detail set house_owner_id= :houseOwnerDetailModel.house_owner_id, ,inputter= :inputter,fname= :fname, mname= :mname, lname = :lname, relation= :relation, marital_status= :marital_status, dob_nep= :dob_nep, disable_type = :disableTypeModel.disable_type, occupation_id= :occupationModel.occupation_id, gender= :gender, date_time=now() where family_detail_id='"+ id + "'";
+		String query = "update family_detail set house_owner_id= :houseOwnerDetailModel.house_owner_id, inputter= :inputter,fname= :fname, mname= :mname, lname = :lname, relation= :relationModel.relation, marital_status= :marital_status, dob_nep= :dob_nep, disable_type = :disableTypeModel.disable_type, occupation_id= :occupationModel.occupation_id, gender= :gender, date_time=now() where family_detail_id='"+ id + "'";
 		template.update(query, new BeanPropertySqlParameterSource(f));
 	}
 
@@ -78,9 +79,12 @@ public class FamilyDetailDaoImpl implements FamilyDetailDao {
 					.mapRow(rs, rowNum);
 			DisableTypeModel disableTypeModel = (new BeanPropertyRowMapper<DisableTypeModel>(DisableTypeModel.class))
 					.mapRow(rs, rowNum);
+			RelationModel relationModel = (new BeanPropertyRowMapper<RelationModel>(RelationModel.class))
+					.mapRow(rs, rowNum);
 			familyDetailModel.setHouseOwnerDetailModel(houseOwnerDetailModel);
 			familyDetailModel.setOccupationModel(occupationModel);
 			familyDetailModel.setDisableTypeModel(disableTypeModel);
+			familyDetailModel.setRelationModel(relationModel);
 			return familyDetailModel;
 		}
 	}
@@ -88,7 +92,7 @@ public class FamilyDetailDaoImpl implements FamilyDetailDao {
 	@Override
 	public List<FamilyDetailModel> findByHouseOwnerId(String id) {
 		String query = "select * from family_detail where house_owner_id='"+id+"'";
-		return template.query(query, new BeanPropertyRowMapper<FamilyDetailModel>(FamilyDetailModel.class));
+		return template.query(query, new FamilyDetailRowMapper());
 	}
 
 }

@@ -34,30 +34,7 @@ public class UserDaoImpl implements UserDao {
 			this.jdbcTemplate=new JdbcTemplate(dataSource);
 			this.template = new NamedParameterJdbcTemplate(dataSource);
 		}
-	/*private SqlParameterSource getSqlParameterByModel(UserModel user) {
-		
-		MapSqlParameterSource paramSource = new MapSqlParameterSource();
-		paramSource.addValue("additionalFunctions", user.getAdditionalFunctions());
-		paramSource.addValue("branchAllowed", user.getBranchAllowed());
-		paramSource.addValue("branchAllowedFunctions", user.getBranchAllowedFunctions());
-		paramSource.addValue("endDate", user.getEndDate());
-		paramSource.addValue("fullName", user.getFullName());
-		paramSource.addValue("functionAllowed", user.getFunctionAllowed());
-		paramSource.addValue("functionRestriction", user.getFunctionRestriction());
-		paramSource.addValue("givenrole", user.getGivenrole());
-		paramSource.addValue("password", user.getPassword());
-		paramSource.addValue("post", user.getPost());
-		paramSource.addValue("roleName", user.getRoleName());
-		paramSource.addValue("settingsDescription", user.getSettingsdescription());
-		paramSource.addValue("settingsid", user.getSettingsid());
-		paramSource.addValue("settingstype", user.getSettingstype());
-		paramSource.addValue("staffCode", user.getStaffCode());
-		paramSource.addValue("startDate", user.getStartDate());
-		paramSource.addValue("status", user.getStatus());
-		paramSource.addValue("userid", user.getUserid());
-		paramSource.addValue("username", user.getUsername());
-		return paramSource;
-	}*/
+	
 
 	public boolean verifyUser(UserModel user) {
 

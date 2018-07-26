@@ -30,10 +30,10 @@
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
-					<table class="table jambo_table table-striped table-bordered dt-responsive nowrap display dataTable dtr-inline" style="font-size: 95%; width: 100%;">
+					<table id="datatable" class="table jambo_table table-striped table-bordered dt-responsive nowrap display dataTable dtr-inline" style="font-size: 95%; width: 100%;">
 					<thead>
 						<tr>
-							<th>House Owner Id</th>
+							<th>Resident Id</th>
 							<th>Full Name</th>
 							<th>House No.</th>
 							<th>Marital Status</th>
@@ -48,7 +48,8 @@
 							<td>${f.house_owner_id }</td>
 							<td>${f.house_owner_fname } ${f.house_owner_mname } ${f.house_owner_lname }</td>
 							<td>${f.house_number }</td>
-							<td>${f.marital_status }</td>
+							
+							<td><c:if test="${f.marital_status eq 'y' }">Yes</c:if><c:if test="${f.marital_status eq 'n' }">No</c:if></td>
 							<td>${f.dob_nep }</td>
 							<td>${f.permanent_address }</td>
 							
@@ -67,6 +68,7 @@
 	$(".alert").delay(2000).slideUp(200, function() {
 		$(this).alert('close');
 	});
+	
 	</script>
 </body>
 </html>

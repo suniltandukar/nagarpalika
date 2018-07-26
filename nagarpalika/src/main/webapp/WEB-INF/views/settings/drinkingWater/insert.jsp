@@ -10,6 +10,12 @@ h5 {
 	font-size: 80%;
 	font-weight: bold;
 }
+.alert{
+ position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    }
 </style>
 </head>
 <body class="background">
@@ -23,7 +29,11 @@ h5 {
 
 					<div class="x_title">
 						<h2>DRINKING WATER TYPE</h2>
-						<div class="col-md-4 col-sm-4 col-xs-12 pull-right"></div>
+						<c:if test="${not empty msg }">
+							<div class="col-md-4 col-sm-4 col-xs-12 pull-right">
+						<div class="alert alert-danger"><strong>${msg }</strong></div>
+						</div>
+						</c:if>
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
@@ -70,7 +80,7 @@ h5 {
 								<tr>
 									<td>${d.drinking_water_type }</td>
 									
-									<td><a href="<spring:url value="/documentType/edit/${d.drinking_water_type_id }"/>">Edit</a></td>
+									<td><a href="<spring:url value="/drinkingWater/edit/${d.drinking_water_type_id }"/>">Edit</a></td>
 								</tr>
 								</c:forEach>
 							</tbody>
@@ -86,6 +96,9 @@ h5 {
 		})
 		$("form").submit(function() {
 			return confirm("Confirm Submit?");
+		});
+		$(".alert").delay(2000).slideUp(200, function() {
+			$(this).alert('close');
 		});
 	</script>
 </body>

@@ -18,7 +18,7 @@
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
-					<table class="table jambo_table table-striped table-bordered dt-responsive nowrap display dataTable dtr-inline" style="font-size: 95%; width: 100%;">
+					<table id="datatable" class="table jambo_table table-striped table-bordered dt-responsive nowrap display dataTable dtr-inline" style="font-size: 95%; width: 100%;">
 					<thead>
 						<tr>
 							<th>Resident ID</th>

@@ -16,8 +16,8 @@ public class FamilyDetailServiceImpl implements FamilyDetailService {
 	FamilyDetailDao familyDetailDao;
 
 	@Override
-	public void save(FamilyDetailModel f) {
-		familyDetailDao.save(f);
+	public int save(FamilyDetailModel f) {
+		return familyDetailDao.save(f);
 
 	}
 

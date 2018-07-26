@@ -24,7 +24,7 @@ h5 {
 		<div class="col-md-8 col-xs-12">
 			<div class="x_panel">
 			<spring:url value="/houseFacility/save" var="formUrl"/>
-				<form:form class="form-horizontal form-label-left input_mask"
+				<form:form class="form-horizontal form-label-left input_mask" enctype="multipart/form-data"
 					method="post" action="${formUrl }">
 
 					<div class="x_title">
@@ -67,7 +67,7 @@ h5 {
 									</h6> <select class='form-control'
 									name='drinkingWaterTypeModel.drinking_water_type_id'>
 									<option value="">Select Type</option>
-									<c:forEach items="${drinkingWater }" var="d">
+							<c:forEach items="${drinkingWater }" var="d">
 									<option value="${d.drinking_water_type_id }">${d.drinking_water_type}</option>
 									</c:forEach>
 									</select>
@@ -156,6 +156,14 @@ h5 {
 									</select>
 									</td>
 							</tr>
+							<tr>
+									<td>
+									<h6>
+									<strong>Upload Picture</strong></h6>
+									<input class="form-control" type="file" name="files"
+										accept="image/*" required>
+									</td>
+								</tr>
 						</table>
 
 					</div>

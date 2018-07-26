@@ -27,19 +27,18 @@ public class DrinkingWaterTypeServiceImpl implements DrinkingWaterTypeService {
 
 	@Override
 	public DrinkingWaterTypeModel findById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return drinkingWaterTypeDao.findById(id);
 	}
 
 	@Override
 	public void update(DrinkingWaterTypeModel d, String id) {
-		// TODO Auto-generated method stub
+		drinkingWaterTypeDao.update(d, id);
 
 	}
 
 	@Override
 	public void delete(String id) {
-		// TODO Auto-generated method stub
+		drinkingWaterTypeDao.delete(id);
 
 	}
 

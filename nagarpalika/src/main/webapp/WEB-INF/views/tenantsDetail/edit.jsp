@@ -53,7 +53,15 @@ display:none;
 					</div>
 						<br />
 						<table class="table">
+						<tr>
+						<td></td>
+										<td><img id="myImg"
+										src="//124.41.193.91/images/thimi/${t.houseOwnerDetailModel.house_owner_id }TEN${t.land_house_id }.jpg"
+										style="height: 100px; width: 100px;" /></td>
+										<td></td>
+						</tr>
 							<tr>
+							
 								<td><h6>
 										<strong>Resident Id</strong>
 									</h6> <select class='form-control'
@@ -148,6 +156,11 @@ display:none;
 			</div>
 		</div>
 	</div>
+	<div id="myModal" class="modal">
+		<img class="modal-content" id="img01">
+	</div>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/resources/js/zoomimage.js"></script>
 	<script>
 	$(".confirm").click(function(){
 		return confirm("Confirm?");

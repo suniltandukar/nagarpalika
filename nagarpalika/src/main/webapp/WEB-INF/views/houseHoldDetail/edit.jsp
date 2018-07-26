@@ -12,15 +12,16 @@
 	top: 0px;
 	z-index: 1;
 }
+
 </style>
 </head>
 <body class="background">
 	<div class="col-md-12 col-sm-12 col-xs-12">
 
-	
 
-			<spring:url value="/houseOwner/update/${ho.house_owner_id }"
-				var="formUrl" />
+
+		<spring:url value="/houseOwner/update/${ho.house_owner_id }"
+			var="formUrl" />
 		<form method="post" action="${formUrl }">
 
 			<div class="x_panel">
@@ -42,10 +43,10 @@
 					</div>
 					<button class="btn btn-info" type="button" id="validate">Validate</button>
 					<button class="btn btn-primary" type="reset">Reset</button>
-						<input type="submit" class="btn btn-primary confirm" value="Update">
-						<spring:url value="/houseOwner/delete/${ho.house_owner_id }"
-							var="del"></spring:url>
-						<a class="btn btn-danger confirm" href="${del }">Delete</a>
+					<input type="submit" class="btn btn-primary confirm" value="Update">
+					<spring:url value="/houseOwner/delete/${ho.house_owner_id }"
+						var="del"></spring:url>
+					<a class="btn btn-danger confirm" href="${del }">Delete</a>
 					<div class="clearfix"></div>
 
 				</div>
@@ -67,7 +68,7 @@
 									<tbody>
 										<tr>
 											<td><h6>
-													<strong>House Owner ID</strong>
+													<strong>Resident ID</strong>
 												</h6> <input type='text' class='form-control'
 												name='house_owner_id' value="${ho.house_owner_id }"></td>
 
@@ -79,27 +80,30 @@
 													<strong>Middle Name</strong>
 												</h6> <input type='text' class='form-control'
 												name='house_owner_mname' value="${ho.house_owner_mname }"></td>
-										<td><h6>
+											<td><h6>
 													<strong>Last Name</strong>
 												</h6> <input type='text' class='form-control'
 												name='house_owner_lname' value="${ho.house_owner_lname }"></td>
 										</tr>
 										<tr>
-											
+
 
 											<td><h6>
 													<strong>Marital Status</strong>
-												</h6> <select name="marital_class" class="form-control">
+												</h6> <select name="marital_status" class="form-control">
 													<option value="">Marital Status</option>
-													<option value="Y">Yes</option>
-													<option value="N">No</option>
+
+													<option value="y"
+														<c:if test="${ho.marital_status eq 'y' }">selected</c:if>>Yes</option>
+													<option value="n"
+														<c:if test="${ho.marital_status eq 'n' }">selected</c:if>>No</option>
 
 											</select>
 											<td><h6>
 													<strong>Grand Father's Name</strong>
 												</h6> <input type='text' class='form-control'
 												name='grand_father_name' value="${ho.grand_father_name}"></td>
-										<td><h6>
+											<td><h6>
 													<strong>Father's Name</strong>
 												</h6> <input type='text' class='form-control' name='father_name'
 												value="${ho.father_name }"></td>
@@ -108,9 +112,9 @@
 												</h6> <input type='text' class='form-control' name='spouse_name'
 												value="${ho.spouse_name }"></td>
 										</tr>
-										
+
 										<tr>
-										<td><h6>
+											<td><h6>
 													<strong>House Number</strong>
 												</h6> <input type='text' class='form-control' name='house_number'
 												value="${ho.house_number }"></td>
@@ -139,15 +143,24 @@
 												</h6> <select class='form-control'
 												name='permanent_address_ward_no'>
 													<option value="">Select Ward No</option>
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
-													<option value="4">4</option>
-													<option value="5">5</option>
-													<option value="6">6</option>
-													<option value="7">7</option>
-													<option value="8">8</option>
-													<option value="9">9</option>
+													<option value="1"
+														<c:if test="${ho.permanent_address_ward_no eq '1' }">selected</c:if>>1</option>
+													<option value="2"
+														<c:if test="${ho.permanent_address_ward_no eq '2' }">selected</c:if>>2</option>
+													<option value="3"
+														<c:if test="${ho.permanent_address_ward_no eq '3' }">selected</c:if>>3</option>
+													<option value="4"
+														<c:if test="${ho.permanent_address_ward_no eq '4' }">selected</c:if>>4</option>
+													<option value="5"
+														<c:if test="${ho.permanent_address_ward_no eq '5' }">selected</c:if>>5</option>
+													<option value="6"
+														<c:if test="${ho.permanent_address_ward_no eq '6' }">selected</c:if>>6</option>
+													<option value="7"
+														<c:if test="${ho.permanent_address_ward_no eq '7' }">selected</c:if>>7</option>
+													<option value="8"
+														<c:if test="${ho.permanent_address_ward_no eq '8' }">selected</c:if>>8</option>
+													<option value="9"
+														<c:if test="${ho.permanent_address_ward_no eq '9' }">selected</c:if>>9</option>
 											</select></td>
 											<td><h6>
 													<strong>Temporary Address</strong>
@@ -165,17 +178,17 @@
 												value="${ho.dob_nep}"></td>
 										</tr>
 										<tr>
-											
+
 											<td><h6>
 													<strong>Phone Number</strong>
 												</h6> <input type='text' class='form-control'
-												name='phone_number ' value="${ho.phone_number }"></td>
+												name='phone_number' value="${ho.phone_number }"></td>
 											<td><h6>
 													<strong>Mobile Number</strong>
 												</h6> <input type='text' class='form-control' name='mobile_no'
 												value="${ho.mobile_no }"></td>
-										<td><h6>
-													<strong>E_mail Address</strong>
+											<td><h6>
+													<strong>E-mail Address</strong>
 												</h6> <input type='text' class='form-control' name='email'
 												value="${ho.email }"></td>
 											<td><h6>
@@ -189,14 +202,16 @@
 													</c:forEach>
 											</select></td>
 										</tr>
-										
+
 										<tr>
-										<td><h6>
+											<td><h6>
 													<strong>Occupation</strong>
 												</h6> <select class='form-control' name='occupation_id'>
 													<option value="1">Select Occupation</option>
+
 													<c:forEach items="${occupation }" var="o">
-														<option value="${o.occu_id }">${o.occupation_type }</option>
+														<option value="${o.occu_id }"
+															<c:if test="${o.occu_id eq ho.occupation_id }">selected</c:if>>${o.occupation_type }</option>
 													</c:forEach>
 											</select></td>
 											<td><h6>
@@ -204,15 +219,16 @@
 												</h6> <select class='form-control' name='disable_type'>
 													<option value="">Select Disability</option>
 													<c:forEach items="${disablity }" var="d">
-														<option value="${d.id }">${d.typehead }</option>
+														<option value="${d.id }"
+															<c:if test="${d.id eq ho.disable_type}">selected</c:if>>${d.typehead }</option>
 													</c:forEach>
-													</select>
+											</select>
 											<td><h6>
 													<strong>PAN Number</strong>
-												</h6> <input type='text' class='form-control' name='pan_Number'></td>
-											
+												</h6> <input type='text' class='form-control' name='pan_number' value="${ho.pan_number }"></td>
+
 										</tr>
-									
+
 
 
 									</tbody>
@@ -222,56 +238,84 @@
 								aria-labelledby="profile-tab">
 								<table class="table">
 									<tbody>
-									<c:choose>
-									<c:when test="${empty ownerList }">
-									<tr>
-											<td><h6>
-													<strong>Identity Type</strong>
-												</h6> <input type='text' class='form-control' name='id_type' value=""></td>
-											<td><h6>
-													<strong>Identity Number</strong>
-												</h6> <input type='text' class='form-control' name='id_number' value=""></td>
-										<td><h6>
-													<strong>Issue Date</strong>
-												</h6> <input type='text' class='form-control' name='issue_date' value=""></td>
-											
-											<td><h6>
-													<strong>Expiry Date</strong>
-												</h6> <input type='text' class='form-control' name='expiry_date' value=""></td>
-											<td><h6>
-													<strong>Issued By</strong>
-												</h6> <input type='text' class='form-control' name='issued_by' value=""></td>
-										
-										</tr>
-										
-									</c:when>
-									 <c:otherwise>
-									 <c:forEach items="${ownerList }" var="o" varStatus="descIndex">
-										<tr>
-											<td><h6>
-													<strong>Identity Type</strong>
-												</h6> <input type='text' class='form-control' name='id_type' value="${o.id_type[descIndex.index] }"></td>
-											<td><h6>
-													<strong>Identity Number</strong>
-												</h6> <input type='text' class='form-control' name='id_number' value="${o.id_number[descIndex.index] }"></td>
-										<td><h6>
-													<strong>Issue Date</strong>
-												</h6> <input type='text' class='form-control' name='issue_date' value="${o.issue_date[descIndex.index] }"></td>
-											
-											<td><h6>
-													<strong>Expiry Date</strong>
-												</h6> <input type='text' class='form-control' name='expiry_date' value="${o.expiry_date[descIndex.index] }"></td>
-											<td><h6>
-													<strong>Issued By</strong>
-												</h6> <input type='text' class='form-control' name='issued_by' value="${o.issued_by[descIndex.index] }"></td>
-										
-										</tr>
-										</c:forEach>
-									 </c:otherwise>
-									</c:choose>
-									
-										 
-										
+										<c:choose>
+											<c:when test="${empty ownerList }">
+												<tr>
+													<td><h6>
+															<strong>Identity Type</strong>
+														</h6> <input type='text' class='form-control' name='id_type'
+														value=""></td>
+													<td><h6>
+															<strong>Identity Number</strong>
+														</h6> <input type='text' class='form-control' name='id_number'
+														value=""></td>
+													<td><h6>
+															<strong>Issue Date</strong>
+														</h6> <input type='text' class='form-control' name='issue_date'
+														value=""></td>
+
+													<td><h6>
+															<strong>Expiry Date</strong>
+														</h6> <input type='text' class='form-control'
+														name='expiry_date' value=""></td>
+													<td><h6>
+															<strong>Issued By</strong>
+														</h6> <input type='text' class='form-control' name='issued_by'
+														value=""></td>
+
+												</tr>
+
+											</c:when>
+											<c:otherwise>
+												<c:forEach items="${ownerList }" var="o"
+													varStatus="descIndex">
+													<tr>
+														<td><h6>
+																<strong>Identity Type</strong>
+															</h6> <select class="form-control" name="id_type">
+																<option value="">Select Doc. Type</option>
+																<option value="101"
+																	<c:if test="${o.id_type[descIndex.index] eq '101'}">selected</c:if>>Photo</option>
+																<option value="102"
+																	<c:if test="${o.id_type[descIndex.index] eq '102'}">selected</c:if>>Citizenship
+																	No</option>
+																<option value="103"
+																	<c:if test="${o.id_type[descIndex.index] eq '103'}">selected</c:if>>Character
+																	Certificate</option>
+																<option value="104"
+																	<c:if test="${o.id_type[descIndex.index] eq '104'}">selected</c:if>>Marksheet</option>
+																<option value="105"
+																	<c:if test="${o.id_type[descIndex.index] eq '105'}">selected</c:if>>Bank
+																	Voucher</option>
+
+														</select></td>
+														<td><h6>
+																<strong>Identity Number</strong>
+															</h6> <input type='text' class='form-control' name='id_number'
+															value="${o.id_number[descIndex.index] }"></td>
+														<td><h6>
+																<strong>Issue Date</strong>
+															</h6> <input type='text' class='form-control'
+															name='issue_date'
+															value="${o.issue_date[descIndex.index] }"></td>
+
+														<td><h6>
+																<strong>Expiry Date</strong>
+															</h6> <input type='text' class='form-control'
+															name='expiry_date'
+															value="${o.expiry_date[descIndex.index] }"></td>
+														<td><h6>
+																<strong>Issued By</strong>
+															</h6> <input type='text' class='form-control' name='issued_by'
+															value="${o.issued_by[descIndex.index] }"></td>
+<td><img id="myImg" src="//124.41.193.91/images/thimi/${ho.house_owner_id}ID${o.id_type[descIndex.index] }.jpg" style="height:100px;width:100px;" /></td>
+													</tr>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
+
+
+
 									</tbody>
 								</table>
 							</div>
@@ -285,6 +329,10 @@
 			</div>
 		</form>
 	</div>
+	<div id="myModal" class="modal">
+  <img class="modal-content" id="img01">
+</div>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/zoomimage.js"></script>
 	<script>
 		function nepaliToEnglish(nepalidate, englishdate) {
 			var date = $(nepalidate).val();
@@ -323,13 +371,14 @@
 				}
 			});
 		}
-		$(".confirm").click(function(){
+		$(".confirm").click(function() {
 			return confirm("Confirm?");
 		})
 
 		$(".alert").delay(2000).slideUp(200, function() {
 			$(this).alert('close');
 		});
+		
 	</script>
 </body>
 </html>

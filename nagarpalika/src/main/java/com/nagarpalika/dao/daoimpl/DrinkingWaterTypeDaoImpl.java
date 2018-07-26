@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.nagarpalika.dao.DrinkingWaterTypeDao;
 import com.nagarpalika.model.DrinkingWaterTypeModel;
 import com.nagarpalika.model.FamilyDetailModel;
+import com.nagarpalika.model.HouseFacilityDetailModel;
 
 @Repository	
 public class DrinkingWaterTypeDaoImpl implements DrinkingWaterTypeDao {
@@ -38,19 +39,21 @@ public class DrinkingWaterTypeDaoImpl implements DrinkingWaterTypeDao {
 
 	@Override
 	public DrinkingWaterTypeModel findById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "select * from drinking_water_type where drinking_water_type_id = '"+id+"'";
+		return template.queryForObject(query, new BeanPropertySqlParameterSource(DrinkingWaterTypeModel.class), new BeanPropertyRowMapper<DrinkingWaterTypeModel>(DrinkingWaterTypeModel.class));
 	}
 
 	@Override
 	public void update(DrinkingWaterTypeModel d, String id) {
-		// TODO Auto-generated method stub
+		String query = "update drinking_water_type set drinking_water_type = :drinking_water_type where drinking_water_type_id = '"+id+"'";
+		template.update(query, new BeanPropertySqlParameterSource(d));
 		
 	}
 
 	@Override
 	public void delete(String id) {
-		// TODO Auto-generated method stub
+		String query = "delete from drinking_water_type where drinking_water_type_id = '"+id+"'";
+		template.update(query, new BeanPropertySqlParameterSource(DrinkingWaterTypeModel.class));
 		
 	}
 
