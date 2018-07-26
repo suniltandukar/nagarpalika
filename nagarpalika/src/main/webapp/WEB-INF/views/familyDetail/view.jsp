@@ -31,10 +31,10 @@
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
-					<table class="table jambo_table table-striped table-bordered dt-responsive nowrap display dataTable dtr-inline" style="font-size: 95%; width: 100%;">
+					<table id="datatable" class="table jambo_table table-striped table-bordered dt-responsive nowrap display dataTable dtr-inline" style="font-size: 95%; width: 100%;">
 					<thead>
 						<tr>
-							<th>House Owner Id</th>
+							<th>Resident Id</th>
 							<th>Name</th>
 							<th>Relation</th>
 							<th>Marital Status</th>
@@ -47,7 +47,7 @@
 						<tr>
 							<td>${f.houseOwnerDetailModel.house_owner_id }</td>
 							<td>${f.fname } ${f.mname } ${f.lname }</td>
-							<td>${f.relation }</td>
+							<td>${f.relationModel.relation }</td>
 							<td>${f.marital_status }</td>
 							<td>${f.dob_nep }</td>
 							

@@ -1,3 +1,4 @@
+
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -30,10 +31,10 @@
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
-					<table class="table jambo_table table-striped table-bordered dt-responsive nowrap display dataTable dtr-inline" style="font-size: 95%; width: 100%;">
+					<table id="datatable" class="table jambo_table table-striped table-bordered dt-responsive nowrap display dataTable dtr-inline" style="font-size: 95%; width: 100%;">
 					<thead>
 						<tr>
-							<th>House Owner Id</th>
+							<th>Resident Id</th>
 							<th>Land House Id</th>
 							<th>Action</th>
 						</tr>

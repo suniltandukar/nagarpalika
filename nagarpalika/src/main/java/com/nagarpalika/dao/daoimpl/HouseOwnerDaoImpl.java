@@ -51,7 +51,6 @@ public class HouseOwnerDaoImpl implements HouseOwnerDao {
 
 		String sql="update house_owner_detail set house_owner_id=:house_owner_id, house_owner_fname=:house_owner_fname, house_owner_mname=:house_owner_mname,house_owner_lname=:house_owner_lname,marital_status=:marital_status,grand_father_name=:grand_father_name,father_name=:father_name,spouse_name=:spouse_name,house_number=:house_number,permanent_address=:permanent_address,permanent_address_district=:permanent_address_district,permanent_address_mun_vc=:permanent_address_mun_vc,permanent_address_ward_no=:permanent_address_ward_no,temporary_address=:temporary_address,gender=:gender,dob_nep=:dob_nep,phone_number=:phone_number, mobile_no=:mobile_no,email=:email,education_status=:education_status,occupation_id=:occupation_id,disable_type=:disable_type,pan_number=:pan_number,record_status=:record_status,company_id=:company_id,branch_id=:branch_id,inputter=:inputter,authorizer=:authorizer,date_time=:date_time,curr_number=:curr_number, inputter=:inputter where house_owner_id='"+id+"'";
 		template.update(sql, new BeanPropertySqlParameterSource(hm));
-		System.out.println(sql);
 	}
 	@Override
 	public void deleteHouseOwner(String id) {
@@ -71,6 +70,7 @@ public class HouseOwnerDaoImpl implements HouseOwnerDao {
 		params.put("issue_date", owner.getOwnerIdentityDetailModel().getIssue_date().get(i));
 		params.put("expiry_date",owner.getOwnerIdentityDetailModel().getExpiry_date().get(i));
 		params.put("issued_by", owner.getOwnerIdentityDetailModel().getIssued_by().get(i));
+		params.put("inputter", owner.getInputter());
 		
 		template.update(sql, params);
 		

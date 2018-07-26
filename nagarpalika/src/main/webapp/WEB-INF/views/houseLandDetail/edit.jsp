@@ -21,7 +21,7 @@ h5 {
 <body class="background">
 
 	<div class="col-md-12 col-sm-12 col-xs-12">
-		<div class="col-md-8 col-xs-12">
+		<div class="col-md-12 col-xs-12">
 			<div class="x_panel">
 			<spring:url value="/houseLand/update/${hd.house_and_land_detail_id }" var="formUrl"/>
 				<form:form class="form-horizontal form-label-left input_mask"
@@ -51,6 +51,11 @@ h5 {
 						<br />
 						<table class="table">
 							<tbody>
+							<tr>
+							<td><img id="myImg"
+										src="//124.41.193.91/images/thimi/${hd.houseOwnerDetailModel.house_owner_id }LH${hd.land_house_id }.jpg"
+										style="height: 100px; width: 100px;" /></td>
+							</tr>
 								<tr>
 									<td><h6>
 											<strong>Resident Id</strong>
@@ -71,9 +76,7 @@ h5 {
 										<option value="${f.family_detail_id}" <c:if test="${f.family_detail_id eq hd.family_id }">selected</c:if>>${f.family_detail_id }/${f.fname } ${f.lname }</option>
 										</c:forEach>
 										</select></td>
-								</tr>
-								<tr>
-									<td><h6>
+										<td><h6>
 											<strong>Ownership Type</strong>
 										</h6> <select class='form-control' name='ownership_type'>
 										<option value="">Select Ownership Type</option>
@@ -81,6 +84,9 @@ h5 {
 										<option value="Multiple" <c:if test="${hd.ownership_type eq 'Multiple' }">selected</c:if>>Multiple</option>
 										</select>
 										</td>
+								</tr>
+								<tr>
+									
 									<td><h6>
 											<strong>House Number</strong>
 										</h6> <input type='text' class='form-control house_number' name='house_number' value="${hd.house_number }"></td>
@@ -93,19 +99,19 @@ h5 {
 										<option value="Sq. Meter" <c:if test="${hd.land_unit eq 'Sq. Meter' }">selected</c:if>>Sq. Meter</option>
 										<option value="Sq. Feet" <c:if test="${hd.land_unit eq 'Sq. Feet' }">selected</c:if>>Sq. Feet</option>
 										</select></td>
-								</tr>
-								<tr>
-									<td><h6>
+										<td><h6>
 											<strong>Land Size</strong>
 										</h6> <input type='text' class='form-control' name='land_size' value="${hd.land_size }"></td>
 									<td><h6>
 											<strong>Plot Num</strong>
 										</h6> <input type='text' class='form-control' name='plot_num' value="${hd.plot_num }"></td>
-									<td><h6>
-											<strong>Sheet Num</strong>
-										</h6> <input type='text' class='form-control' name='sheet_num' value="${hd.sheet_num }"></td>
+									
 								</tr>
 								<tr>
+								<td><h6>
+											<strong>Sheet Num</strong>
+										</h6> <input type='text' class='form-control' name='sheet_num' value="${hd.sheet_num }"></td>
+								
 									<td><h6>
 											<strong>Land Legacy District</strong>
 										</h6> <input type="text" value="${hd.district_uni }" class='form-control' name='district_uni'>
@@ -130,14 +136,15 @@ h5 {
 											<strong>Land Legacy Address</strong>
 										</h6> <input type='text' class='form-control'
 										name='land_legacy_address' value="${hd.land_legacy_address }"></td>
-								</tr>
-								<tr>
-									<td><h6>
+								<td><h6>
 											<strong>Land Current District</strong>
 										</h6> <select class='form-control' name='land_current_district'>
 											<option value="27">Bhaktapur</option>
 									</select></td>
-									<td><h6>
+									
+								</tr>
+								<tr><td>
+									<h6>
 											<strong>Land Current Municipality/ Village Council</strong>
 										</h6> <select class='form-control' name='land_current_mun_vc'>
 											<option value="32703">Madhyepur Thimi</option>
@@ -156,9 +163,7 @@ h5 {
 											<%
 												}
 											%>
-									</select>
-								</tr>
-								<tr>
+									</select></td>
 									<td><h6>
 											<strong>Tole</strong>
 										</h6> <input type='text' class='form-control' name='tole' value="${hd.tole }"></td>
@@ -173,7 +178,9 @@ h5 {
 										<option value="${ct.id }" <c:if test="${ct.id eq hd.house_construction_type }">selected</c:if>>${ct.type }</option>
 										</c:forEach>
 										</select></td>
-									<td><h6>
+								</tr>
+								<tr>
+								<td><h6>
 											<strong>Used Status</strong>
 										</h6> <select class='form-control' name='used_status'>
 										<option value="">Select Used Status</option>
@@ -181,8 +188,6 @@ h5 {
 										<option value="Self Used">Self Used</option>
 											<option value="Rented">Rented</option>
 										</select></td>
-								</tr>
-								<tr>
 									<td><h6>
 											<strong>House Floor Count</strong>
 										</h6> <input type='text' class='form-control'
@@ -212,12 +217,28 @@ h5 {
 											<strong>Map Approved Date</strong>
 										</h6> <input type='text' class='form-control'
 										name='map_approved_date' value="${hd.map_approved_date }"></td>
-								</tr>
-								<tr>
-									<td><h6>
+								<td><h6>
 											<strong>Construction Start Date</strong>
 										</h6> <input type='text' class='form-control'
 										name='construction_start_date' value="${hd.construction_start_date }"></td>
+								
+								</tr>
+								<tr>
+									<td><h6>
+											<strong>House/Land Status</strong>
+											
+										</h6> <select class='form-control'
+										name='property_type_for_tax'>
+										<option value="">Select Status</option>
+										<option value="Main Commercial" <c:if test="${hd.property_type_for_tax eq 'Main Commercial'}">selected</c:if>>Main Commercial</option>
+										<option value="Commercial" <c:if test="${hd.property_type_for_tax eq 'Commercial'}">selected</c:if>>Commercial</option>
+										<option value="Residential with all facility" <c:if test="${hd.property_type_for_tax eq 'Residential with all facility'}">selected</c:if>>Residential with all facility</option>
+										<option value="Residential with limited facility" <c:if test="${hd.property_type_for_tax eq 'Residential with limited facility'}">selected</c:if>>Residential with limited facility</option>
+										<option value="Industrial" <c:if test="${hd.property_type_for_tax eq 'Industrial'}">selected</c:if>>Industrial</option>
+										<option value="Agricultural" <c:if test="${hd.property_type_for_tax eq 'Agricultural'}">selected</c:if>>Agricultural</option>
+										<option value="Special zone" <c:if test="${hd.property_type_for_tax eq 'Special zone'}">selected</c:if>>Special zone</option>
+										<option value="Other" <c:if test="${hd.property_type_for_tax eq 'Other'}">selected</c:if>>Other</option>
+										</select></td>
 								</tr>
 							</tbody>
 						</table>
@@ -226,7 +247,12 @@ h5 {
 			</div>
 		</div>
 	</div>
+	<div id="myModal" class="modal">
+		<img class="modal-content" id="img01">
+	</div>
 	<input type="hidden" id="url" value="<spring:url value="/houseLand/findFamilyId"/>">
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/zoomimage.js"></script>
+	<script>
 	<script>
 	$(".confirm").click(function(){
 		return confirm("Confirm?");

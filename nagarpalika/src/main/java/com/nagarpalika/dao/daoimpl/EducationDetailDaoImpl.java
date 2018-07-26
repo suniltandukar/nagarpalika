@@ -32,7 +32,7 @@ public class EducationDetailDaoImpl implements EducationDetailDao {
 		}
 	
 	public void save(EducationDetailModel e){
-		String query="insert into education_detail(edu_id, education_type, record_status, inputter, authorizer, date_time, curr_number) values ('"+e.getEdu_id()+"','"+e.getEducation_type()+"','"+e.getRecord_status()+"','"+e.getInputter()+"','"+e.getAuthorizer()+"','"+e.getDate_time()+"','"+e.getCurr_number()+"')";
+		String query="insert into education_detail(edu_id, education_type, inputter, date_time, curr_number) values ('"+e.getEdu_id()+"','"+e.getEducation_type()+"','"+e.getInputter()+"',now(),'1')";
 		try{
 		jdbcTemplate.update(query);
 		}

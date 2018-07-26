@@ -10,6 +10,12 @@ h5 {
 	font-size: 80%;
 	font-weight: bold;
 }
+.alert{
+ position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    }
 </style>
 </head>
 <body class="background">
@@ -17,13 +23,17 @@ h5 {
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="col-md-8 col-xs-12">
 			<div class="x_panel">
-				<spring:url value="/drinkingWater/save" var="formUrl" />
+				<spring:url value="/drinkingWater/update/${drinkingwater.drinking_water_type }" var="formUrl" />
 				<form:form class="form-horizontal form-label-left input_mask"
 					method="post" action="${formUrl }">
 
 					<div class="x_title">
-						<h2>DRINKING WATER TYPE</h2>
-						<div class="col-md-4 col-sm-4 col-xs-12 pull-right"></div>
+						<h2>UPDATE DRINKING WATER TYPE</h2>
+							<c:if test="${not empty msg }">
+							<div class="col-md-4 col-sm-4 col-xs-12 pull-right">
+						<div class="alert alert-danger"><strong>${msg }</strong></div>
+						</div>
+						</c:if>
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
@@ -31,7 +41,8 @@ h5 {
 							<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
 								<button class="btn btn-info" type="button" id="validate">Validate</button>
 								<button class="btn btn-primary" type="reset">Reset</button>
-								<input type="submit" class="btn btn-success" value="Submit">
+								<a class="btn btn-danger confirm" href="<spring:url value="/drinkingWater/delete/${drinkingwater.drinking_water_type_id }"/>">Delete</a>
+								<input type="submit" class="btn btn-success" value="Update">
 							</div>
 						</div>
 						<br />
@@ -39,11 +50,8 @@ h5 {
 							<tbody>
 								<tr>
 									<td><h6>
-											<strong>Id Type</strong>
-										</h6> <input type='text' class='form-control' name='drinking_water_type_id'></td>
-									<td><h6>
 											<strong>Description</strong>
-										</h6> <input type='text' class='form-control' name='drinking_water_type'></td>
+										</h6> <input type='text' class='form-control' name='drinking_water_type' value="${drinkingwater.drinking_water_type }"></td>
 								</tr>
 							</tbody>
 						</table>
@@ -71,10 +79,8 @@ h5 {
 							<tbody>
 							<c:forEach items="${drinkingWaterType }" var="d">
 								<tr>
-									<td>${d.drinking_water_type_id }</td>
 									<td>${d.drinking_water_type }</td>
-									
-									<td><a href="<spring:url value="/documentType/edit/${d.drinking_water_type_id }"/>">Edit</a></td>
+									<td><a href="<spring:url value="/drinkingWater/edit/${d.drinking_water_type_id }"/>">Edit</a></td>
 								</tr>
 								</c:forEach>
 							</tbody>
@@ -90,6 +96,9 @@ h5 {
 		})
 		$("form").submit(function() {
 			return confirm("Confirm Submit?");
+		});
+		$(".alert").delay(2000).slideUp(200, function() {
+			$(this).alert('close');
 		});
 	</script>
 </body>

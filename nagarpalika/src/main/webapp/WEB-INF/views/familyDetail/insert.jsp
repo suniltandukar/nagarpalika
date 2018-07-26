@@ -27,7 +27,7 @@ h5 {
 				<spring:url value="/familyDetail/save" var="formUrl" />
 				<form:form class="form-horizontal form-label-left input_mask"
 					id="form" method="post" action="${formUrl }"
-					commandName="familyDetailForm">
+					commandName="familyDetailForm" enctype="multipart/form-data">
 
 					<div class="x_title">
 						<h2>FAMILY DETAIL</h2>
@@ -56,7 +56,7 @@ h5 {
 								<tr>
 									<td><h6>
 											<strong>Resident Id</strong>
-										</h6> <select class='form-control' name='houseOwnerDetailModel.house_owner_id'>
+										</h6> <select class='form-control' name='houseOwnerDetailModel.house_owner_id' required>
 											<option value="">Select Resident Id</option>
 											<c:forEach items="${houseOwner }" var="h">
 												<option value="${h.house_owner_id }">${h.house_owner_id }/${h.house_owner_fname }
@@ -66,10 +66,10 @@ h5 {
 
 									<td><h6>
 											<strong>Relation</strong>
-										</h6> <select class='form-control' name='relation'>
+										</h6> <select class='form-control' name='relationModel.relation' required>
 											<option value="">Select Relation</option>
 											<c:forEach items="${relation }" var="r">
-												<option value="${r.name }">${r.name }</option>
+												<option value="${r.relation_id }">${r.name }</option>
 											</c:forEach>
 									</select></td>
 									<td><h6>
@@ -127,6 +127,14 @@ h5 {
 									</select></td>
 
 
+								</tr>
+								<tr>
+									<td>
+									<h6>
+									<strong>Upload Picture</strong></h6>
+									<input class="form-control" type="file" name="files"
+										accept="image/*" required>
+									</td>
 								</tr>
 							</tbody>
 						</table>

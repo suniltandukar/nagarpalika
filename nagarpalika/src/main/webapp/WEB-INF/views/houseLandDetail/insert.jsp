@@ -10,7 +10,6 @@ h5 {
 	font-size: 80%;
 	font-weight: bold;
 }
-
 .alert {
 	position: absolute;
 	left: 0px;
@@ -22,11 +21,11 @@ h5 {
 <body class="background">
 
 	<div class="col-md-12 col-sm-12 col-xs-12">
-		<div class="col-md-8 col-xs-12">
+		<div class="col-md-12 col-xs-12">
 			<div class="x_panel">
 				<spring:url value="/houseLand/save" var="formUrl" />
 				<form:form class="form-horizontal form-label-left input_mask"
-					method="post" action="${formUrl }">
+					method="post" action="${formUrl }" enctype="multipart/form-data">
 
 					<div class="x_title">
 						<h2>HOUSE AND LAND DETAIL</h2>
@@ -41,7 +40,7 @@ h5 {
 					</div>
 					<div class="x_content">
 						<div class="form-group">
-							<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+							<div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-3">
 								<button class="btn btn-info" type="button" id="validate">Validate</button>
 								<button class="btn btn-primary" type="reset">Reset</button>
 								<input type="submit" class="btn btn-success" value="Submit">
@@ -69,15 +68,16 @@ h5 {
 										</h6> <select class='form-control' id="family_id" name='family_id'>
 										<option value="">Select Family Id</option>
 										</select></td>
-								</tr>
-								<tr>
-									<td><h6>
+										<td><h6>
 											<strong>Ownership Type</strong>
 										</h6> <select class='form-control' name='ownership_type'>
 											<option value="">Select Ownership Type</option>
 											<option value="Single">Single</option>
 											<option value="Multiple">Multiple</option>
 									</select></td>
+								</tr>
+								<tr>
+									
 									<td><h6>
 											<strong>House Number</strong>
 										</h6> <input type='text' class='form-control house_number'
@@ -91,19 +91,17 @@ h5 {
 											<option value="Sq. Meter">Sq. Meter</option>
 											<option value="Sq. Feet">Sq. Feet</option>
 									</select></td>
-								</tr>
-								<tr>
 									<td><h6>
 											<strong>Land Size</strong>
 										</h6> <input type='text' class='form-control' name='land_size'></td>
 									<td><h6>
 											<strong>Plot Num</strong>
 										</h6> <input type='text' class='form-control' name='plot_num'></td>
-									<td><h6>
-											<strong>Sheet Num</strong>
-										</h6> <input type='text' class='form-control' name='sheet_num'></td>
 								</tr>
 								<tr>
+								<td><h6>
+											<strong>Sheet Num</strong>
+										</h6> <input type='text' class='form-control' name='sheet_num'></td>
 									<td><h6>
 											<strong>Land Legacy District</strong>
 										</h6> <input type="text" class='form-control' name='district_uni'>
@@ -128,14 +126,15 @@ h5 {
 											<strong>Land Legacy Address</strong>
 										</h6> <input type='text' class='form-control'
 										name='land_legacy_address'></td>
-								</tr>
-								<tr>
-									<td><h6>
+										<td><h6>
 											<strong>Land Current District</strong>
 										</h6> 
 										<select class='form-control' name='land_current_district'>
 											<option value="27">Bhaktapur</option>
 									</select></td>
+								</tr>
+								<tr>
+									
 									<td><h6>
 											<strong>Land Current Municipality/ Village Council</strong>
 										</h6> 
@@ -156,9 +155,7 @@ h5 {
 											%>
 									</select>
 										</td>
-								</tr>
-								<tr>
-									<td><h6>
+										<td><h6>
 											<strong>Tole</strong>
 										</h6> <input type='text' class='form-control' name='tole'></td>
 									<td><h6>
@@ -170,15 +167,15 @@ h5 {
 												<option value="${ct.id }">${ct.type }</option>
 											</c:forEach>
 									</select></td>
-									<td><h6>
+								</tr>
+								<tr>
+								<td><h6>
 											<strong>Used Status</strong>
 										</h6> <select class='form-control' name='used_status'>
 											<option value="">Select Used Status</option>
 											<option value="Self Used">Self Used</option>
 											<option value="Rented">Rented</option>
 									</select></td>
-								</tr>
-								<tr>
 									<td><h6>
 											<strong>House Floor Count</strong>
 										</h6> <input type='text' class='form-control'
@@ -207,13 +204,35 @@ h5 {
 											<strong>Map Approved Date</strong>
 										</h6> <input type='text' class='form-control'
 										name='map_approved_date'></td>
-								</tr>
-								<tr>
-									<td><h6>
+										<td><h6>
 											<strong>Construction Start Date</strong>
 										</h6> <input type='text' class='form-control'
 										name='construction_start_date'></td>
 								</tr>
+								<tr>
+									
+									<td><h6>
+											<strong>House/Land Status</strong>
+										</h6> <select class='form-control'
+										name='property_type_for_tax'>
+										<option value="">Select Status</option>
+										<option value="Main Commercial">Main Commercial</option>
+										<option value="Commercial">Commercial</option>
+										<option value="Residential with all facility">Residential with all facility</option>
+										<option value="Residential with limited facility">Residential with limited facility</option>
+										<option value="Industrial">Industrial</option>
+										<option value="Agricultural">Agricultural</option>
+										<option value="Special zone">Special zone</option>
+										<option value="Other">Other</option>
+										</select></td>
+											<td>
+									<h6>
+									<strong>Upload Picture</strong></h6>
+									<input class="form-control" type="file" name="files"
+										accept="image/*" required>
+									</td>
+								</tr>
+								
 							</tbody>
 						</table>
 					</div>

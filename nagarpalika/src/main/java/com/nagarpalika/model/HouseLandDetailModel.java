@@ -12,6 +12,7 @@ public class HouseLandDetailModel {
 	private String curr_number;
 	private int ward_no;
 	private HouseOwnerDetailModel houseOwnerDetailModel;
+	private String property_type_for_tax;
 
 	public String getHouse_and_land_detail_id() {
 		return house_and_land_detail_id;
@@ -351,5 +352,15 @@ public class HouseLandDetailModel {
 	public void setHouseOwnerDetailModel(HouseOwnerDetailModel houseOwnerDetailModel) {
 		this.houseOwnerDetailModel = houseOwnerDetailModel;
 	}
+
+	public String getProperty_type_for_tax() {
+		return property_type_for_tax;
+	}
+
+	public void setProperty_type_for_tax(String property_type_for_tax) {
+		this.property_type_for_tax = property_type_for_tax;
+	}
+	
+	
 
 }

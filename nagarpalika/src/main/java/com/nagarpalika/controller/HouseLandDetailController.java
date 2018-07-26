@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
@@ -22,6 +24,7 @@ import com.nagarpalika.model.HouseLandDetailModel;
 import com.nagarpalika.service.FamilyDetailService;
 import com.nagarpalika.service.HouseConstructionTypeService;
 import com.nagarpalika.service.HouseOwnerService;
+import com.nagarpalika.service.UploadService;
 
 @Controller
 @RequestMapping("/houseLand")
@@ -38,9 +41,18 @@ public class HouseLandDetailController {
 
 	@Autowired
 	FamilyDetailService familyDetailService;
+	
+	@Autowired
+	UploadService uploadService;
+	
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ModelAndView save(@ModelAttribute HouseLandDetailModel h, @ModelAttribute("user") String user, BindingResult result, RedirectAttributes attributes) {
+	public ModelAndView save(@RequestParam("files") MultipartFile file, @ModelAttribute HouseLandDetailModel h, @ModelAttribute("user") String user, BindingResult result, RedirectAttributes attributes) {
+		String saveFileName ="";
+		//String fileLocation = "F:/check";
+		String fileLocation="/usr/local/tomcat7/webapps/images/thimi"; //can be taken from database
+		String house_owner_id = h.getHouseOwnerDetailModel().getHouse_owner_id();
+		String land_house_id = h.getLand_house_id();
 		
 		if(result.hasErrors()){
 			ModelAndView model1 = new ModelAndView("redirect:/nav/houseLandDetail");
@@ -50,6 +62,15 @@ public class HouseLandDetailController {
 		h.setInputter(user);
 		int save = houseLandDetailDao.save(h);
 		if (save > 0) {
+			if (!file.getOriginalFilename().isEmpty()) {
+				saveFileName=house_owner_id+"LH"+land_house_id+".jpg";
+				uploadService.upload(fileLocation, saveFileName, file);
+				attributes.addFlashAttribute("msg1", "Upload Successful!");
+
+			} else {
+				attributes.addFlashAttribute("msg1", "Upload Failed!");
+
+			}
 			int max_value = houseLandDetailDao.findMax();
 			attributes.addFlashAttribute("msg", "Save Successful!");
 			ModelAndView model1 = new ModelAndView("redirect:edit/" + max_value + "");

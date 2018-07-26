@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.nagarpalika.dao.BranchDao;
 import com.nagarpalika.dao.DocumentTypeDao;
@@ -97,6 +98,7 @@ public class NavigationController {
 		model.addAttribute("occupation", occupationService.findAll());
 		model.addAttribute("relation", relationService.findAll());
 		model.addAttribute("disablity", formDetailService.getDisableType());
+		
 		return "familyDetail/insert";
 	}
 
@@ -207,5 +209,16 @@ public class NavigationController {
 	{
 		model.addAttribute("drinkingWaterType",drinkingWaterTypeService.findAll());
 		return "settings/drinkingWater/insert";
+	}
+	@RequestMapping(value="/mobiledata")
+	public String mobiledata(Model model)
+	{
+		return "mobiledata";
+	}
+	
+	@RequestMapping(value = "/idupload", method = RequestMethod.GET)
+	public String idupload(Model model) {
+		
+		return "idupload/upload";
 	}
 }

@@ -66,6 +66,7 @@
 									</ul></li>
 							</ul>
 							<ul class="nav side-menu">
+								<li><a href="mobiledata.html" target="iframe_a"> Mobile Data </a></li>
 								<li><a><span class="fa fa-chevron-down"></span>House
 										Hold Detail</a>
 									<ul class="nav child_menu">
@@ -144,7 +145,7 @@
 										Upload</a>
 									<ul class="nav child_menu">
 
-										<li><a href="#" target="iframe_a"> New Detail </a></li>
+										<li><a href="nav/idupload" target="iframe_a"> New Upload </a></li>
 
 									</ul></li>
 							</ul>
@@ -243,7 +244,7 @@
 
 			<!-- page content -->
 			<div class="right_col" role="main">
-				<iframe height="2000px" width="100%" src="" id="Iframe"
+				<iframe height="2000px" width="100%" src="nav/mobiledata" id="Iframe"
 					name="iframe_a" style="border: none;"> </iframe>
 			</div>
 			<!-- /page content -->

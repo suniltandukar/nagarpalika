@@ -24,10 +24,10 @@ h5 {
 <body class="background">
 
 	<div class="col-md-12 col-sm-12 col-xs-12">
-		<div class="col-md-8 col-xs-12">
+		<div class="col-md-12 col-xs-12">
 			<div class="x_panel">
 			<spring:url value="/tenants/save" var="formUrl"/>
-				<form:form class="form-horizontal form-label-left input_mask"
+				<form:form class="form-horizontal form-label-left input_mask" enctype="multipart/form-data"
 					method="post" action="${formUrl }">
 
 					<div class="x_title">
@@ -53,7 +53,7 @@ h5 {
 								<td><h6>
 										<strong>Resident Id</strong>
 									</h6> <select class='form-control'
-										name='houseOwnerDetailModel.house_owner_id' id="house_owner_id">
+										name='houseOwnerDetailModel.house_owner_id' id="house_owner_id" required>
 											<option value="">Select Resident Id</option>
 											<c:forEach items="${houseOwner }" var="h">
 												<option value="${h.house_owner_id }">${h.house_owner_id }/${h.house_owner_fname }
@@ -62,15 +62,16 @@ h5 {
 									</select></td>
 								<td><h6>
 										<strong>Land House ID</strong>
-									</h6> <input type='text' class='form-control' name='land_house_id'></td>
+									</h6> <input type='text' class='form-control' name='land_house_id' required></td>
 								<td><h6>
 										<strong>Tenant's Name</strong>
 									</h6> <input type='text' class='form-control' name='tenant_name'></td>
-							</tr>
-							<tr>
-								<td><h6>
+							<td><h6>
 										<strong>Tenant's Address</strong>
 									</h6> <input type='text' class='form-control' name='tenant_address'></td>
+								
+							</tr>
+							<tr>
 								<td><h6>
 										<strong>Occupation</strong>
 									</h6> <select class='form-control' name='occupationModel.occu_id'>
@@ -82,22 +83,19 @@ h5 {
 								<td><h6>
 										<strong>Phone/ Mobile Number</strong>
 									</h6> <input type='text' class='form-control' name='phone_number'></td>
-							</tr>
-							<tr>
-								<td><h6>
+							<td><h6>
 										<strong>Id Type</strong>
 									</h6> <input type='text' class='form-control' name='identity'></td>
 								<td><h6>
 										<strong>Identity Number</strong>
 									</h6> <input type='text' class='form-control' name='identity_number'></td>
+								
+							</tr>
+							<tr>
 								<td><h6>
 										<strong>Number of Tenants</strong>
 									</h6> <input type='text' class='form-control' name='tenant_nos'></td>
-							</tr>
-								
-						
-								<tr>
-								<td><h6>
+							<td><h6>
 										<strong>Rented Purpose</strong>
 									</h6> <select class='form-control comm_on' name='rented_purpose'>
 
@@ -105,8 +103,13 @@ h5 {
 										<option value="Commercial" >Commercial</option>
 										<option value="Residential">Residential</option>
 								</select></td>
-								</tr>
-								
+								<td>
+									<h6>
+									<strong>Upload Picture</strong></h6>
+									<input class="form-control" type="file" name="files"
+										accept="image/*" required>
+									</td>
+							</tr>
 								<tr class="commercial">
 							<td><h6>
 									<strong>Name of Company</strong>
@@ -139,6 +142,7 @@ h5 {
 									<strong>Types Of Business </strong>
 								</h6> <input type='text' class='form-control com' name='business_type'></td>
 								</tr>
+								
 						</table>
 
 					</div>
