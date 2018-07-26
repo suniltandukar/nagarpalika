@@ -112,42 +112,43 @@ display:none;
 									</h6> <select class='form-control comm_on' name='rented_purpose'>
 
 										<option value="">Select Rented Purpose</option>
-										<option value="Commercial" >Commercial</option>
-										<option value="Residential">Residential</option>
+										
+										<option value="Commercial" <c:if test="${t.rented_purpose  eq 'Commercial'}">selected</c:if>>Commercial</option>
+										<option value="Residential" <c:if test="${t.rented_purpose  eq 'Residential'}">selected</c:if>>Residential</option>
 								</select></td>
 								</tr>
 								
 								<tr class="commercial">
 							<td><h6>
 									<strong>Name of Company</strong>
-								</h6> <input type='text' class='form-control' name='company_name'></td>
+								</h6> <input type='text' class='form-control com' name='company_name' value="${t.company_name }"></td>
 
 							<td><h6>
 									<strong>Manager/Owner/Proprietor</strong>
-								</h6> <input type='text' class='form-control' name='owner'></td>
+								</h6> <input type='text' class='form-control com' name='owner' value="${t.owner }"></td>
 							<td><h6>
 									<strong>Register Number</strong>
-								</h6> <input type='text' class='form-control' name='register_number'></td>
+								</h6> <input type='text' class='form-control com' name='register_number' value="${t.register_number }"></td>
 								
 								</tr>
 					
 						<tr class="commercial">
 							<td><h6>
 									<strong>Register Date</strong>
-								</h6> <input type='text' class='form-control' name='register_date'></td>
+								</h6> <input type='text' class='form-control com' name='register_date' value="${t.register_date}"></td>
 							<td><h6>
 									<strong>License Providing Office</strong>
-								</h6> <input type='text' class='form-control' name='license_provider'></td>
+								</h6> <input type='text' class='form-control com' name='license_provider' value="${t.license_provider }"></td>
 							<td><h6>
 									<strong>Telephone Number</strong>
-								</h6> <input type='text' class='form-control' name='phone'></td>
+								</h6> <input type='text' class='form-control com' name='phone' value="${t.phone }"></td>
 								
 								</tr>
 								
 								<tr class="commercial">
 								<td><h6>
 									<strong>Types Of Business </strong>
-								</h6> <input type='text' class='form-control' name='business_type'></td>
+								</h6> <input type='text' class='form-control com' name='business_type' value="${t.business_type }"></td>
 								</tr>
 						</table>
 
@@ -168,17 +169,35 @@ display:none;
 	$("form").submit(function(){
 		return confirm("Confirm Submit?");
 	});
+	
 	$(".alert").delay(2000).slideUp(200, function() {
 		$(this).alert('close');
 	});
-	var rented_purpose=$(".comm_on").val();
-	  if (rented_purpose.value == "Commercial") {
+	 $(document).ready(function () {
+	var rented_purpose=$(".comm_on option:selected").val();
+	  if (rented_purpose == "Commercial") {
           //show the tr if value is others
           $('.commercial').show();
       } else {
           //Hide the tr if value is others
           $('.commercial').hide();
       }
+	  $('.comm_on').change(function () {
+		  if(confirm('Are you sure?')){
+          //Grab the value from dropdownlist
+          if (this.value == "Commercial") {
+              //show the tr if value is others
+              $('.commercial').show();
+          } else {
+              //Hide the tr if value is others
+              $('.commercial').hide();
+              $('.com').val('');
+          }
+		  }
+		  else{return false;}
+
+      });
+	  });
 </script>
 </body>
 </html>

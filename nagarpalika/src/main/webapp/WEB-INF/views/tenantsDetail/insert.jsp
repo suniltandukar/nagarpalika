@@ -113,34 +113,34 @@ h5 {
 								<tr class="commercial">
 							<td><h6>
 									<strong>Name of Company</strong>
-								</h6> <input type='text' class='form-control' name='company_name'></td>
+								</h6> <input type='text' class='form-control com' name='company_name'></td>
 
 							<td><h6>
 									<strong>Manager/Owner/Proprietor</strong>
-								</h6> <input type='text' class='form-control' name='owner'></td>
+								</h6> <input type='text' class='form-control com' name='owner'></td>
 							<td><h6>
 									<strong>Register Number</strong>
-								</h6> <input type='text' class='form-control' name='register_number'></td>
+								</h6> <input type='text' class='form-control com' name='register_number'></td>
 								
 								</tr>
 					
 						<tr class="commercial">
 							<td><h6>
 									<strong>Register Date</strong>
-								</h6> <input type='text' class='form-control' name='register_date'></td>
+								</h6> <input type='text' class='form-control com' name='register_date'></td>
 							<td><h6>
 									<strong>License Providing Office</strong>
-								</h6> <input type='text' class='form-control' name='license_provider'></td>
+								</h6> <input type='text' class='form-control com' name='license_provider'></td>
 							<td><h6>
 									<strong>Telephone Number</strong>
-								</h6> <input type='text' class='form-control' name='phone'></td>
+								</h6> <input type='text' class='form-control com' name='phone'></td>
 								
 								</tr>
 								
 								<tr class="commercial">
 								<td><h6>
 									<strong>Types Of Business </strong>
-								</h6> <input type='text' class='form-control' name='business_type'></td>
+								</h6> <input type='text' class='form-control com' name='business_type'></td>
 								</tr>
 								
 						</table>
@@ -161,6 +161,7 @@ h5 {
              } else {
                  //Hide the tr if value is others
                  $('.commercial').hide();
+                 $('.com').val('');
              }
 
          });
