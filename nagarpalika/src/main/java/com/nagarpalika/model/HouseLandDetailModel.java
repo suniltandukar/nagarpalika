@@ -13,6 +13,8 @@ public class HouseLandDetailModel {
 	private int ward_no;
 	private HouseOwnerDetailModel houseOwnerDetailModel;
 	private String property_type_for_tax;
+	private String longitude;
+	private String latitude;
 
 	public String getHouse_and_land_detail_id() {
 		return house_and_land_detail_id;
@@ -359,6 +361,22 @@ public class HouseLandDetailModel {
 
 	public void setProperty_type_for_tax(String property_type_for_tax) {
 		this.property_type_for_tax = property_type_for_tax;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
 	}
 	
 	
