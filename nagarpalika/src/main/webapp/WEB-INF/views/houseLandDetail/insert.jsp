@@ -45,7 +45,7 @@ h5 {
 								<button class="btn btn-info" type="button" id="validate">Validate</button>
 								<button class="btn btn-primary" type="reset">Reset</button>
 								<input type="submit" class="btn btn-success" value="Submit">
-								<button class="btn btn-info" onclick="geoFindMe()">Get Location</button>
+								<a class="btn btn-info" onclick="geoFindMe()">Get Location</a>
 							</div>
 						</div>
 						<br />
