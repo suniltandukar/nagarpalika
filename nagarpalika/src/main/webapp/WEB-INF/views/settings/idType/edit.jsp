@@ -46,22 +46,6 @@ h5 {
 											<strong>Description</strong>
 										</h6> <input type='text' class='form-control' name='description' value="${dt.description }"></td>
 								</tr>
-								<tr>
-									<td><h6>
-											<strong>Inputter</strong>
-										</h6> <input type='text' class='form-control' name='inputter' value="${dt.inputter }"></td>
-									<td><h6>
-											<strong>Authorizer</strong>
-										</h6> <input type='text' class='form-control' name='authorizer' value="${dt.authorizer }"></td>
-									<td><h6>
-											<strong>date and Time</strong>
-										</h6> <input type='text' class='form-control' name='date_time' value="${dt.date_time }"></td>
-								</tr>
-								<tr>
-									<td><h6>
-											<strong>Current Number</strong>
-										</h6> <input type='text' class='form-control' name='curr_number' value="${dt.curr_number }"></td>
-								</tr>
 							</tbody>
 						</table>
 					</div>

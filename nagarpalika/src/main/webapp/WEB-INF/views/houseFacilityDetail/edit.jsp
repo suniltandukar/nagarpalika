@@ -68,7 +68,7 @@ h5 {
 								<td><h6>
 										<strong>Resident Id</strong>
 									</h6> <select class='form-control'
-									name='houseOwnerDetailModel.house_owner_id' id="house_owner_id">
+									name='houseOwnerDetailModel.house_owner_id' id="house_owner_id" required>
 										<option value="">Select Resident Id</option>
 										<c:forEach items="${houseOwner }" var="h">
 											<option value="${h.house_owner_id }"

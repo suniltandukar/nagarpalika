@@ -1,8 +1,15 @@
 package com.nagarpalika.model;
 
+import javax.validation.constraints.Size;
+
 public class HouseOwnerDetailModel {
-	private String house_owner_id,
-	house_owner_fname,
+	
+	@Size(max=5)
+	private String house_owner_id;
+	@Size(max=2)
+	private String
+	house_owner_fname;
+	private String 
 	house_owner_mname,
 	house_owner_lname,
 	marital_status,

@@ -1,5 +1,11 @@
 package com.nagarpalika.controller;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -35,33 +41,54 @@ public class HomeController {
 	@Autowired
 	private OperationDao operationDao;
 	
-	private static final Logger logger= LoggerFactory.getLogger(HomeController.class);
+	private static final Logger LOGGER= LoggerFactory.getLogger(HomeController.class);
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model, @ModelAttribute(value="msg") String msg) {
+		 String inputLine="";
+		URL url=null;
+		try {
+			 url = new URL("http://202.70.78.243/thimihh/index.php/api/getJson");
+			 
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
 		
-		/*String[] key={"Id Type","Description","Record Status","Inputter","Authorizer","date and Time","Current Number"};
-		String[] value={"id_type","description","record_status","inputter","authorizer","date_time","curr_number"};
-		
-		int j=0;
-		for(int i=0;i<key.length;i++){
-			
-				System.out.println("<tr>");
-				
-			System.out.println("<td><h6><strong>"+key[i]+"</strong></h6> <input type='text' class='form-control' name='"+value[i]+"'></td>");
-			System.out.println("<td><h6><strong>"+key[i+1]+"</strong></h6> <input type='text' class='form-control' name='"+value[i+1]+"'></td>");
-			System.out.println("<td><h6><strong>"+key[i+2]+"</strong></h6> <input type='text' class='form-control' name='"+value[i+2]+"'></td>");
-			
-			System.out.println("</tr>");
-			i=i+2;
-			
-		}*/
-		
+		try{
+		URLConnection yc = url.openConnection();
+        BufferedReader in = new BufferedReader(new InputStreamReader(
+                                yc.getInputStream()));
+       
+        while ((inputLine = in.readLine()) != null){ 
+        	  
+            System.out.println(inputLine);
+         
+            //System.out.println(split[0]);
+            
+        in.close();
+        }
+      
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
+		  String[] string = inputLine.split("\\|");
+          for(int i=0; i<string.length;i++){
+        	  boolean even = checknum(i);
+        	  if(even){
+          		System.out.println(string[i]);
+        	  }
+        	  else{
+        		  String[] values = string[i].split("^^");
+        		  System.out.println(values[0]);
+        	  }
+         
+          }
 		model.addAttribute("msg",msg);
-		logger.info("Home Controller is On");
+		/*logger.info("Home Controller is On");
 		logger.debug("Debug Logger");
 		logger.error("Error Debug");
-		logger.trace("trace logger");
+		logger.trace("trace logger");*/
 		return "index";
 	}
 
@@ -97,6 +124,13 @@ public class HomeController {
 	public String pathDemo(@PathVariable String name) {
 		System.out.println(name);
 		return "index";
+	}
+	public boolean checknum(int num){
+		double value = num%2;
+		if(value==0){
+			return true;
+		}
+		else{return false;}
 	}
 	
 }

@@ -46,6 +46,7 @@ public class DrinkingWaterTypeController {
 	@RequestMapping(value="/update/{id}", method = RequestMethod.POST)
 	public String update(@PathVariable String id, @ModelAttribute DrinkingWaterTypeModel d, RedirectAttributes attributes){
 		try{
+			System.out.println("update id="+id);
 			drinkingWaterTypeService.update(d, id);
 		attributes.addFlashAttribute("msg", "Update Successful!");
 		}

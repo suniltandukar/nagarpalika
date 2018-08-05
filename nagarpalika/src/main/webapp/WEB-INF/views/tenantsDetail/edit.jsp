@@ -65,7 +65,7 @@ display:none;
 								<td><h6>
 										<strong>Resident Id</strong>
 									</h6> <select class='form-control'
-										name='houseOwnerDetailModel.house_owner_id' id="house_owner_id">
+										name='houseOwnerDetailModel.house_owner_id' id="house_owner_id" required>
 											<option value="">Select Resident Id</option>
 											<c:forEach items="${houseOwner }" var="h">
 											<option value="${h.house_owner_id }" <c:if test="${h.house_owner_id eq t.houseOwnerDetailModel.house_owner_id}">selected</c:if>>${h.house_owner_id }/${h.house_owner_fname } ${h.house_owner_mname } ${h.house_owner_lname }</option>

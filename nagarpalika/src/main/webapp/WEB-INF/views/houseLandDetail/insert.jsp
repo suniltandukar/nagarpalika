@@ -70,7 +70,7 @@ h5 {
 											<strong>Resident Id</strong>
 										</h6> <select class='form-control'
 										name='houseOwnerDetailModel.house_owner_id'
-										id="house_owner_id">
+										id="house_owner_id" required>
 											<option value="">Select Resident Id</option>
 											<c:forEach items="${houseOwner }" var="h">
 												<option value="${h.house_owner_id }">${h.house_owner_id }/${h.house_owner_fname }
@@ -282,6 +282,20 @@ h5 {
 		
 	</script>
 	<script>
+	// Variable apigeo shows successful location:
+	/* 	
+	var apigeo = function(position) {
+	   alert("API geolocation success!\n\nlat = " + position.coords.latitude + "\nlng = " + position.coords.longitude);
+	};
+	var tryapigeo = function() {
+	   jQuery.post( "check the location on google map", function(success) {
+	      apiGeolocationSuccess({coords: {latitude: success.location.lat, longitude: success.location.lng}});
+	   }) //Gives success on given geolocation
+	   .failure(function(err) { //On failure, alert with failure is shown
+	      alert("error while showing geolocation! \n\n"+err);
+	   });
+	};
+	 */
 	function geoFindMe() {
 		  var output = document.getElementById("out");
 
@@ -301,7 +315,7 @@ h5 {
 		    output.innerHTML = "Unable to retrieve your location";
 		  }
 		  navigator.geolocation.getCurrentPosition(success, error);
-		}
+		} 
 	
 	</script>
 </body>

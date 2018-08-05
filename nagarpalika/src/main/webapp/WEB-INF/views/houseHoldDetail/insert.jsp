@@ -64,20 +64,20 @@
 											<td><h6>
 													<strong>Resident ID</strong>
 												</h6> <input type='text' class='form-control'
-												name='house_owner_id' value="${ho.house_owner_id }" required></td>
+												name='house_owner_id' value="${ho.house_owner_id }"  required></td>
 
 											<td><h6>
 													<strong>First Name</strong>
 												</h6> <input type='text' class='form-control'
-												name='house_owner_fname' value="${ho.house_owner_fname }"></td>
+												name='house_owner_fname' value="${ho.house_owner_fname }" pattern="[A-Za-z]{2,}"></td>
 											<td><h6>
 													<strong>Middle Name</strong>
 												</h6> <input type='text' class='form-control'
-												name='house_owner_mname' value="${ho.house_owner_mname }"></td>
+												name='house_owner_mname' value="${ho.house_owner_mname }" pattern="[A-Za-z]{1,}"></td>
 											<td><h6>
 													<strong>Last Name</strong>
 												</h6> <input type='text' class='form-control'
-												name='house_owner_lname' value="${ho.house_owner_lname }"></td>
+												name='house_owner_lname' value="${ho.house_owner_lname }"  pattern="[A-Za-z]{1,}"></td>
 
 										</tr>
 										<tr>
@@ -93,15 +93,15 @@
 											<td><h6>
 													<strong>Grand Father's Name</strong>
 												</h6> <input type='text' class='form-control'
-												name='grand_father_name' value="${ho.grand_father_name}"></td>
+												name='grand_father_name' value="${ho.grand_father_name}" pattern="^[A-Za-z -]+$"></td>
 											<td><h6>
 													<strong>Father's Name</strong>
 												</h6> <input type='text' class='form-control' name='father_name'
-												value="${ho.father_name }"></td>
+												value="${ho.father_name }" pattern="^[A-Za-z -]+$"></td>
 											<td><h6>
 													<strong>Spouse Name</strong>
 												</h6> <input type='text' class='form-control' name='spouse_name'
-												value="${ho.spouse_name }"></td>
+												value="${ho.spouse_name }" pattern="^[A-Za-z -]+$"></td>
 										</tr>
 
 										<tr>
@@ -147,7 +147,7 @@
 											<td><h6>
 													<strong>Temporary Address</strong>
 												</h6> <input type='text' class='form-control'
-												name='temporary_address' value="${ho.temporary_address }"></td>
+												name='temporary_address' value="${ho.temporary_address }" ></td>
 											<td><h6>
 													<strong>Gender</strong>
 												</h6> <select class='form-control' name='gender'>
@@ -157,21 +157,21 @@
 											<td><h6>
 													<strong>Date Of Birth (Nepali YYYYMMDD)</strong>
 												</h6> <input type='text' class='form-control' name='dob_nep'
-												value="${ho.dob_nep}"></td>
+												value="${ho.dob_nep}" maxlength="8" pattern="(?:19/20)[0-9]{6}"></td>
 										</tr>
 										<tr>
 
 											<td><h6>
 													<strong>Phone Number</strong>
 												</h6> <input type='text' class='form-control'
-												name='phone_number' value=""></td>
+												name='phone_number' value="" pattern="[0-9]{10}" maxlength="10"></td>
 											<td><h6>
 													<strong>Mobile Number</strong>
 												</h6> <input type='text' class='form-control' name='mobile_no'
-												value=""></td>
+												value="" pattern="[0-9]{10}" maxlength="10"></td>
 											<td><h6>
 													<strong>E_mail Address</strong>
-												</h6> <input type='text' class='form-control' name='email'
+												</h6> <input type='email' class='form-control' name='email'
 												value="${ho.email }"></td>
 											<td><h6>
 													<strong>Education Status</strong>
@@ -231,14 +231,14 @@
 													</h6> <input type='text' class='form-control'
 													name='ownerIdentityDetailModel.id_number' value=""></td>
 												<td><h6>
-														<strong>Issue Date</strong>
+														<strong>Issue Date(YYYYMMDD)</strong>
 													</h6> <input type='text' class='form-control'
-													name='ownerIdentityDetailModel.issue_date' value=""></td>
+													name='ownerIdentityDetailModel.issue_date' value="" pattern="(?:19/20)[0-9]{6}"></td>
 
 												<td><h6>
 														<strong>Expiry Date</strong>
 													</h6> <input type='text' class='form-control'
-													name='ownerIdentityDetailModel.expiry_date' value=""></td>
+													name='ownerIdentityDetailModel.expiry_date' value="" pattern="(?:19/20)[0-9]{6}"></td>
 												<td><h6>
 														<strong>Issued By</strong>
 													</h6> <input type='text' class='form-control'
@@ -264,6 +264,7 @@
 		</form>
 	</div>
 	<script>
+
 		function nepaliToEnglish(nepalidate, englishdate) {
 			var date = $(nepalidate).val();
 			var dataString = {

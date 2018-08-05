@@ -36,11 +36,8 @@ public class DocumentTypeDaoImpl implements DocumentTypeDao {
 		}
 
 	public void save(DocumentTypeDetailModel d) {
-		String query="insert into id_type_detail (id_type, description, inputter, authorizer, date_time, curr_number) values (:id_type, :description, :inputter, :authorizer, :date_time, :curr_number)";
+		String query="insert into id_type_detail (id_type, description, inputter, date_time, curr_number) values (:id_type, :description, :inputter, now(), '1')";
 		template.update(query, new BeanPropertySqlParameterSource(d));
-
-	
-
 	}
 
 	public static final class DocumentTypeMapper implements RowMapper<DocumentTypeDetailModel>{
@@ -81,7 +78,7 @@ public class DocumentTypeDaoImpl implements DocumentTypeDao {
 	}
 
 	public void update(DocumentTypeDetailModel d, String id) {
-		String query="update id_type_detail set id_type= :id_type, description= :description, inputter= :inputter, authorizer= :authorizer, date_time= :date_time, curr_number= :curr_number where id_type='"+id+"'";
+		String query="update id_type_detail set id_type= :id_type, description= :description, inputter= :inputter, date_time= now() where id_type='"+id+"'";
 		template.update(query,new BeanPropertySqlParameterSource(d));
 		
 	}

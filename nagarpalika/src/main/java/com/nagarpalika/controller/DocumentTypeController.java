@@ -24,8 +24,9 @@ public class DocumentTypeController {
 	
 	@RequestMapping(value="/save", method=RequestMethod.POST)
 	@ResponseBody
-	public String save(@ModelAttribute DocumentTypeDetailModel d){
+	public String save(@ModelAttribute("user") String user, @ModelAttribute DocumentTypeDetailModel d){
 		try{
+			d.setInputter(user);
 		//documentTypeDao.save(d);
 			ds.save(d);
 		}
@@ -46,16 +47,18 @@ public class DocumentTypeController {
 	
 	@RequestMapping(value="/update/{id}", method=RequestMethod.POST)
 	@ResponseBody
-	public String update(@PathVariable String id, @ModelAttribute DocumentTypeDetailModel d){
+	public String update(@ModelAttribute("user") String user, @PathVariable String id, @ModelAttribute DocumentTypeDetailModel d){
+		d.setInputter(user);
 		ds.update(d, id);
 		return "Save Successful!";
 	}
 	
 	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
 	@ResponseBody
-	public String delete(@PathVariable String id)
+	public String delete( @PathVariable String id)
 	{
 		try {
+			
 			ds.delete(id);
 		} catch (Exception e) {
 			return "Delete Failed!";
