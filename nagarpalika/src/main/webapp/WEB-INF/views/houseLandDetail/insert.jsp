@@ -10,6 +10,7 @@ h5 {
 	font-size: 80%;
 	font-weight: bold;
 }
+
 .alert {
 	position: absolute;
 	left: 0px;
@@ -44,6 +45,7 @@ h5 {
 								<button class="btn btn-info" type="button" id="validate">Validate</button>
 								<button class="btn btn-primary" type="reset">Reset</button>
 								<input type="submit" class="btn btn-success" value="Submit">
+								<a class="btn btn-info" onclick="geoFindMe()">Get Location</a>
 							</div>
 						</div>
 						<br />
@@ -51,9 +53,24 @@ h5 {
 							<tbody>
 								<tr>
 									<td><h6>
+											<strong>Longitude</strong>
+										</h6>
+										<input type="text" name="longitude" id="longitude" class="form-control" readonly></td>
+									<td><h6>
+											<strong>Latitude</strong>
+										</h6>
+										<input type="text" name="latitude" id="latitude" class="form-control" readonly>
+										</td>
+									<td></td>
+									<td></td>
+
+								</tr>
+								<tr>
+									<td><h6>
 											<strong>Resident Id</strong>
 										</h6> <select class='form-control'
-										name='houseOwnerDetailModel.house_owner_id' id="house_owner_id">
+										name='houseOwnerDetailModel.house_owner_id'
+										id="house_owner_id">
 											<option value="">Select Resident Id</option>
 											<c:forEach items="${houseOwner }" var="h">
 												<option value="${h.house_owner_id }">${h.house_owner_id }/${h.house_owner_fname }
@@ -66,9 +83,9 @@ h5 {
 									<td><h6>
 											<strong>Family Id</strong>
 										</h6> <select class='form-control' id="family_id" name='family_id'>
-										<option value="">Select Family Id</option>
-										</select></td>
-										<td><h6>
+											<option value="">Select Family Id</option>
+									</select></td>
+									<td><h6>
 											<strong>Ownership Type</strong>
 										</h6> <select class='form-control' name='ownership_type'>
 											<option value="">Select Ownership Type</option>
@@ -77,7 +94,7 @@ h5 {
 									</select></td>
 								</tr>
 								<tr>
-									
+
 									<td><h6>
 											<strong>House Number</strong>
 										</h6> <input type='text' class='form-control house_number'
@@ -99,21 +116,21 @@ h5 {
 										</h6> <input type='text' class='form-control' name='plot_num'></td>
 								</tr>
 								<tr>
-								<td><h6>
+									<td><h6>
 											<strong>Sheet Num</strong>
 										</h6> <input type='text' class='form-control' name='sheet_num'></td>
 									<td><h6>
 											<strong>Land Legacy District</strong>
 										</h6> <input type="text" class='form-control' name='district_uni'>
-											</td>
+									</td>
 									<td><h6>
 											<strong>Municipality/ Village council</strong>
 										</h6> <input type="type" class='form-control' name='mun_vc_uni'>
-											</td>
+									</td>
 									<td><h6>
 											<strong>Ward Number</strong>
 										</h6> <input type="text" class='form-control' name='ward_no_uni'>
-											</td>
+									</td>
 								</tr>
 								<tr>
 									<td><h6>
@@ -126,25 +143,22 @@ h5 {
 											<strong>Land Legacy Address</strong>
 										</h6> <input type='text' class='form-control'
 										name='land_legacy_address'></td>
-										<td><h6>
+									<td><h6>
 											<strong>Land Current District</strong>
-										</h6> 
-										<select class='form-control' name='land_current_district'>
+										</h6> <select class='form-control' name='land_current_district'>
 											<option value="27">Bhaktapur</option>
 									</select></td>
 								</tr>
 								<tr>
-									
+
 									<td><h6>
 											<strong>Land Current Municipality/ Village Council</strong>
-										</h6> 
-										<select class='form-control' name='land_current_mun_vc'>
+										</h6> <select class='form-control' name='land_current_mun_vc'>
 											<option value="32703">Madhyepur Thimi</option>
 									</select></td>
 									<td><h6>
 											<strong>Ward No</strong>
-										</h6> 
-										<select class='form-control' name='ward_no'>
+										</h6> <select class='form-control' name='ward_no'>
 											<%
 												int n;
 													for (n = 1; n < 10; n++) {
@@ -153,9 +167,8 @@ h5 {
 											<%
 												}
 											%>
-									</select>
-										</td>
-										<td><h6>
+									</select></td>
+									<td><h6>
 											<strong>Tole</strong>
 										</h6> <input type='text' class='form-control' name='tole'></td>
 									<td><h6>
@@ -169,7 +182,7 @@ h5 {
 									</select></td>
 								</tr>
 								<tr>
-								<td><h6>
+									<td><h6>
 											<strong>Used Status</strong>
 										</h6> <select class='form-control' name='used_status'>
 											<option value="">Select Used Status</option>
@@ -204,45 +217,47 @@ h5 {
 											<strong>Map Approved Date</strong>
 										</h6> <input type='text' class='form-control'
 										name='map_approved_date'></td>
-										<td><h6>
+									<td><h6>
 											<strong>Construction Start Date</strong>
 										</h6> <input type='text' class='form-control'
 										name='construction_start_date'></td>
 								</tr>
 								<tr>
-									
+
 									<td><h6>
 											<strong>House/Land Status</strong>
-										</h6> <select class='form-control'
-										name='property_type_for_tax'>
-										<option value="">Select Status</option>
-										<option value="Main Commercial">Main Commercial</option>
-										<option value="Commercial">Commercial</option>
-										<option value="Residential with all facility">Residential with all facility</option>
-										<option value="Residential with limited facility">Residential with limited facility</option>
-										<option value="Industrial">Industrial</option>
-										<option value="Agricultural">Agricultural</option>
-										<option value="Special zone">Special zone</option>
-										<option value="Other">Other</option>
-										</select></td>
-											<td>
-									<h6>
-									<strong>Upload Picture</strong></h6>
-									<input class="form-control" type="file" name="files"
+										</h6> <select class='form-control' name='property_type_for_tax'>
+											<option value="">Select Status</option>
+											<option value="Main Commercial">Main Commercial</option>
+											<option value="Commercial">Commercial</option>
+											<option value="Residential with all facility">Residential
+												with all facility</option>
+											<option value="Residential with limited facility">Residential
+												with limited facility</option>
+											<option value="Industrial">Industrial</option>
+											<option value="Agricultural">Agricultural</option>
+											<option value="Special zone">Special zone</option>
+											<option value="Other">Other</option>
+									</select></td>
+									<td>
+										<h6>
+											<strong>Upload Picture</strong>
+										</h6> <input class="form-control" type="file" name="files"
 										accept="image/*" required>
 									</td>
 								</tr>
-								
+
 							</tbody>
 						</table>
 					</div>
 				</form:form>
 			</div>
 		</div>
-		
+
 	</div>
-	
-	<input type="hidden" id="url" value="<spring:url value="/houseLand/findFamilyId"/>">
+
+	<input type="hidden" id="url"
+		value="<spring:url value="/houseLand/findFamilyId"/>">
 	<script>
 		$(".confirm").click(function() {
 			return confirm("Confirm?");
@@ -264,6 +279,30 @@ h5 {
 		        }
 		    });
 		});
+		
+	</script>
+	<script>
+	function geoFindMe() {
+		  var output = document.getElementById("out");
+
+		  if (!navigator.geolocation){
+		    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+		    return;
+		  }
+
+		  function success(position) {
+		    var latitude  = position.coords.latitude;
+		    var longitude = position.coords.longitude;
+		    $("#longitude").val(longitude);
+		    $("#latitude").val(latitude);
+		  }
+
+		  function error() {
+		    output.innerHTML = "Unable to retrieve your location";
+		  }
+		  navigator.geolocation.getCurrentPosition(success, error);
+		}
+	
 	</script>
 </body>
 </html>
