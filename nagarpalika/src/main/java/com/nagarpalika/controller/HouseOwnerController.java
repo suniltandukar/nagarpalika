@@ -2,7 +2,6 @@ package com.nagarpalika.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,7 +43,7 @@ public class HouseOwnerController {
 	FormDetailService formDetailService;
 
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public String insertHouseOwner(@RequestParam("files") MultipartFile file, @Valid @ModelAttribute HouseOwnerDetailModel hm,
+	public String insertHouseOwner(@RequestParam("files") MultipartFile file,@ModelAttribute HouseOwnerDetailModel hm,
 			@ModelAttribute("user") String user, RedirectAttributes attributes, BindingResult result) {
 		if(result.hasErrors()){
 			System.out.println("errors found");

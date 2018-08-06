@@ -1,5 +1,6 @@
 package com.nagarpalika.dao.daoimpl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -86,6 +87,11 @@ public class HouseOwnerDaoImpl implements HouseOwnerDao {
 	public int findMaxValue() {
 		String query = "select max(owner_identity_id) as owner_identity_id from owner_identity_detail";
 		return  template.queryForObject(query, new BeanPropertySqlParameterSource(OwnerDetailModel.class), Integer.class);
+	}
+	
+	public ArrayList<HouseHoldDetailModel> showAll(){
+		String query="select * from house_owner_detail";
+		return (ArrayList<HouseHoldDetailModel>) template.query(query, new BeanPropertySqlParameterSource(new HouseHoldDetailModel()), new BeanPropertyRowMapper<HouseHoldDetailModel>(HouseHoldDetailModel.class));
 	}
 
 }

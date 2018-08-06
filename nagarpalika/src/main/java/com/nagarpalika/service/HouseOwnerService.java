@@ -1,5 +1,6 @@
 package com.nagarpalika.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.nagarpalika.model.HouseHoldDetailModel;
@@ -23,4 +24,6 @@ public interface HouseOwnerService {
 	public List<OwnerDetailModel> findById(String id);
 	
 	public int findMaxValue();
+	
+	public ArrayList<HouseHoldDetailModel> showAll();
 }

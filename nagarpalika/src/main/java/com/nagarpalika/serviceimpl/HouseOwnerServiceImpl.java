@@ -1,5 +1,6 @@
 package com.nagarpalika.serviceimpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,11 @@ public class HouseOwnerServiceImpl implements HouseOwnerService {
 	@Override
 	public int findMaxValue() {
 		return houseOwnerDao.findMaxValue();
+	}
+
+	@Override
+	public ArrayList<HouseHoldDetailModel> showAll() {
+		return houseOwnerDao.showAll();
 	}
 
 }
