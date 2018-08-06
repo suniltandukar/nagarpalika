@@ -14,15 +14,12 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
-		<!-- Form Validation using Annotations -->
-		<!-- https://mvnrepository.com/artifact/com.fasterxml/classmate -->
-		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
-		<!-- https://mvnrepository.com/artifact/org.jboss.logging/jboss-logging -->
 
-		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok-maven -->
-
-
-
+		<dependency>
+			<groupId>com.maxmind.geoip</groupId>
+			<artifactId>geoip-api</artifactId>
+			<version>1.2.14</version>
+		</dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -76,6 +73,18 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>${org.slf4j-version}</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20090211</version>
+		</dependency>
+		<dependency>  
+ <groupId>org.codehaus.jackson</groupId>  
+ <artifactId>jackson-mapper-asl</artifactId>  
+ <version>1.9.10</version>  
+</dependency>  
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>

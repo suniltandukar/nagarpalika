@@ -82,6 +82,20 @@ public class HouseFacilityDetailController {
 		return "houseFacilityDetail/edit";
 	}
 	
+	
+	/*@ResponseBody
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET,produces="application/json")
+	public HouseFacilityDetailModel edit(@PathVariable String id, @ModelAttribute("msg") String msg, Model model) {
+		HouseFacilityDetailModel houseFacilityDetail= houseFacilityService.findById(id);
+		
+		model.addAttribute("houseOwner", houseOwnerService.findAll());
+		model.addAttribute("hd", houseFacilityDetail);
+		model.addAttribute("drinkingWater",drinkingWaterTypeService.findAll());
+		model.addAttribute("roadType",roadTypeService.findAll());
+		model.addAttribute("msg", msg);
+		return houseFacilityDetail;
+	}
+	*/
 	@RequestMapping(value="/update/{id}", method = RequestMethod.POST)
 	public String update(@PathVariable String id, @ModelAttribute HouseFacilityDetailModel h,@ModelAttribute("user") String user, RedirectAttributes attributes){
 		try{

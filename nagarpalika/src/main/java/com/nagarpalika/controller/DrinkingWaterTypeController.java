@@ -43,6 +43,17 @@ public class DrinkingWaterTypeController {
 		return "settings/drinkingWater/edit";
 	}
 	
+	/*@ResponseBody
+	@RequestMapping(value="/edit/{id}", method=RequestMethod.GET,produces="application/json")
+	public DrinkingWaterTypeModel edit(@PathVariable String id,Model model){
+		System.out.println("id is"+id);
+		DrinkingWaterTypeModel drinkingwater = drinkingWaterTypeService.findById(id);
+		
+		model.addAttribute("drinkingWaterType",drinkingWaterTypeService.findAll());
+		model.addAttribute("drinkingwater", drinkingwater);
+		return drinkingwater;
+	}*/
+	
 	@RequestMapping(value="/update/{id}", method = RequestMethod.POST)
 	public String update(@PathVariable String id, @ModelAttribute DrinkingWaterTypeModel d, RedirectAttributes attributes){
 		try{

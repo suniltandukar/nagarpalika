@@ -10,6 +10,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +23,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -31,7 +37,7 @@ import com.nagarpalika.model.UserModel;
 
 
 
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Controller
 @SessionAttributes(value = { "userDetail", "systemdetail" })
 public class HomeController {
@@ -133,4 +139,38 @@ public class HomeController {
 		else{return false;}
 	}
 	
+	
+	@RequestMapping(value="/survey", produces="application/json", method=RequestMethod.POST)
+	public @ResponseBody String survey( @RequestBody String requestFromMobile)
+	{
+		System.out.println("This is data from front" + requestFromMobile);
+		try {
+			JSONObject jsnobject = new JSONObject(requestFromMobile);
+			System.out.println("This is house name" + jsnobject.getString("house"));
+
+			JSONArray jsonArray = jsnobject.getJSONArray("locations");
+			for (int i = 0; i < jsonArray.length(); i++) {
+			    JSONObject explrObject = jsonArray.getJSONObject(i);
+			    System.out.println("These are locations" + explrObject);
+			}			
+
+		} catch (JSONException e1) {
+			e1.printStackTrace();
+		}
+		
+		JSONArray jsonArray = new JSONArray();
+		JSONObject jsonObject = new JSONObject();
+		try {
+			jsonObject.put("status","200");
+			jsonObject.put("message","Successfully data is located to the database");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		jsonArray.put(jsonObject);
+		return jsonArray.toString();
+		
+	}
+	
+ 
 }
