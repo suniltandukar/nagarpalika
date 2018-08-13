@@ -184,6 +184,20 @@
 														Setting </a></li>
 												<li><a href="nav/drinkingWater" target="iframe_a">
 														Drinking Water Setting </a></li>
+												<li><a href="disability/" target="iframe_a">
+														Disability Settings </a></li>
+												<li><a href="relation/" target="iframe_a">
+														Relation Settings </a></li>
+												<li><a href="construction/" target="iframe_a">
+														Construction Type Settings </a></li>
+												<li><a href="hlstatus/" target="iframe_a">
+														House Land Status Settings </a></li>
+												<li><a href="roadtype/" target="iframe_a">
+														Road Type Settings </a></li>
+												<li><a href="roadsize/" target="iframe_a">
+														Road Size Settings </a></li>
+												<li><a href="businesstype/" target="iframe_a">
+														Business Type Settings </a></li>
 
 											</ul></li>
 

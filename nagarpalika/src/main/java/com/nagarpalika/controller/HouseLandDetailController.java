@@ -128,7 +128,7 @@ public class HouseLandDetailController {
 	@RequestMapping(value = "/findFamilyId", method = RequestMethod.POST)
 	@ResponseBody
 	public String findFamilyId(@ModelAttribute FamilyDetailModel familyDetailModel) {
-		String house_owner_id = familyDetailModel.getHouseOwnerDetailModel().getHouse_owner_id();
+		String house_owner_id = familyDetailModel.getHouse_owner_detail().getHouse_owner_id();
 		List<String> list = new ArrayList<String>();
 		String options = "";
 

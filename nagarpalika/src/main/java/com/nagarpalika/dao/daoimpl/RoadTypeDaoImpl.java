@@ -1,32 +1,33 @@
 package com.nagarpalika.dao.daoimpl;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.nagarpalika.dao.RoadTypeDao;
+import com.nagarpalika.model.ConstructionTypeModel;
 import com.nagarpalika.model.RoadTypeModel;
 
 @Repository
 public class RoadTypeDaoImpl implements RoadTypeDao {
-private NamedParameterJdbcTemplate template;
-@Autowired
-public void SetDataSource(DataSource dataSource){
-	this.template = new NamedParameterJdbcTemplate(dataSource);
-}
+	private NamedParameterJdbcTemplate template;
+
+	@Autowired
+	public void SetDataSource(DataSource dataSource) {
+		this.template = new NamedParameterJdbcTemplate(dataSource);
+	}
+
 	@Override
-	public void save(RoadTypeModel d) {
-		// TODO Auto-generated method stub
+	public int save(RoadTypeModel d) {
+		String query = "insert into road_type (road_type) values (:road_type)";
+		int status = template.update(query, new BeanPropertySqlParameterSource(d));
+		return status;
 
 	}
 
@@ -38,25 +39,26 @@ public void SetDataSource(DataSource dataSource){
 
 	@Override
 	public RoadTypeModel findById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "select * from road_type where road_type_id = '"+id+"'";
+		RoadTypeModel d = template.queryForObject(query, new BeanPropertySqlParameterSource(id), new BeanPropertyRowMapper<RoadTypeModel>(RoadTypeModel.class));
+		return d;
+	}
+
+
+	@Override
+	public int update(RoadTypeModel r, String id) {
+		String query = "update road_type set road_type = :road_type where road_type_id = '"+id+"'";
+		int status = template.update(query, new BeanPropertySqlParameterSource(r));
+		return status;
+	
+
 	}
 
 	@Override
-	public int findMax() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void update(RoadTypeModel r, String id) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void delete(String id) {
-		// TODO Auto-generated method stub
+	public int delete(String id) {
+		String query = "delete from road_type where road_type_id = '"+id+"'";
+		int status = template.update(query, new BeanPropertySqlParameterSource(RoadTypeModel.class));
+		return status;
 
 	}
 

@@ -40,9 +40,6 @@ h5 {
 								<tbody>
 									<tr>
 										<td><h6>
-												<strong>Occupation Id</strong>
-											</h6> <input type='text' class='form-control' name='occu_id' value="${o.occu_id }"></td>
-										<td><h6>
 												<strong>Occupation Type</strong>
 											</h6> <input type='text' class='form-control' name='occupation_type' value="${o.occupation_type }"></td>
 									</tr>

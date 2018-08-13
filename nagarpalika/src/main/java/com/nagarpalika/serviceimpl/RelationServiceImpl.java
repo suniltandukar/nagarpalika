@@ -19,4 +19,24 @@ public class RelationServiceImpl implements RelationService {
 		return relationDao.findAll();
 	}
 
+	@Override
+	public int save(RelationModel d) {
+		return relationDao.save(d);
+	}
+
+	@Override
+	public int update(RelationModel d, String id) {
+		return relationDao.update(d, id);
+	}
+
+	@Override
+	public RelationModel findById(String id) {
+		return relationDao.findById(id);
+	}
+
+	@Override
+	public int delete(String id) {
+		return relationDao.delete(id);
+	}
+
 }

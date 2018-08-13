@@ -38,9 +38,6 @@ h5 {
 							<tbody>
 								<tr>
 									<td><h6>
-											<strong>Education ID</strong>
-										</h6> <input type='text' class='form-control' name='edu_id'></td>
-									<td><h6>
 											<strong>Education Type</strong>
 										</h6> <input type='text' class='form-control' name='education_type'></td>
 								</tr>

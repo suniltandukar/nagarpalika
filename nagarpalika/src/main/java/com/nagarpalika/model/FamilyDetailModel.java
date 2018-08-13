@@ -1,6 +1,9 @@
 package com.nagarpalika.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+@JsonInclude(Include.NON_NULL)
 public class FamilyDetailModel {
 	
 private int family_detail_id;
@@ -14,10 +17,10 @@ private int family_detail_id;
 	fname,
 	mname,
 	lname,curr_number;
-	private OccupationModel occupationModel;
-	private HouseOwnerDetailModel houseOwnerDetailModel;
-	private DisableTypeModel disableTypeModel;
-	private RelationModel relationModel;
+	private OccupationModel occupation_detail;
+	private HouseOwnerDetailModel house_owner_detail;
+	private DisableTypeModel disabledtype;
+	private RelationModel relationtbl;
 	
 	public int getFamily_detail_id() {
 		return family_detail_id;
@@ -91,29 +94,30 @@ private int family_detail_id;
 	public void setCurr_number(String curr_number) {
 		this.curr_number = curr_number;
 	}
-	public OccupationModel getOccupationModel() {
-		return occupationModel;
+	
+	public OccupationModel getOccupation_detail() {
+		return occupation_detail;
 	}
-	public void setOccupationModel(OccupationModel occupationModel) {
-		this.occupationModel = occupationModel;
+	public void setOccupation_detail(OccupationModel occupation_detail) {
+		this.occupation_detail = occupation_detail;
 	}
-	public HouseOwnerDetailModel getHouseOwnerDetailModel() {
-		return houseOwnerDetailModel;
+	public HouseOwnerDetailModel getHouse_owner_detail() {
+		return house_owner_detail;
 	}
-	public void setHouseOwnerDetailModel(HouseOwnerDetailModel houseOwnerDetailModel) {
-		this.houseOwnerDetailModel = houseOwnerDetailModel;
+	public void setHouse_owner_detail(HouseOwnerDetailModel house_owner_detail) {
+		this.house_owner_detail = house_owner_detail;
 	}
-	public DisableTypeModel getDisableTypeModel() {
-		return disableTypeModel;
+	public DisableTypeModel getDisabledtype() {
+		return disabledtype;
 	}
-	public void setDisableTypeModel(DisableTypeModel disableTypeModel) {
-		this.disableTypeModel = disableTypeModel;
+	public void setDisabledtype(DisableTypeModel disabledtype) {
+		this.disabledtype = disabledtype;
 	}
-	public RelationModel getRelationModel() {
-		return relationModel;
+	public RelationModel getRelationtbl() {
+		return relationtbl;
 	}
-	public void setRelationModel(RelationModel relationModel) {
-		this.relationModel = relationModel;
+	public void setRelationtbl(RelationModel relationtbl) {
+		this.relationtbl = relationtbl;
 	}
 	
 	

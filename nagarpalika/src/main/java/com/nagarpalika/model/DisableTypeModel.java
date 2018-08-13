@@ -1,5 +1,9 @@
 package com.nagarpalika.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_NULL)
 public class DisableTypeModel {
 	private int id;
 	private String disable_type;

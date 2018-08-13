@@ -71,20 +71,20 @@ public class FamilyDetailDaoImpl implements FamilyDetailDao {
 	public class FamilyDetailRowMapper implements RowMapper<FamilyDetailModel> {
 		@Override
 		public FamilyDetailModel mapRow(ResultSet rs, int rowNum) throws SQLException {
-			HouseOwnerDetailModel houseOwnerDetailModel = (new BeanPropertyRowMapper<HouseOwnerDetailModel>(
+			HouseOwnerDetailModel house_owner_detail = (new BeanPropertyRowMapper<HouseOwnerDetailModel>(
 					HouseOwnerDetailModel.class)).mapRow(rs, rowNum);
 			FamilyDetailModel familyDetailModel = (new BeanPropertyRowMapper<FamilyDetailModel>(
 					FamilyDetailModel.class)).mapRow(rs, rowNum);
-			OccupationModel occupationModel = (new BeanPropertyRowMapper<OccupationModel>(OccupationModel.class))
+			OccupationModel occupation_detail = (new BeanPropertyRowMapper<OccupationModel>(OccupationModel.class))
 					.mapRow(rs, rowNum);
-			DisableTypeModel disableTypeModel = (new BeanPropertyRowMapper<DisableTypeModel>(DisableTypeModel.class))
+			DisableTypeModel disabledtype = (new BeanPropertyRowMapper<DisableTypeModel>(DisableTypeModel.class))
 					.mapRow(rs, rowNum);
-			RelationModel relationModel = (new BeanPropertyRowMapper<RelationModel>(RelationModel.class))
+			RelationModel relationtbl = (new BeanPropertyRowMapper<RelationModel>(RelationModel.class))
 					.mapRow(rs, rowNum);
-			familyDetailModel.setHouseOwnerDetailModel(houseOwnerDetailModel);
-			familyDetailModel.setOccupationModel(occupationModel);
-			familyDetailModel.setDisableTypeModel(disableTypeModel);
-			familyDetailModel.setRelationModel(relationModel);
+			familyDetailModel.setHouse_owner_detail(house_owner_detail);
+			familyDetailModel.setOccupation_detail(occupation_detail);
+			familyDetailModel.setDisabledtype(disabledtype);
+			familyDetailModel.setRelationtbl(relationtbl);
 			return familyDetailModel;
 		}
 	}
@@ -92,6 +92,12 @@ public class FamilyDetailDaoImpl implements FamilyDetailDao {
 	@Override
 	public List<FamilyDetailModel> findByHouseOwnerId(String id) {
 		String query = "select * from family_detail where house_owner_id='"+id+"'";
+		return template.query(query, new FamilyDetailRowMapper());
+	}
+
+	@Override
+	public List<FamilyDetailModel> findAll() {
+		String query = "select * from family_detail";
 		return template.query(query, new FamilyDetailRowMapper());
 	}
 

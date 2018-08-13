@@ -16,8 +16,8 @@ public class RoadTypeServiceImpl implements RoadTypeService {
 	RoadTypeDao roadTypeDao;
 
 	@Override
-	public void save(RoadTypeModel d) {
-		roadTypeDao.save(d);
+	public int save(RoadTypeModel d) {
+		return roadTypeDao.save(d);
 	}
 
 	@Override
@@ -31,19 +31,14 @@ public class RoadTypeServiceImpl implements RoadTypeService {
 	}
 
 	@Override
-	public int findMax() {
-		return roadTypeDao.findMax();
-	}
-
-	@Override
-	public void update(RoadTypeModel r, String id) {
-		roadTypeDao.update(r, id);
+	public int update(RoadTypeModel r, String id) {
+		return roadTypeDao.update(r, id);
 
 	}
 
 	@Override
-	public void delete(String id) {
-		roadTypeDao.delete(id);
+	public int delete(String id) {
+		return roadTypeDao.delete(id);
 
 	}
 

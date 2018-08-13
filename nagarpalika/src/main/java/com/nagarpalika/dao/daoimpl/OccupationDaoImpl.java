@@ -31,8 +31,8 @@ public class OccupationDaoImpl implements OccupationDao {
 	}
 
 	public void save(OccupationModel o) {
-		String query = "insert into occupation_type (occu_id, occupation_type, record_status, inputter, authorizer, date_time, curr_number) values ('"
-				+ o.getOccu_id() + "','" + o.getOccupation_type() + "','" + o.getRecord_status() + "','"
+		String query = "insert into occupation_type (occupation_type, record_status, inputter, authorizer, date_time, curr_number) values ('"
+				+ o.getOccupation_type() + "','" + o.getRecord_status() + "','"
 				+ o.getInputter() + "','" + o.getAuthorizer() + "',now(),1)";
 		jdbcTemplate.update(query);
 	}
@@ -64,7 +64,7 @@ public class OccupationDaoImpl implements OccupationDao {
 	}
 
 	public void update(OccupationModel o, String id) {
-		String query = "update occupation_type set occu_id='" + o.getOccu_id() + "', occupation_type='"
+		String query = "update occupation_type set occupation_type='"
 				+ o.getOccupation_type() + "', record_status='" + o.getRecord_status() + "', inputter='"
 				+ o.getInputter() + "', authorizer='" + o.getAuthorizer() + "', date_time=now() where occu_id='" + id + "'";
 		jdbcTemplate.update(query);

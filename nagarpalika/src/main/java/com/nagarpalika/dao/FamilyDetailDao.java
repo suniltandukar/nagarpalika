@@ -19,4 +19,6 @@ public interface FamilyDetailDao {
 	
 	public List<FamilyDetailModel> findByHouseOwnerId(String id);
 
+	public List<FamilyDetailModel> findAll();
+
 }

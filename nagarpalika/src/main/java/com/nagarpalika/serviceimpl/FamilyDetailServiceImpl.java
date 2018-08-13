@@ -52,4 +52,9 @@ public class FamilyDetailServiceImpl implements FamilyDetailService {
 		return familyDetailDao.findByHouseOwnerId(id);
 	}
 
+	@Override
+	public List<FamilyDetailModel> findAll() {
+		return familyDetailDao.findAll();
+	}
+
 }

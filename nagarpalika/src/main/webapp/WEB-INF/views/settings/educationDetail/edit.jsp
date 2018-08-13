@@ -39,30 +39,8 @@ h5 {
 							<tbody>
 								<tr>
 									<td><h6>
-											<strong>Education ID</strong>
-										</h6> <input type='text' class='form-control' name='edu_id' value="${ed.edu_id }"></td>
-									<td><h6>
 											<strong>Education Type</strong>
 										</h6> <input type='text' class='form-control' name='education_type' value="${ed.education_type }"></td>
-									<td><h6>
-											<strong>Record Status</strong>
-										</h6> <input type='text' class='form-control' name='record_status' value="${ed.record_status }"></td>
-								</tr>
-								<tr>
-									<td><h6>
-											<strong>Inputter</strong>
-										</h6> <input type='text' class='form-control' name='inputter' value="${ed.inputter }"></td>
-									<td><h6>
-											<strong>Authorizer</strong>
-										</h6> <input type='text' class='form-control' name='authorizer' value="${ed.authorizer }"></td>
-									<td><h6>
-											<strong>date and Time</strong>
-										</h6> <input type='text' class='form-control' name='date_time' value="${ed.date_time }"></td>
-								</tr>
-								<tr>
-									<td><h6>
-											<strong>Current Number</strong>
-										</h6> <input type='text' class='form-control' name='curr_number' value="${ed.curr_number }"></td>
 								</tr>
 							</tbody>
 						</table>

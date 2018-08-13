@@ -54,8 +54,8 @@ public class FamilyDetailController {
 																			// taken
 																			// from
 																			// database
-		String house_owner_id = familyDetail.getHouseOwnerDetailModel().getHouse_owner_id();
-		String relation_id = familyDetail.getRelationModel().getRelation();
+		String house_owner_id = familyDetail.getHouse_owner_detail().getHouse_owner_id();
+		String relation_id = familyDetail.getRelationtbl().getRelation();
 
 		familyDetail.setInputter(user);
 		int save_status = familyDetailService.save(familyDetail);

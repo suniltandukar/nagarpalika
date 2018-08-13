@@ -5,6 +5,8 @@ import java.util.List;
 import com.nagarpalika.model.FamilyDetailModel;
 
 public interface FamilyDetailService {
+	public List<FamilyDetailModel> findAll();
+	
 	public int save(FamilyDetailModel f);
 
 	public List<FamilyDetailModel> getFamilyDetail();
