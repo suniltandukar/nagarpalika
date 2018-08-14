@@ -27,6 +27,8 @@ import com.nagarpalika.service.RestService;
 @RestController
 @RequestMapping("/data")
 public class RestSurveyController {
+	 private static final String USER_AGENT = "Mozilla/5.0";
+	 
 	@Autowired
 	RestService restService;
 	
@@ -52,21 +54,49 @@ public class RestSurveyController {
 		return map;
 	}
 	
-	@RequestMapping(value = "/sms")
+	@RequestMapping(value = "/sms", method = RequestMethod.GET)
 	public void sms(){
 		  try {
-		URL url = new URL("http://api.sparrowsms.com/v2/sms?token=LOBQN7ZX5MycjZUUnBIS&from=Demo&to=9869718832&text=hello");
+			  String params = "http://api.sparrowsms.com/v2/sms?token=X1PRVmYjS6hrHYDhMLew&from=Demo&to=9843182011&text=hello";
+			 
+		URL url = new URL(params);
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		System.out.println(conn);
+		
 		conn.setRequestMethod("GET");
+		conn.setRequestProperty("User-Agent", USER_AGENT);
 		conn.setRequestProperty("Accept", "application/json");
-		if (conn.getResponseCode() != 200) {
-			throw new RuntimeException("Failed : HTTP error code : "
-					+ conn.getResponseCode());
-		}
-
+		
+		/*if (conn.getResponseCode() >= 300) {
+			  // Something unexpected happened
+			  System.out.println("Unexpected response from server");
+			  System.out.println(conn.getResponseMessage());
+			  System.out.println(conn.getResponseCode());
+			  return; // Stop here
+		}*/
+		
+		/*HashMap<String, String> map = smsdata();
+		
+		conn.setDoOutput(true);
+		DataOutputStream out= new DataOutputStream(conn.getOutputStream());
+		out.writeBytes(ParameterStringBuilder.getParamsString(map));
+		out.flush();
+		out.close();*/
+		
 		BufferedReader br = new BufferedReader(new InputStreamReader(
-			(conn.getInputStream())));
+				(conn.getInputStream())));
 
+		String inputLine;
+		StringBuffer response = new StringBuffer();
+		while((inputLine=br.readLine())!=null){
+			response.append(inputLine);
+		}
+		br.close();
+		
+		System.out.println(response.toString());
+		
+
+		
 		String output;
 		System.out.println("Output from Server .... \n");
 		while ((output = br.readLine()) != null) {
@@ -88,5 +118,17 @@ public class RestSurveyController {
 		
 
 	}
+	
+	public HashMap<String, String> smsdata(){
+		String phoneno="9869718832";
+		String text = "hello";
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("token", "X1PRVmYjS6hrHYDhMLew");
+		map.put("from", "Demo");
+		map.put("to", phoneno);
+		map.put("text", text);
+		return map;
+	}
+	
 
 }

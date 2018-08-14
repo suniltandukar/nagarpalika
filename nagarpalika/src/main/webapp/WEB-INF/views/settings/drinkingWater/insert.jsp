@@ -71,7 +71,7 @@ h5 {
 						<table class="table jambo_table table-striped table-bordered dt-responsive nowrap display dataTable dtr-inline" style="font-size: 95%; width: 100%;">
 							<thead>
 								<tr>
-								<th>Document Type</th>
+								<th>Drinking Water Type</th>
 								<th>Action</th>
 								</tr>
 							</thead>

@@ -50,10 +50,10 @@ h5 {
 							<tbody>
 								<tr>
 								<td><h6>
-											<strong>Construction ID</strong>
+											<strong>Business ID</strong>
 										</h6> <input type='text' class='form-control' name='business_type_id' maxlength="2" value="${findById.business_type_id }" disabled></td>
 									<td><h6>
-											<strong>Construction Type</strong>
+											<strong>Business Type</strong>
 										</h6> <input type='text' class='form-control' name='business_type' value="${findById.business_type}"></td>
 								</tr>
 							</tbody>
